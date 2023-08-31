@@ -6,7 +6,7 @@ import { UserPresence } from "./UserPresence";
 
 export default function App() {
   const store = useYjsStore({
-    roomId: "codesandbox_2"
+    roomId: "12"
   });
 
   return (
