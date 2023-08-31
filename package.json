@@ -1,0 +1,37 @@
+{
+  "name": "tldraw-partykit-example",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.tsx",
+  "dependencies": {
+    "@tldraw/tldraw": "2.0.0-canary.4b8491d388aa",
+    "loader-utils": "3.2.1",
+    "partykit": "0.0.0-a16ecec",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-scripts": "^5.0.1",
+    "signia": "0.1.1",
+    "signia-react": "0.1.1",
+    "y-partykit": "0.0.0-a16ecec",
+    "y-websocket": "1.5.0",
+    "yjs": "13.5.51"
+  },
+  "devDependencies": {
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.9",
+    "typescript": "4.4.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
