@@ -23,3 +23,14 @@ html,
   inset: 0px;
   overflow: hidden;
 }
+
+#play,#pause{
+  color:rgba(255,255,255,0.8);
+  border: 0;
+  display: inline-block;
+  width:100px;
+}
+
+.settings-lbl{
+  display:block;
+}

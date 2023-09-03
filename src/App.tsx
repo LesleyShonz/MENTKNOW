@@ -6,12 +6,14 @@ import { UserPresence } from "./UserPresence";
 
 export default function App() {
   const store = useYjsStore({
-    roomId: "12"
+    roomId: "MENT",
   });
 
   return (
-    <div className="tldraw__editor">
-      <Tldraw store={store} autoFocus shareZone={<UserPresence />} />
-    </div>
+    <>
+      <div className="tldraw__editor">
+        <Tldraw store={store} autoFocus shareZone={<UserPresence />} />
+      </div>
+    </>
   );
 }

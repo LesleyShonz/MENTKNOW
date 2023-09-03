@@ -1,5 +1,6 @@
 import { useEditor } from "@tldraw/tldraw";
 import { track } from "signia-react";
+import Timer from "./Timer";
 
 export const UserPresence = track(() => {
   const editor = useEditor();
@@ -7,24 +8,27 @@ export const UserPresence = track(() => {
   const { color, name } = editor.user;
 
   return (
-    <div style={{ pointerEvents: "all", display: "flex" }}>
-      <input
-        type="color"
-        value={color}
-        onChange={(e) => {
-          editor.user.updateUserPreferences({
-            color: e.currentTarget.value
-          });
-        }}
-      />
-      <input
-        value={name}
-        onChange={(e) => {
-          editor.user.updateUserPreferences({
-            name: e.currentTarget.value
-          });
-        }}
-      />
-    </div>
+    <>
+      <div style={{ pointerEvents: "all", display: "flex" }}>
+        <Timer />
+        <input
+          type="color"
+          value={color}
+          onChange={(e) => {
+            editor.user.updateUserPreferences({
+              color: e.currentTarget.value,
+            });
+          }}
+        />
+        <input
+          value={name}
+          onChange={(e) => {
+            editor.user.updateUserPreferences({
+              name: e.currentTarget.value,
+            });
+          }}
+        />
+      </div>
+    </>
   );
 });

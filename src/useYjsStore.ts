@@ -10,7 +10,7 @@ import {
   createPresenceStateDerivation,
   createTLStore,
   defaultShapes,
-  getUserPreferences
+  getUserPreferences,
 } from "@tldraw/tldraw";
 import { useEffect, useRef, useMemo, useState } from "react";
 import { computed, react, transact } from "signia";
@@ -19,11 +19,11 @@ import * as Y from "yjs";
 
 export function useYjsStore({
   roomId = "example",
-  hostUrl = "yjs.threepointone.partykit.dev"
+  hostUrl = "yjs.threepointone.partykit.dev",
 }: Partial<{ hostUrl: string; roomId: string; version: number }>) {
   const [store] = useState(() => createTLStore({ shapes: defaultShapes }));
   const [storeWithStatus, setStoreWithStatus] = useState<TLStoreWithStatus>({
-    status: "loading"
+    status: "loading",
   });
 
   const { doc, room, yRecords } = useMemo(() => {
@@ -31,7 +31,7 @@ export function useYjsStore({
     return {
       doc,
       room: new YPartyKitProvider(hostUrl, roomId, doc, { connect: true }),
-      yRecords: doc.getMap<TLRecord>(`tl_${roomId}`)
+      yRecords: doc.getMap<TLRecord>(`tl_${roomId}`),
     };
   }, [hostUrl, roomId]);
 
@@ -50,7 +50,7 @@ export function useYjsStore({
           setStoreWithStatus({
             store,
             status: "synced-remote",
-            connectionStatus: "offline"
+            connectionStatus: "offline",
           });
           return;
         }
@@ -61,7 +61,7 @@ export function useYjsStore({
           setStoreWithStatus({
             store,
             status: "synced-remote",
-            connectionStatus: "online"
+            connectionStatus: "online",
           });
           return;
         }
@@ -77,13 +77,13 @@ export function useYjsStore({
             store.clear();
             store.put([
               DocumentRecordType.create({
-                id: "document:document" as TLDocument["id"]
+                id: "document:document" as TLDocument["id"],
               }),
               PageRecordType.create({
                 id: "page:page" as TLPageId,
                 name: "Page 1",
-                index: "a1"
-              })
+                index: "a1",
+              }),
             ]);
           });
 
@@ -236,7 +236,7 @@ export function useYjsStore({
         setStoreWithStatus({
           store,
           status: "synced-remote",
-          connectionStatus: "online"
+          connectionStatus: "online",
         });
       }
     );
