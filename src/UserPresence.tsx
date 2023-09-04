@@ -1,6 +1,5 @@
 import { useEditor } from "@tldraw/tldraw";
 import { track } from "signia-react";
-import Timer from "./Timer";
 
 export const UserPresence = track(() => {
   const editor = useEditor();
@@ -10,7 +9,6 @@ export const UserPresence = track(() => {
   return (
     <>
       <div style={{ pointerEvents: "all", display: "flex" }}>
-        <Timer />
         <input
           type="color"
           value={color}

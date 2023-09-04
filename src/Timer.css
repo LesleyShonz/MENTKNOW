@@ -1,3 +1,9 @@
+#Timer {
+  display: show;
+  position: absolute;
+  bottom: 30px;
+  right: 75px;
+}
 body {
   background: #dddddd;
   margin: 24px;
