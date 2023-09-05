@@ -1,0 +1,52 @@
+.navigation-bar {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 0px 10px 10px;
+  background: #edf0f2;
+  height: 45px;
+  flex-shrink: 0;
+  left: 410px;
+  top: 5px;
+}
+
+.nav-button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background: #f8f8fb;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #cfb7ff;
+}
+
+.nav-button.active {
+  background-color: #cfb7ff;
+  font-weight: bold;
+}
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.dashboard-button {
+  position: absolute;
+  top: 50px;
+  left: 7px;
+  color: black;
+  background: #edf0f2;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: show;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}

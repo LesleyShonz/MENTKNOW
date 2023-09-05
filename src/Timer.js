@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./Timer.css";
+
 function Timer() {
+  // State variables to manage timer functionality
   const [remainingSeconds, setRemainingSeconds] = useState(0);
   const [intervalId, setIntervalId] = useState(null);
   const [isRunning, setIsRunning] = useState(false);
 
+  // Format remaining time in MM:SS format
   const formattedTime = () => {
     const minutes = Math.floor(remainingSeconds / 60);
     const seconds = remainingSeconds % 60;
@@ -13,6 +16,7 @@ function Timer() {
       .padStart(2, "0")}`;
   };
 
+  // Generate appropriate control button based on timer state
   const updateInterfaceControls = () => {
     return isRunning ? (
       <button
@@ -33,6 +37,7 @@ function Timer() {
     );
   };
 
+  // Start the timer
   const start = () => {
     if (remainingSeconds === 0) return;
 
@@ -44,12 +49,14 @@ function Timer() {
     setIsRunning(true);
   };
 
+  // Pause the timer
   const pause = () => {
     clearInterval(intervalId);
     setIntervalId(null);
     setIsRunning(false);
   };
 
+  // Reset the timer
   const reset = () => {
     const inputMinutes = prompt("Enter number of minutes:");
 
@@ -59,6 +66,7 @@ function Timer() {
     }
   };
 
+  // useEffect to automatically pause the timer when it reaches 0
   useEffect(() => {
     if (remainingSeconds === 0 && isRunning) {
       pause();
@@ -66,13 +74,18 @@ function Timer() {
   }, [remainingSeconds, isRunning]);
 
   return (
-    <div className="timer">
+    <div className="Timer">
+      {/* Display the formatted time */}
       <span className="timer__part timer__part--minutes">
         {formattedTime()}
       </span>
       <span className="timer__part">:</span>
       <span className="timer__part timer__part--seconds"></span>
+
+      {/* Display control buttons */}
       {updateInterfaceControls()}
+
+      {/* Button to reset the timer */}
       <button
         type="button"
         className="timer__btn timer__btn--reset"

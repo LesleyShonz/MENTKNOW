@@ -1,7 +1,7 @@
-#Timer {
+.Timer {
   display: show;
   position: absolute;
-  bottom: 30px;
+  bottom: 55px;
   right: 75px;
 }
 body {

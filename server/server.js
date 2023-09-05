@@ -1,15 +1,17 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const e = require("express");
 
 const app = express();
 const PORT = process.env.PORT || 5009;
 
+// Middleware to enable cross-origin resource sharing
 app.use(cors());
+
+// Middleware to parse JSON data in request bodies
 app.use(express.json());
 
-// MongoDB connection setup (replace <connection_string> with your actual connection string)
+// MongoDB connection setup
 mongoose.connect(
   "mongodb+srv://Lesley:MENTKNOW@mentknow.alii0fr.mongodb.net/?retryWrites=true&w=majority",
   {
@@ -43,7 +45,7 @@ app.post("/api/ratings", async (req, res) => {
       // Increment the total number of ratings for the existing activity
       existingRating.totalRating += totalRating;
       existingRating.numRatings += 1;
-      //Get the average rating for the existing activity
+      // Calculate the average rating for the existing activity
       existingRating.averageRating =
         existingRating.totalRating / existingRating.numRatings;
       await existingRating.save();
@@ -67,6 +69,7 @@ app.post("/api/ratings", async (req, res) => {
   }
 });
 
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

@@ -4,39 +4,61 @@ import StarRatings from "react-star-ratings";
 import "./Ratings.css";
 
 function Ratings({ activityName }) {
+  // State variables to manage rating, submission status, and error
   const [rating, setRating] = useState(0);
-  const [submitted, setSubmitted] = useState(false); // State to track submission
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(null);
 
-  // console.log("Page ID test" + editor.currentPage.name);
+  // Function to handle changes in the selected rating
   const handleRatingChange = (newRating) => {
     setRating(newRating);
-    setSubmitted(false); // Reset submitted state when rating changes
+    setSubmitted(false);
+    setError(null); // Reset error state when rating changes
   };
 
+  // Function to handle rating submission
   const handleSubmitRating = async () => {
     try {
+      // Send a POST request to the server with the rating data
       const response = await axios.post("http://localhost:5009/api/ratings", {
         activityName: activityName,
         totalRating: rating,
       });
-      setSubmitted(true);
+      setSubmitted(true); // Mark submission as successful
     } catch (error) {
+      setError("Error submitting rating. Please try again later.");
       console.error("Error submitting rating:", error);
     }
   };
 
   return (
     <div className="Ratings">
-      <p>how did you find the {activityName} activity?</p>
-      <StarRatings
-        rating={rating}
-        starRatedColor={submitted ? "rgb(203, 211, 227)" : "gold"} // Change color if submitted
-        changeRating={handleRatingChange}
-        numberOfStars={5}
-        name="rating"
-      />
-      <br></br>
-      <button onClick={handleSubmitRating}>Submit Rating</button>
+      <div className="content">
+        <p id="rating-p">How would you rate the {activityName} activity?</p>
+        {/* StarRatings component to allow user to rate */}
+        <StarRatings
+          rating={rating}
+          starRatedColor={submitted ? "rgb(203, 211, 227)" : "gold"}
+          changeRating={handleRatingChange}
+          numberOfStars={5}
+          name="rating"
+          disabled={submitted} // Disable the stars after submission
+        />
+        <br />
+        {error && <p className="error-message">{error}</p>}
+        {submitted ? (
+          <p>Thank you for your rating!</p>
+        ) : (
+          // Button to submit the rating
+          <button
+            id="rating-btn"
+            onClick={handleSubmitRating}
+            disabled={submitted}
+          >
+            Submit
+          </button>
+        )}
+      </div>
     </div>
   );
 }
