@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const e = require("express");
 
 const app = express();
 const PORT = process.env.PORT || 5009;
@@ -27,6 +28,7 @@ const ratingSchema = new mongoose.Schema(
     totalRating: Number,
     numRatings: Number,
     averageRating: Number,
+    numContributions: Number,
   },
   { versionKey: false }
 );
@@ -35,7 +37,7 @@ const Rating = mongoose.model("Rating", ratingSchema);
 
 // Define route for saving ratings
 app.post("/api/ratings", async (req, res) => {
-  const { activityName, totalRating } = req.body;
+  const { activityName, totalRating, numContributions } = req.body;
 
   try {
     // Check if the activity already exists in the database
@@ -45,6 +47,7 @@ app.post("/api/ratings", async (req, res) => {
       // Increment the total number of ratings for the existing activity
       existingRating.totalRating += totalRating;
       existingRating.numRatings += 1;
+      existingRating.numContributions = numContributions;
       // Calculate the average rating for the existing activity
       existingRating.averageRating =
         existingRating.totalRating / existingRating.numRatings;
@@ -56,6 +59,7 @@ app.post("/api/ratings", async (req, res) => {
         totalRating,
         numRatings: 1,
         averageRating: totalRating,
+        numContributions: numContributions,
       });
       await newRating.save();
     }

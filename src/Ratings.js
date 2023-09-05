@@ -3,7 +3,7 @@ import axios from "axios";
 import StarRatings from "react-star-ratings";
 import "./Ratings.css";
 
-function Ratings({ activityName }) {
+function Ratings({ activityName, numContributions }) {
   // State variables to manage rating, submission status, and error
   const [rating, setRating] = useState(0);
   const [submitted, setSubmitted] = useState(false);
@@ -23,7 +23,9 @@ function Ratings({ activityName }) {
       const response = await axios.post("http://localhost:5009/api/ratings", {
         activityName: activityName,
         totalRating: rating,
+        numContributions: numContributions,
       });
+
       setSubmitted(true); // Mark submission as successful
     } catch (error) {
       setError("Error submitting rating. Please try again later.");
