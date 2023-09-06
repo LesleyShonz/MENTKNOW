@@ -21,7 +21,9 @@ const NavigationBar = ({ activityName }) => {
   };
 
   const handlePollingButton = () => { 
+    
     setShowMainPoll(true)
+    showMainPoll;
   }  
 
   return (

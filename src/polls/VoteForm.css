@@ -1,0 +1,177 @@
+/* Hidden style for the native radio button so we can use a custom design */
+.hidden-radio {
+    display: none;
+}
+
+.all-poll-container {
+    margin-top: 400px;
+    right: 6px;
+    position: absolute;
+}
+
+/* Style for the container that wraps the custom radio button and its label */
+.radio-container {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+/* Style for the custom rectangle radio button */
+.option-label {
+    display: block;
+    width: 190px;
+    height: 35px;
+    align-items: center;
+    flex-shrink: 0;
+    display: block;
+    border-radius: 10px;
+    color: #000;
+    font-family: Familjen Grotesk;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 30px;
+    margin-left: 41px;
+    overflow-y: auto;
+}
+
+
+.option-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    color: #000;
+    font-family: Familjen Grotesk;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+}
+
+.custom-radio {
+    display: flex;
+    /* Make it a flex container */
+    align-items: center;
+    /* Vertically center the content */
+    justify-content: center;
+    /* Horizontally center the content */
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+
+.option-input:checked~.custom-radio {
+    background-color: #e9e9e9;
+}
+
+.option-label:hover {
+    background-color: #f5f5f5;
+}
+
+.voteFormContainer {
+    border-radius: 10px;
+    background: #EDF0F2;
+    width: 272px;
+    height: 248px;
+    flex-shrink: 0;
+}
+
+.result-container {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 152px;
+    height: 35px;
+    flex-shrink: 0;
+    margin-top: 12px;
+    margin-left: 7px;
+    color: #000;
+    font-family: Familjen Grotesk;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    
+}
+
+/* Styling for the most voted option */
+.most-voted {
+    background-color: #a8e6cf;
+    border-color: #7bcfa9;
+}
+
+.results-container1 {
+    border-radius: 10px;
+    background: #EDF0F2;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 165px;
+    height: 216px;
+    flex-shrink: 0;
+    right: 7px;
+    bottom: 203px;
+    overflow-y: auto;
+
+}
+
+.results-heading {
+    color: #000;
+    font-family: Familjen Grotesk;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: normal;
+    margin-left: 44px;
+    margin-top: 22px;
+}
+
+.option-question-header {
+    color: #000;
+    font-family: Familjen Grotesk;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 5px;
+    margin-left: 44px;
+}
+
+.option-container {
+    width: 190px;
+    height: 35px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #F8F8FB;
+}
+
+.voting-container {
+    width: 272px;
+    height: 248px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #EDF0F2;
+}
+
+
+.vote-button-form {
+
+    width: 190px;
+    height: 35px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #F8F8FB;
+    margin-top: 19px;
+    margin-left: 44px;
+}
+.vote-button-form:hover{
+
+    background-color: #7bcfa9;
+}
