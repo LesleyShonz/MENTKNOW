@@ -10,7 +10,7 @@ const VotePoll = () => {
     useEffect(() => {
         async function fetchPoll() {
             try {
-                const response = await axios.get('http://localhost:3007/api/polls/getPoll');
+                const response = await axios.get('http://localhost:5009/api/polls/getPoll');
                 setPoll(response.data);
             } catch (error) {
                 console.error("Error fetching poll:", error);
@@ -23,9 +23,9 @@ const VotePoll = () => {
     const handleVote = async () => {
         try {
             // Assuming you have an API endpoint to handle votes that expects an 'option' in the request body
-            await axios.post(`http://localhost:3007/api/polls/vote/${poll._id}`, { option: selectedOption });
+            await axios.post(`http://localhost:5009/api/polls/vote/${poll._id}`, { option: selectedOption });
             // Fetch updated poll data after voting
-            const response = await axios.get(`http://localhost:3007/api/polls/results/${poll._id}`);
+            const response = await axios.get(`http://localhost:5009/api/polls/results/${poll._id}`);
             setPoll(response.data);
             setHasVoted(true);
         } catch (error) {

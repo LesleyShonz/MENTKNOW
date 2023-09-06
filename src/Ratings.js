@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import StarRatings from "react-star-ratings";
 import "./Ratings.css";
+import { useNavigate } from "react-router-dom";
 
 function Ratings({ activityName, numContributions }) {
   // State variables to manage rating, submission status, and error
   const [rating, setRating] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate()
 
   // Function to handle changes in the selected rating
   const handleRatingChange = (newRating) => {
@@ -27,6 +29,7 @@ function Ratings({ activityName, numContributions }) {
       });
 
       setSubmitted(true); // Mark submission as successful
+      navigate('/dashboard')
     } catch (error) {
       setError("Error submitting rating. Please try again later.");
       console.error("Error submitting rating:", error);

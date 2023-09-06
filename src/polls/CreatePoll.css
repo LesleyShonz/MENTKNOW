@@ -1,0 +1,20 @@
+.create-container-poll{
+
+    width: 272px;
+    height: 248px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #EDF0F2;
+}
+
+.question-container{
+
+    color: #000;
+    font-family: Familjen Grotesk;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: normal;
+    margin-left: 23px;
+    margin-top: 33px;
+}

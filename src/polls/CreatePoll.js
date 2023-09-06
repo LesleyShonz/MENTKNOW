@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './CreatePoll.css'
 
 const CreatePoll = () => {
   const [question, setQuestion] = useState('');
@@ -32,7 +33,7 @@ const CreatePoll = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:3007/api/polls', { question, options }, config);
+      const response = await axios.post('http://localhost:5009/api/polls', { question, options }, config);
       console.log(response.data);
       if (response.data.question === question) {
         setMessage('Poll created successfully!');
@@ -48,9 +49,10 @@ const CreatePoll = () => {
   };
 
   return (
-    <div style={{ width: '320px', height: '729px' }}>
+    <div className='create-container-poll'>
       <form onSubmit={handleSubmit}>
         <input
+          className='question-container'
           type="text"
           placeholder="Question"
           value={question}

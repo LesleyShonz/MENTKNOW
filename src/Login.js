@@ -56,7 +56,7 @@ const Login = ({ setAuthenticated }) => {
         // Set the token for all future Axios requests
         // Update authenticated state (indicating user is logged in) and redirect to dashboard
       
-        navigate('/tldraws');
+        navigate('/tldraw');
       } else {
         // If login failed, display an error message
         setError('Login Failed. Please check your credentials.');
