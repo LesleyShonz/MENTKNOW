@@ -1,0 +1,121 @@
+.container1 {
+    display: flex;
+    align-items: start;
+}
+
+.image-container1 {
+    width: 535px; 
+    height: 900px;
+    flex-shrink: 0;
+    position: relative; /* This is important for positioning the image inside it */
+}
+
+
+.image-container1 img {
+    width: 384px;
+    height: 167px;
+    position: absolute; 
+    left: 87px;
+    top: 329px;
+}
+.login-container{
+    width: 905px;
+    height: 818px;
+    flex-shrink: 0;
+}
+
+
+.SignInText1 {
+
+    color: #000;
+    font-family: Familjen Grotesk;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 204px;
+    margin-left: 416px;
+}
+
+.UserNameText1 {
+    color: #B1B1B1;
+    font-family: Familjen Grotesk;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    margin-top: 35px;
+    margin-left: 297px;
+    /* 200% */
+}
+
+.userNameForm1 {
+    display: flex;
+    width: 311px;
+    height: 44px;
+    padding: 10px 24px 10px 18px;
+    align-items: center;
+    gap: 12px;
+    border-radius: 8px;
+    border: 1px solid #B1B1B1;
+    margin-top: 8px;
+    margin-left: 297px;
+}
+
+.password-label1 {
+    color: #B1B1B1;
+    font-family: Familjen Grotesk;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    margin-top: 35px;
+    margin-left: 297px;
+    /* 200% */
+}
+
+.password-form1 {
+    display: flex;
+    width: 311px;
+    height: 44px;
+    padding: 10px 24px 10px 18px;
+    align-items: center;
+    gap: 12px;
+    border-radius: 8px;
+    border: 1px solid #B1B1B1;
+    margin-top: 8px;
+    margin-left: 297px;
+    
+}
+
+.login-button1 {
+    border-radius: 8px;
+    background: #6C00A0;
+    display: flex;
+    width: 311px;
+    padding: 10px 24px 10px 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: #FFF;
+    font-family: Familjen Grotesk;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    margin-top: 10px;
+    margin-left: 297px;
+    /* 150% */
+}
+
+.link-register1{
+    color: #434343;
+    font-family: Familjen Grotesk;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration-line: underline;
+    margin-top: 13pxw;
+    margin-left: 297px;
+}
