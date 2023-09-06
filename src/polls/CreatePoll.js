@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './CreatePoll.css'
+import './CreatePoll.css';
+import reject3 from '../icons/reject3.svg'
 
 const CreatePoll = () => {
+  const [isVisible, setIsVisible] = useState(true);
   const [question, setQuestion] = useState('');
   const [options, setOptions] = useState(['', '']);
   const [message, setMessage] = useState('');  // To provide feedback to the user
@@ -11,6 +13,9 @@ const CreatePoll = () => {
     const newOptions = [...options];
     newOptions[index] = value;
     setOptions(newOptions);
+  };
+  const handleImageClick = () => {
+    setIsVisible(false); // set to false to hide, or toggle with !isVisible if you want to show/hide on alternate clicks
   };
 
   const addOption = () => setOptions([...options, '']);
@@ -49,17 +54,24 @@ const CreatePoll = () => {
   };
 
   return (
-    <div className='create-container-poll'>
+    <div className='create-container-poll' style={{ display: isVisible ? 'block' : 'none' }}>
       <form onSubmit={handleSubmit}>
+      <img 
+        className='exit-poll'
+        src= {reject3} 
+        alt="Click to hide container" 
+        onClick={handleImageClick}
+      />
         <input
           className='question-container'
           type="text"
-          placeholder="Question"
+          placeholder="Enter your question here"
           value={question}
           onChange={e => setQuestion(e.target.value)}
         />
         {options.map((option, index) => (
           <input
+            className = 'options-container'
             key={`option-${index}`}
             type="text"
             placeholder={`Option ${index + 1}`}
@@ -67,8 +79,8 @@ const CreatePoll = () => {
             onChange={e => handleOptionChange(index, e.target.value)}
           />
         ))}
-        <button type="button" onClick={addOption}>Add Option</button>
-        <button type="submit">Create Poll</button>
+        <p className='add-option-key' type="button" onClick={addOption}>+ Add option</p>
+        <button className='create-poll-button'type="submit">Create Poll</button>
       </form>
       {message && <p>{message}</p>}  {/* Displaying feedback message */}
     </div>

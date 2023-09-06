@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import Login from "./Login";
 import UserContext from './UserContext';
 import Register from "./Register";
+import MainPoll from "./polls/MainPoll";
 import Dashboard from "./Dashboard";
 import axios from "axios";
 import { Routes, Route, BrowserRouter as Router, Navigate } from 'react-router-dom';
@@ -41,9 +42,11 @@ export default function App({ showReviewBoard }) {
             </>
           }
           />
+
           <Route path="/signin" element={< Login setAuthenticated={setAuthenticated} />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/register" element={<Register />} />
+          <Route path = '/createPoll' element={<MainPoll />} />
           <Route path="/" element={<Navigate to="/signin" />} />
         </Routes>
       </Router>

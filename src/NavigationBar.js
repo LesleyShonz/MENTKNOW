@@ -8,9 +8,10 @@ import TimerIcon from "./assets/Timer_icon.png";
 import TemplateIcon from "./assets/Template_icon.png";
 import ReactIcon from "./assets/React_icon.png";
 import Ratings from "./Ratings";
+import MainPoll from "./polls/MainPoll";
 const NavigationBar = ({ activityName }) => {
   const [activeButtons, setActiveButtons] = useState([]);
-
+  const [showMainPoll, setShowMainPoll] = useState(false);
   const handleButtonClick = (buttonName) => {
     if (activeButtons.includes(buttonName)) {
       setActiveButtons(activeButtons.filter((name) => name !== buttonName));
@@ -18,6 +19,10 @@ const NavigationBar = ({ activityName }) => {
       setActiveButtons([...activeButtons, buttonName]);
     }
   };
+
+  const handlePollingButton = () => { 
+    setShowMainPoll(true)
+  }  
 
   return (
     <div>
@@ -35,7 +40,7 @@ const NavigationBar = ({ activityName }) => {
           className={`nav-button ${
             activeButtons.includes("Polling") ? "active" : ""
           }`}
-          onClick={() => handleButtonClick("Polling")}
+          onClick={ handlePollingButton}
         >
           <img src={PollingIcon} alt="Polling" className="icon" />
           Polling
@@ -78,6 +83,7 @@ const NavigationBar = ({ activityName }) => {
         {/* {showReviewBoard && <Ratings activityName={activityName} />} */}
         {/* Conditional rendering of dashboard component */}
       </div>
+      {showMainPoll && <MainPoll />}
     </div>
   );
 };

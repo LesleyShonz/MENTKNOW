@@ -6,7 +6,7 @@ const VotePoll = () => {
     const [poll, setPoll] = useState(null);
     const [selectedOption, setSelectedOption] = useState('');
     const [hasVoted, setHasVoted] = useState(false);
-    
+
     useEffect(() => {
         async function fetchPoll() {
             try {
@@ -19,7 +19,7 @@ const VotePoll = () => {
 
         fetchPoll();
     }, []);
-    
+
     const handleVote = async () => {
         try {
             // Assuming you have an API endpoint to handle votes that expects an 'option' in the request body
@@ -32,7 +32,7 @@ const VotePoll = () => {
             console.error("Error voting:", error);
         }
     };
-    
+
 
     if (!poll) return <p>Loading poll...</p>;
 
@@ -52,11 +52,11 @@ const VotePoll = () => {
                 <>
                     {poll.options.map((option, index) => (
                         <div key={index}>
-                            <input 
-                                type="radio" 
-                                value={option.name} 
+                            <input
+                                type="radio"
+                                value={option.name}
                                 checked={selectedOption === option.name}
-                                onChange={e => setSelectedOption(e.target.value)} 
+                                onChange={e => setSelectedOption(e.target.value)}
                             />
                             {option.name}
                         </div>
@@ -66,7 +66,7 @@ const VotePoll = () => {
             )}
         </div>
     );
-    
+
 };
 
 export default VotePoll;

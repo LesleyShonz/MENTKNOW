@@ -1,13 +1,27 @@
-.create-container-poll{
-
+.create-container-poll {
+    position:absolute;
     width: 272px;
     height: 248px;
     flex-shrink: 0;
     border-radius: 10px;
     background: #EDF0F2;
+    overflow-y: auto;
+    margin-left: 1161px;
+    margin-top: 365px;
+
 }
 
-.question-container{
+.exit-poll{
+    margin-left: 10px;
+    margin-top: 12px;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}
+.exit-poll:hover{
+    background-color: red;
+}
+.question-container {
 
     color: #000;
     font-family: Familjen Grotesk;
@@ -16,5 +30,55 @@
     font-weight: 700;
     line-height: normal;
     margin-left: 23px;
-    margin-top: 33px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: 1px solid #B1B1B1;
+    display: flex;
+    width: 225px;
+    height: 26px;
+    padding: 10px 24px 10px 18px;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.options-container {
+
+    display: flex;
+    width: 225px;
+    height: 35px;
+    padding: 10px 24px 10px 18px;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    margin-top: 13px;
+    margin-left: 23px;
+    border-radius: 8px;
+    border: 1px solid #B1B1B1;
+}
+
+.add-option-key {
+    color: #000;
+    font-family: Familjen Grotesk;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-left: 23px;
+    margin-top: 8px;
+}
+
+.create-poll-button {
+    width: 225px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #F8F8FB;
+    margin-left: 23px;
+    color: #000;
+    font-family: Familjen Grotesk;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
