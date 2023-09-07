@@ -29,14 +29,14 @@ body {
   border-radius: 50%;
   border: none;
   color: white;
-  background: #8208e6;
+  background: #6c00a0;
   cursor: pointer;
 }
 
 .timer__btn--start {
-  background: #00b84c;
+  background: #b3e772;
 }
 
 .timer__btn--stop {
-  background: #ff0256;
+  background: #ef6161;
 }

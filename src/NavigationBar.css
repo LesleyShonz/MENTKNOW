@@ -7,7 +7,31 @@
   background: #edf0f2;
   height: 45px;
   flex-shrink: 0;
-  left: 410px;
+  left: 565px;
+  top: 5px;
+}
+.nav-2 {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 0px 0px 10px;
+  background: #edf0f2;
+  height: 45px;
+  flex-shrink: 0;
+  left: 400px;
+  top: 5px;
+}
+.nav-3 {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 0px 10px 0px;
+  background: #edf0f2;
+  height: 45px;
+  flex-shrink: 0;
+  left: 970px;
   top: 5px;
 }
 
@@ -36,17 +60,4 @@
   width: 20px;
   height: 20px;
   margin-right: 10px;
-}
-.dashboard-button {
-  position: absolute;
-  top: 50px;
-  left: 7px;
-  color: black;
-  background: #edf0f2;
-  padding: 10px 20px;
-  border-radius: 5px;
-  display: show;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
 }

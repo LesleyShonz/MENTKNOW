@@ -1,0 +1,44 @@
+.main-container {
+  display: show;
+  position: fixed;
+  border-radius: 10px;
+  background: #edf0f2;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  text-align: center;
+  width: 370px;
+  /* height: 385px; */
+  flex-shrink: 0;
+  top: 100px;
+  left: 50px;
+  padding-right: 10px;
+}
+
+.sub-container {
+  width: 330px;
+  height: 173px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #cfb7ff;
+  padding-right: 10px;
+  padding-top: 1px;
+  margin-bottom: 15px;
+}
+.editable {
+  /* border: 1px solid #ccc; */
+  min-height: 50px; /* Set a minimum height to make the divs visible */
+  padding: 10px;
+  outline: none;
+  resize: both;
+  overflow: auto;
+}
+.Act-H {
+  color: var(--TOOLBAR-COLOUR, #303344);
+  font-family: Familjen Grotesk;
+  font-style: italic;
+  color: var(--TOOLBAR-COLOUR, #303344);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px; /* 171.429% */
+}

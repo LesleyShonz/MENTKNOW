@@ -20,11 +20,10 @@ const NavigationBar = ({ activityName }) => {
     }
   };
 
-  const handlePollingButton = () => { 
-    
-    setShowMainPoll(true)
+  const handlePollingButton = () => {
+    setShowMainPoll(true);
     showMainPoll;
-  }  
+  };
 
   return (
     <div>
@@ -42,7 +41,7 @@ const NavigationBar = ({ activityName }) => {
           className={`nav-button ${
             activeButtons.includes("Polling") ? "active" : ""
           }`}
-          onClick={ handlePollingButton}
+          onClick={() => handleButtonClick("Polling")}
         >
           <img src={PollingIcon} alt="Polling" className="icon" />
           Polling
@@ -56,24 +55,6 @@ const NavigationBar = ({ activityName }) => {
           <img src={TimerIcon} alt="Timer" className="icon" />
           Timer
         </button>
-        <button
-          className={`nav-button ${
-            activeButtons.includes("Template") ? "active" : ""
-          }`}
-          onClick={() => handleButtonClick("Template")}
-        >
-          <img src={TemplateIcon} alt="Template" className="icon" />
-          Template
-        </button>
-        <button
-          className={`nav-button ${
-            activeButtons.includes("React") ? "active" : ""
-          }`}
-          onClick={() => handleButtonClick("React")}
-        >
-          <img src={ReactIcon} alt="React" className="icon" />
-          React
-        </button>
       </div>
 
       <div className="component-display">
@@ -85,7 +66,7 @@ const NavigationBar = ({ activityName }) => {
         {/* {showReviewBoard && <Ratings activityName={activityName} />} */}
         {/* Conditional rendering of dashboard component */}
       </div>
-      {showMainPoll && <MainPoll />}
+      {activeButtons.includes("Polling") && <MainPoll />}
     </div>
   );
 };
