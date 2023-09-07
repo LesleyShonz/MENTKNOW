@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const e = require("express");
 
 const app = express();
-const PORT = process.env.PORT || 5009;
+const PORT = process.env.PORT || 5007;
 
 // Middleware to enable cross-origin resource sharing
 app.use(cors());
