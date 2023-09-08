@@ -52,11 +52,12 @@ const Login = ({ setAuthenticated }) => {
       // If response contains a token, it means login was successful
       if (res.data) {
         // Save the received token to local storage
+        localStorage.setItem('userData', JSON.stringify(res.data));
         setUser(res.data);
         // Set the token for all future Axios requests
         // Update authenticated state (indicating user is logged in) and redirect to dashboard
-      
-        navigate('/tldraw');
+        
+        navigate('/dashboard');
       } else {
         // If login failed, display an error message
         setError('Login Failed. Please check your credentials.');

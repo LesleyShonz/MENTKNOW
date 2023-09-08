@@ -1,7 +1,7 @@
 // server/routes/api.js
 const express = require("express");
 const router = express.Router();
-const Activity = require("../../models/activity");
+const Activity = require("../../models/Activity");
 const cors = require("cors");
 const app = express();
 // Create a new activity or update an existing one

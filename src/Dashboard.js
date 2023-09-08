@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react';
-import UserContext from './UserContext';
 import axios from 'axios';
 import './Dashboard.css';
 import mentknowlogo from './icons/mentknowlogo.svg'
@@ -55,11 +54,14 @@ function Activity({ icon, name, date }) {
  * Main Dashboard Component.
  */
 function Dashboard() {
+    const userData = JSON.parse(localStorage.getItem('userData'));
+
+    
     // Using React's Context API to get the user details
-    const { user } = useContext(UserContext);
+    // const { user } = useContext(UserContext);
     // useState hooks for managing component's local state
     const [members, setMembers] = useState([]);
-    const [mentor, setMentor] = useState(null);
+    const [mentor, setMentor] = useState([]);
     const [fridays, setFridays] = useState([]);
     const [error, setError] = useState(null);
     const mentorName = ''
@@ -76,8 +78,8 @@ function Dashboard() {
         const fetchMentees = async () => {
             try {
                 const response = await axios.post(`${BASE_URL}/group-members`, {
-                    groupNumber: user.groupNumber,
-                    userEmail: user.email
+                    groupNumber: userData.groupNumber,
+                    userEmail: userData.email
                 });
                 setMembers(response.data);
 
@@ -91,14 +93,14 @@ function Dashboard() {
         const fetchMentor = async () => {
             try {
                 const response = await axios.post(`${BASE_URL}/group-mentor`, {
-                    groupNumber: user.groupNumber,
-                    userEmail: user.email
+                    groupNumber: userData.groupNumber,
+                    userEmail: userData.email
                 });
 
 
 
                 setMentor(response.data);
-                console.log(mentorName);
+                
             } catch (error) {
                 setError("Error fetching mentor.");
                 console.error("Error fetching mentor:", error);
@@ -106,12 +108,23 @@ function Dashboard() {
         };
 
         // Make API calls only if user details are available
-        if (user && user.email && user.groupNumber) {
+        if (userData && userData.email && userData.groupNumber) {
             fetchMentees();
             fetchMentor();
         }
-    }, [user]);
+    }, [userData]);
+    const [colors, setColors] = useState({});
 
+    useEffect(() => {
+      const newColors = {...colors};
+      members.forEach(item => {
+        if (!newColors[item.id]) {
+          newColors[item.id] = getRandomColor();
+        }
+      });
+      setColors(newColors);
+    }, [members]);
+  
     // Generate a random color for UI purposes
     const randomColor = getRandomColor();
 
@@ -133,6 +146,29 @@ function Dashboard() {
     const getInitials = (name = '', surname = '') => {
         return name.charAt(0).toUpperCase() + surname.charAt(0).toUpperCase();
     };
+    const [quote, setQuote] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch('https://api.quotable.io/random')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setQuote({
+                    content: data.content,
+                    author: data.author,
+                });
+                setLoading(false);
+            })
+            .catch(error => {
+                setError(error.message);
+                setLoading(false);
+            });
+    }, []);
 
 
     return (
@@ -150,7 +186,7 @@ function Dashboard() {
                 <div className='middle-header'>
                     <img src={frame} className='middle-logo' alt="Frame Logo" />
                     <div>
-                        <h1 className='hello-container'> Hello {'Sizwe'}!</h1>
+                        <h1 className='hello-container'> Hello {userData.name}!</h1>
                         <p1 className='hello-container-subline'>It's good to see you again.</p1>
                     </div>
                 </div>
@@ -215,15 +251,16 @@ function Dashboard() {
                         ))}
                     </div>
                 </div>
+                {/* This is the mentor component */}
                 <div>
                     <h2 className='mentor-container-header'>My Mentor</h2>
-                    {mentor ? (
+                    {mentor && mentor.length > 0 ? (
                         <div className="mentor-container">
-  
-                                <span className="initials-container">{getInitials(mentor.name, mentor.surname)}</span>
-                        
+                            <div className="initial-outer-container" style={{ backgroundColor: getRandomColor() }}>
+                                <span className="initials-container">{getInitials(mentor[0].name, mentor[0].surname)}</span>
+                            </div>
                             <h1 className='mentor-name-component'>
-                                {mentor.name} {mentor.surname}
+                                {mentor[0].name} {mentor[0].surname}
                             </h1>
                         </div>
                     ) : (
@@ -237,18 +274,41 @@ function Dashboard() {
                     )}
                 </div>
 
+                <h1 className='group-heading-container'>Group {userData.groupNumber} peers </h1>
                 <div>
-                    {error && <p className="error-message">{error}</p>}
+
                     {members.map((member, index) => (
-                        <div className="mentees-container">
-                            <div key={index} className="member-rectangle">
-                                <span className="initials-container">{getInitials(member.name, member.surname)}</span>
+
+
+                        <div key={index} className='mentees-container'>
+                            <div className='mentees-initials-container' style={{ backgroundColor: getRandomColor() }}>
+                                <div className="initials-container">{getInitials(member.name, member.surname)}</div>
+                            </div>
+                            <div className="mentees-names-style">
                                 {member.name} {member.surname}
                             </div>
                         </div>
+
                     ))}
                 </div>
+
+
+                <div className='affirmation-container'>
+
+                    <h1 className='affirmation-header'>Today’s Affirmation</h1>
+                    <div className='quotes-style'>
+                        {quote ? (
+                            <blockquote>
+                                "{quote.content}"
+                                <footer>— {quote.author}</footer>
+                            </blockquote>
+                        ) : (
+                            <div>Loading quote...</div>
+                        )}
+                    </div>
+                </div>
             </div>
+
         </div>
     );
 };

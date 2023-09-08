@@ -125,43 +125,6 @@
     /* 150% */
 }
 
-.mentees-container {
-    width: 437px;
-    height: 40px;
-    flex-shrink: 0;
-    border-radius: 8px;
-
-    background: var(--Grey, #F5F5F7);
-    right: 54px;
-    margin-top: 12px;
-    color: var(--TOOLBAR-COLOUR, #303344);
-
-    /* B1 */
-    font-family: Roboto;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
-    /* 150% */
-}
-
-.initials-container {
-    width: 37.802px;
-    height: 33.947px;
-    flex-shrink: 0;
-    color: #32A35B;
-    text-align: center;
-    leading-trim: both;
-    text-edge: cap;
-    font-family: Roboto;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 24px;
-    border-radius: 8px;
-    background: rgba(22, 249, 18, 0.56);
-    /* 150% */
-}
 
 .activities-header {
     color: var(--TOOLBAR-COLOUR, #303344);
@@ -281,6 +244,12 @@
     margin-left: 109px;
 }
 
+.right-container {
+    width: 535px;
+    height: 818px;
+    flex-shrink: 0;
+}
+
 .right-top-container {
     width: 436.745px;
     height: 152px;
@@ -327,14 +296,7 @@
     margin-left: 44px;
 }
 
-.mentor-container {
-    width: 437px;
-    height: 40px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    background: var(--Grey, #F5F5F7);
 
-}
 
 .mentor-not-available {
     color: var(--TOOLBAR-COLOUR, #303344);
@@ -348,25 +310,41 @@
     /* 150% */
 }
 
-.initials-outer-container-mentor {
+.mentor-container {
+    width: 437px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--Grey, #F5F5F7);
+    margin-top: 9px;
+    margin-left: 44px;
+    display: inline-flex;
+}
+
+.initial-outer-container {
     width: 37.802px;
     height: 33.947px;
     flex-shrink: 0;
     border-radius: 8px;
-    /* 150% */
+    margin-top: 4.21px;
+    margin-left: 4.33px;
 }
 
 .initials-container {
-    color: #BF17C8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(79, 117, 117);
     font-family: Roboto;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: 24px;
-    margin-left: 3px;
-    margin-top: 3px;
+    /* 150% */
+    height: 5vh
 }
-.mentor-name-component{
+
+.mentor-name-component {
     color: var(--TOOLBAR-COLOUR, #303344);
 
     /* B1 */
@@ -374,5 +352,90 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
+    /* 150% */
+    margin-left: 30px;
+}
+
+.mentor-not-available {
+    margin-top: 5px;
+}
+
+.group-heading-container {
+    color: var(--TOOLBAR-COLOUR, #303344);
+    font-family: Baloo Bhai;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 42px;
+    margin-top: 33px;
+}
+
+
+.mentees-container {
+    width: 437px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--Grey, #F5F5F7);
+    margin-top: 12px;
+    margin-left: 44px;
+    display: inline-flex;
+}
+
+.mentees-initials-container {
+    width: 37.802px;
+    height: 33.947px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    margin-top: 4.21px;
+    margin-left: 4.33px;
+    height: 5vh
+}
+
+.mentees-names-style {
+    color: var(--TOOLBAR-COLOUR, #303344);
+
+    /* B1 */
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    /* 150% */
+    margin-left: 30px;
+    margin-top: 9px;
+}
+
+
+.affirmation-container {
+    width: 448px;
+    height: 130.26px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: #F8F8FB;
+    margin-top: 37px;
+    margin-left: 31px;
+}
+
+.affirmation-header{
+    color: var(--TOOLBAR-COLOUR, #303344);
+    font-family: Baloo Bhai;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 16.44px;
+    margin-top: 9.74px;
+}
+
+.quote-style{
+    color: var(--TOOLBAR-COLOUR, #303344);
+    font-family: Roboto;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 160% */
+
 }
