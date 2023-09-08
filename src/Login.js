@@ -1,41 +1,50 @@
-import React, { useState, useContext, Link  } from 'react';
+import React, { useState, useContext } from 'react';
 import UserContext from './UserContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'
-import mentknowlogo from './icons/mentknowlogo.svg'
+import './Login.css';
+import mentknowlogo from './icons/mentknowlogo.svg';
 
-
+/**
+ * The Login component allows users to sign into their accounts by providing their email and password.
+ *
+ * @param {Function} setAuthenticated - A function to update the parent component's state indicating a user is authenticated.
+ * @returns {JSX.Element} A rendered Login component.
+ */
 const Login = ({ setAuthenticated }) => {
   const { setUser } = useContext(UserContext);
-  // Use React Router's "useNavigate" hook to programmatically redirect the user
   const navigate = useNavigate();
 
-  // useState to manage form fields data
+  // State to manage form data
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
 
-
-
-  // useState to manage potential error messages
+  // State to manage potential error messages
   const [error, setError] = useState('');
 
   const { email, password } = formData;
 
-  // Event handler for input change, updating form data state
-  const onChange = e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  /**
+   * Handle input changes and update the state accordingly.
+   *
+   * @param {Event} e - The triggered event.
+   */
+  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  // Event handler for form submission
+  /**
+   * Handle form submission, performing the login operation.
+   *
+   * @param {Event} e - The triggered event.
+   */
   const onSubmit = async e => {
     e.preventDefault();
 
-    // Clear previous error messages
+    // Clear any previous error messages
     setError('');
 
-    // Configuration for axios POST request (Header to define content type)
+    // Define the configuration for the axios request
     const config = {
       headers: {
         'Content-Type': 'application/json'
@@ -43,42 +52,31 @@ const Login = ({ setAuthenticated }) => {
     };
 
     try {
-      // Convert form data to JSON string format
       const body = JSON.stringify({ email, password });
-
-      // Perform POST request to server to attempt login
       const res = await axios.post('http://localhost:5004/api/users/login', body, config);
 
-      // If response contains a token, it means login was successful
       if (res.data) {
-        // Save the received token to local storage
+
         localStorage.setItem('userData', JSON.stringify(res.data));
         setUser(res.data);
-        // Set the token for all future Axios requests
-        // Update authenticated state (indicating user is logged in) and redirect to dashboard
-        
         navigate('/dashboard');
-      } else {
-        // If login failed, display an error message
+        //details and everything is okay
+      } 
+      else {
         setError('Login Failed. Please check your credentials.');
       }
     } catch (err) {
-      // Handle any potential errors from the request
-      // Extract a custom message from the server or set a default error message
-      const serverMessage = err.response && err.response.data && err.response.data.msg;
-      setError(serverMessage || 'An error occurred. Please try again.');
+      const serverMessage = err.response?.data?.msg;
+      console.log(serverMessage);
+      setError(serverMessage || 'Login Failed. Please check your credentials.');
     }
   };
-
-  // Render the component
-
 
   return (
     <div className="container1">
       <div className="image-container1">
-        <img src={mentknowlogo} alt="Your Image Description" />
+        <img src={mentknowlogo} alt="MentKnow Logo" />
       </div>
-
       <div className='login-container'>
         <h2 className='SignInText1'>Sign In</h2>
         <p className='UserNameText1'>Username</p>
@@ -88,13 +86,11 @@ const Login = ({ setAuthenticated }) => {
           <input className='password-form1' type="password" placeholder="Password" name="password" value={password} onChange={onChange} required />
           {error && <div style={{ color: 'red', marginTop: '13px' }}>{error}</div>}
           <button className='login-button1' type="submit">Sign In</button>
-          <a className='link-register1' href='/register'> Don’t have an account? Sign Up here
-          </a>
+          <a className='link-register1' href='/register'> Don’t have an account? Sign Up here </a>
         </form>
       </div>
     </div>
   );
-
 };
 
 export default Login;

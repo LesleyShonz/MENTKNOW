@@ -1,42 +1,72 @@
-import React, { useState, useContext, useEffect } from 'react';
+/**
+ * Dashboard Component for MentKnow Application.
+ * This component serves as the primary user interface after logging in,
+ * displaying user information, upcoming events, and other relevant details.
+ *
+ * @author: Sizwe Nkosi
+ * @colaborators :Chloe Walt and Lesley Shonhiwa
+ * @version: 1.1
+ * @license: University of Cape Town, School of IT license
+ */
+
+// imports
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
-import mentknowlogo from './icons/mentknowlogo.svg'
-import signout_logo from './icons/Sign_out_squre_light.svg'
-import frame from './icons/Frame.svg'
-import lamp from './icons/lamp-2 1.svg'
-import goal from './icons/goal 1.svg'
-import time from './icons/save-time 1.svg'
-import brain from './icons/human-brain 1.svg'
-import stress from './icons/6819628 2.svg'
-import magistrate from './icons/magistrate 2.svg'
+import mentknowlogo from './icons/mentknowlogo.svg';
+import signout_logo from './icons/Sign_out_squre_light.svg';
+import frame from './icons/Frame.svg';
+import lamp from './icons/lamp-2 1.svg';
+import goal from './icons/goal 1.svg';
+import time from './icons/save-time 1.svg';
+import brain from './icons/human-brain 1.svg';
+import stress from './icons/6819628 2.svg';
+import magistrate from './icons/magistrate 2.svg';
 import calender from './icons/Calendar_add_light.svg';
 
-// Base URL constant. Consider using environment variables for different environments.
+// Constants
 const BASE_URL = 'http://localhost:5004/api/users';
 
 /**
  * Utility function to compute the next three Friday dates.
  */
-function getNextThreeFridays() {
+const getNextThreeFridays = () => {
 
     const today = new Date();
     const fridays = [];
     let daysUntilNextFriday = 5 - today.getDay();
-
     if (daysUntilNextFriday <= 0) daysUntilNextFriday += 7;
-
     for (let i = 0; i < 3; i++) {
         const nextFriday = new Date(today);
         nextFriday.setDate(today.getDate() + daysUntilNextFriday + (7 * i));
         fridays.push(nextFriday);
     }
-
     return fridays;
-}
+};
 
 /**
- * Activity Component - Represents individual activity with an icon, name, and date.
+ * Utility function to generate a random color.
+ */
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+};
+
+/**
+ * Utility function to get the initials from a given name and surname.
+ */
+const getInitials = (name = '', surname = '') => {
+    return name.charAt(0).toUpperCase() + surname.charAt(0).toUpperCase();
+};
+
+/**
+ * Individual Activity Component
+ * @param {Object} props - Component properties
  */
 function Activity({ icon, name, date }) {
     return (
@@ -48,15 +78,15 @@ function Activity({ icon, name, date }) {
             <button className='button-to-activity-style'>View Activity</button>
         </div>
     );
-}
-
+};
 /**
- * Main Dashboard Component.
+ * Dashboard component: Main UI of the app.
  */
-function Dashboard() {
+const Dashboard = () => {
+    // ... (pre-existing useState declarations and useEffect hooks)
     const userData = JSON.parse(localStorage.getItem('userData'));
 
-    
+
     // Using React's Context API to get the user details
     // const { user } = useContext(UserContext);
     // useState hooks for managing component's local state
@@ -66,6 +96,7 @@ function Dashboard() {
     const [error, setError] = useState(null);
     const mentorName = ''
     const mentorSurname = '';
+    const navigate = useNavigate();
 
     // useEffect to set the next three fridays on component mount
     useEffect(() => {
@@ -100,7 +131,7 @@ function Dashboard() {
 
 
                 setMentor(response.data);
-                
+
             } catch (error) {
                 setError("Error fetching mentor.");
                 console.error("Error fetching mentor:", error);
@@ -116,15 +147,15 @@ function Dashboard() {
     const [colors, setColors] = useState({});
 
     useEffect(() => {
-      const newColors = {...colors};
-      members.forEach(item => {
-        if (!newColors[item.id]) {
-          newColors[item.id] = getRandomColor();
-        }
-      });
-      setColors(newColors);
+        const newColors = { ...colors };
+        members.forEach(item => {
+            if (!newColors[item.id]) {
+                newColors[item.id] = getRandomColor();
+            }
+        });
+        setColors(newColors);
     }, [members]);
-  
+
     // Generate a random color for UI purposes
     const randomColor = getRandomColor();
 
@@ -139,7 +170,6 @@ function Dashboard() {
         }
         return color;
     }
-
     /**
      * Utility function to get the initials from a given name and surname.
      */
@@ -170,15 +200,20 @@ function Dashboard() {
             });
     }, []);
 
-
+    const logout = () => {
+        localStorage.removeItem('userData');
+        navigate('/signin');
+    };
+    const moveToAwarenessActivity = () => {
+        navigate('/tldraw');
+    };
     return (
-
         <div className='whole-dashboard-container'>
             <div className='left-container'>
                 <img className='logo-dashboard' src={mentknowlogo} alt="MentKnow Logo" />
                 <div className='logout-style'>
                     <img className='signout-image-container' src={signout_logo} alt='Sign out' />
-                    <h1 className='logout-text-stye'>Log Out</h1>
+                    <h1 className='logout-text-stye' onClick={logout}>Log Out</h1>
                 </div>
             </div>
 
@@ -199,7 +234,7 @@ function Dashboard() {
                     <h1 className='activity-name'>Awareness</h1>
                     <img className='calender-image-icons' src={calender} alt='' />
                     <h2 className='date-style'>15/09/2023</h2>
-                    <button className='button-to-activity-style'>View Activity</button>
+                    <button className='button-to-activity-style' onClick={moveToAwarenessActivity}>View Activity</button>
                 </div>
                 <div className='all-others-container'>
                     <img className='all-image-icons-style' src={goal} alt='' />
@@ -227,7 +262,7 @@ function Dashboard() {
                     <h1 className='activity-name'>Stress Management</h1>
                     <img className='calender-image-icons4' src={calender} alt='' />
                     <h2 className='date-style'>13/10/2023</h2>
-                    <button className='button-to-activity-style'>View Activity</button>
+                    <button className='button-to-activity-style' >View Activity</button>
                 </div>
                 <div className='all-others-container'>
                     <img className='all-image-icons-style' src={magistrate} alt='' />
