@@ -1,35 +1,60 @@
-import React, { useState } from "react";
-import "./Activities.css"; // Import your CSS file
+import React, { useState, useRef } from "react";
+import "./Activities.css";
+import Discussion from "./assets/Discussion.svg";
+import TopicIcon from "./assets/Topic_icon.png";
+import DropdownBar from "./DropdownBar";
+import axios from "axios";
+import { useEffect } from "react";
+const Activities = ({
+  activityName,
+  isResourcesClicked,
+  isDiscussionClicked,
+}) => {
+  const [discussionData, setDiscussionData] = useState(null);
 
-const Activities = ({ activityName }) => {
-  const [content1, setContent1] = useState(""); // State for content of subcontainer 1
-  const [content2, setContent2] = useState(""); // State for content of subcontainer 2
-  console.log("ActivitiesTest");
   return (
     <>
-      <div className="main-container">
-        <h2>{activityName}</h2>
-        <div className="sub-container">
-          <h3 className="Act-H">Discussion Questions</h3>
-          <div
-            className="editable"
-            contentEditable="true"
-            onInput={(e) => setContent1(e.target.textContent)}
-          >
-            {content1}
+      {isDiscussionClicked && (
+        <div className="main-container">
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <img src={TopicIcon} alt="TopicIcon" />
+
+            <h2>{activityName}</h2>
           </div>
+          {/* Display discussion data */}
+          {discussionData && (
+            <div className="discussion-data">
+              {/* Render discussion data here */}
+              <p>{discussionData.field1}</p>
+              <p>{discussionData.field2}</p>
+              {/* Add more fields as needed */}
+            </div>
+          )}
+
+          <DropdownBar
+            Topic="Discussion Question"
+            QuestionsTags={true}
+            text="Question"
+          />
+
+          <DropdownBar
+            activityName={activityName}
+            Topic="Activities"
+            QuestionsTags={false}
+            text="Activity"
+          />
         </div>
-        <div className="sub-container">
-          <h3 className="Act-H">Activities</h3>
-          <div
-            className="editable"
-            contentEditable="true"
-            onInput={(e) => setContent2(e.target.textContent)}
-          >
-            {content2}
-          </div>
+      )}
+      {isResourcesClicked && (
+        <div className="resources-container">
+          <DropdownBar
+            activityName={activityName}
+            Topic="Resources"
+            QuestionsTags={false}
+            text="Resource"
+          />
         </div>
-      </div>
+      )}
     </>
   );
 };

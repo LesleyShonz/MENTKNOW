@@ -2,68 +2,85 @@ import { useEditor } from "@tldraw/tldraw";
 import { track } from "signia-react";
 import Ratings from "./Ratings";
 import { useState, useEffect } from "react";
+
 import "./NavigationBar.css";
-import DashboardIcon from "./assets/Dashboard_icon.png";
+
 import { text } from "express";
+import { createShapeId, Editor, Tldraw, TLGeoShape } from "@tldraw/tldraw";
+import ActivityBar from "./ActivityBar";
 import TemplateIcon from "./assets/Template_icon.png";
-import Activity from "./Activities";
+import SubBar from "./SubBar";
 // Define a component wrapped with tracking functionality
 export const UserPresence = track(() => {
   const editor = useEditor();
-
-  // Extract user color and name from the editor's user object
+  const [isClicked, setIsClicked] = useState(false);
   const { color, name } = editor.user;
   const activityName = editor.currentPage.name;
+  // Create a shape id
+  const id = createShapeId("s1");
+  const newShapeId = createShapeId("s2");
+  const handleMount = (editor: Editor) => {
+    // Create a shape
+    editor.createShapes([
+      {
+        id,
+        type: "geo",
+        x: 128 + Math.random() * 0,
+        y: 128 + Math.random() * 0,
+        props: {
+          geo: "rectangle",
+          w: 500,
+          h: 700,
+          dash: "draw",
+          color: "light-red",
+          size: "m",
+          text: "What's the problem?",
+          fill: "solid",
+        },
+      },
+    ]);
 
-  // State to control the visibility of the review board component
-  const [showReviewBoard, setShowReviewBoard] = useState(false);
-  const [numContributions, setNumContributions] = useState(0); // Initialize numNotes state
-  const [showActivityBoard, setShowActivityBoard] = useState(false);
-
-  const handleActivityBoardClick = () => {
-    setShowActivityBoard(!showActivityBoard);
+    // Create a new shape with the generated ID
+    editor.createShapes([
+      {
+        id: newShapeId,
+        type: "geo",
+        x: 700,
+        y: 128,
+        props: {
+          geo: "rectangle", // or any other shape type you want
+          w: 500,
+          h: 700,
+          dash: "draw",
+          color: "light-green", // Set the color for the new shape
+          size: "m",
+          text: "What's the solution?",
+          fill: "solid",
+        },
+      },
+    ]);
   };
 
-  const handleReviewBoardClick = () => {
-    setShowReviewBoard(!showReviewBoard);
-    let countNotes = 0; // Temporary variable to count notes
-    for (let i = 0; i < editor.shapesArray.length; i++) {
-      //Count the number of sticky notes with text
-      if (
-        editor.shapesArray.at(i).type === "note" &&
-        editor.shapesArray.at(i)?.props["text"] !== ""
-      ) {
-        countNotes += 1;
-      }
+  const handleTemplateClick = () => {
+    setIsClicked(!isClicked);
+    if (isClicked == true) {
+      handleMount(editor);
     }
-    setNumContributions(countNotes); // Update numNotes state
-    // console.log(editor.shapesArray.at(8)?.props["text"]); // This will still log the previous value due to closure
   };
+
   return (
     <>
       <div style={{ pointerEvents: "all", display: "flex" }}>
         {/* Button to toggle the review board */}
-        <div className="nav-2">
-          <div className="nav-button" onClick={handleReviewBoardClick}>
-            <img src={DashboardIcon} alt="arrowhead" className="icon" />
-            Dashboard
-          </div>
-        </div>
-        <div className="nav-3">
-          <div className="nav-button" onClick={handleActivityBoardClick}>
-            <img src={TemplateIcon} alt="book" className="icon" />
+        <SubBar editor={editor} activityName={activityName} />
+        <ActivityBar activityName={activityName} />
+        {/* Render the Ratings component if showReviewBoard is true */}
+
+        <div className="nav-4">
+          <div className="nav-button" onClick={handleTemplateClick}>
+            <img src={TemplateIcon} alt="TemplateIcon" className="icon" />
             Template
           </div>
-        </div>
-        {/* Render the Ratings component if showReviewBoard is true */}
-        {showReviewBoard && (
-          <Ratings
-            activityName={activityName}
-            numContributions={numContributions}
-          />
-        )}
-        <div>
-          {showActivityBoard && <Activity activityName={activityName} />}
         </div>
         {/* Input to change user color */}
         <input

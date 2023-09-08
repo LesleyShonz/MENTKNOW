@@ -13,8 +13,9 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api/users', require('./routes/api/users'));
-app.use('/api/polls', require('./routes/api/polls'));
+app.use("/api/users", require("./routes/api/users"));
+app.use("/api/polls", require("./routes/api/polls"));
+app.use("/api/activities", require("./routes/api/activities"));
 // MongoDB connection setup
 mongoose.connect(
   "mongodb+srv://Lesley:MENTKNOW@mentknow.alii0fr.mongodb.net/?retryWrites=true&w=majority",

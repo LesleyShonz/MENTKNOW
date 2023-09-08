@@ -1,21 +1,22 @@
 .navigation-bar {
   display: flex;
-  position: absolute;
+  position: fixed;
   justify-content: center;
   align-items: center;
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 0px 0px 10px 0px;
   background: #edf0f2;
   height: 45px;
   flex-shrink: 0;
-  left: 565px;
-  top: 5px;
+  left: 705px;
+  top: 5.1px;
 }
+
 .nav-2 {
   display: flex;
-  position: absolute;
+  position: fixed;
   justify-content: center;
   align-items: center;
-  border-radius: 0px 0px 0px 10px;
+  border-radius: 10px 0px 0px 10px;
   background: #edf0f2;
   height: 45px;
   flex-shrink: 0;
@@ -24,10 +25,22 @@
 }
 .nav-3 {
   display: flex;
-  position: absolute;
+  position: fixed;
   justify-content: center;
   align-items: center;
-  border-radius: 0px 0px 10px 0px;
+  border-radius: 0px 0px 0px 0px;
+  background: #edf0f2;
+  height: 45px;
+  flex-shrink: 0;
+  left: 563px;
+  top: 5px;
+}
+.nav-4 {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 10px 10px 0px;
   background: #edf0f2;
   height: 45px;
   flex-shrink: 0;
@@ -56,8 +69,54 @@
   background-color: #cfb7ff;
   font-weight: bold;
 }
+
 .icon {
   width: 20px;
   height: 20px;
   margin-right: 10px;
+}
+.activity-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.activity-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.activity-button.active {
+  background-color: #cfb7ff;
+}
+
+.dropdown-content {
+  display: show;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content.visible {
+  display: block;
+}
+
+.dropdown-button {
+  display: block;
+  padding: 10px;
+  text-align: left;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.dropdown-button:hover,
+.dropdown-button.clicked {
+  background-color: #cfb7ff;
+  color: white;
 }

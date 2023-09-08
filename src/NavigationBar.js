@@ -9,6 +9,7 @@ import TemplateIcon from "./assets/Template_icon.png";
 import ReactIcon from "./assets/React_icon.png";
 import Ratings from "./Ratings";
 import MainPoll from "./polls/MainPoll";
+
 const NavigationBar = ({ activityName }) => {
   const [activeButtons, setActiveButtons] = useState([]);
   const [showMainPoll, setShowMainPoll] = useState(false);
@@ -26,18 +27,9 @@ const NavigationBar = ({ activityName }) => {
   };
 
   return (
-    <div>
+    <>
       <div className="navigation-bar">
-        <button
-          className={`nav-button ${
-            activeButtons.includes("Activity") ? "active" : ""
-          }`}
-          onClick={() => handleButtonClick("Activity")}
-        >
-          <img src={ActivityIcon} alt="Activity" className="icon" />
-          Activity
-        </button>
-        <button
+        <div
           className={`nav-button ${
             activeButtons.includes("Polling") ? "active" : ""
           }`}
@@ -45,8 +37,8 @@ const NavigationBar = ({ activityName }) => {
         >
           <img src={PollingIcon} alt="Polling" className="icon" />
           Polling
-        </button>
-        <button
+        </div>
+        <div
           className={`nav-button ${
             activeButtons.includes("Timer") ? "active" : ""
           }`}
@@ -54,20 +46,14 @@ const NavigationBar = ({ activityName }) => {
         >
           <img src={TimerIcon} alt="Timer" className="icon" />
           Timer
-        </button>
+        </div>
       </div>
 
       <div className="component-display">
-        {/* {activeButtons.includes("Activity") && <ActivityComponent />}
-        {activeButtons.includes("Polling") && <PollingComponent />} */}
         {activeButtons.includes("Timer") && <Timer />}
-        {/* {activeButtons.includes("Template") && <TemplateComponent />}
-        {activeButtons.includes("React") && <ReactComponent />} */}
-        {/* {showReviewBoard && <Ratings activityName={activityName} />} */}
-        {/* Conditional rendering of dashboard component */}
       </div>
       {activeButtons.includes("Polling") && <MainPoll />}
-    </div>
+    </>
   );
 };
 
