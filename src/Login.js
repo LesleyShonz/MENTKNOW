@@ -47,7 +47,7 @@ const Login = ({ setAuthenticated }) => {
       const body = JSON.stringify({ email, password });
 
       // Perform POST request to server to attempt login
-      const res = await axios.post('http://localhost:5007/api/users/login', body, config);
+      const res = await axios.post('http://localhost:5004/api/users/login', body, config);
 
       // If response contains a token, it means login was successful
       if (res.data) {

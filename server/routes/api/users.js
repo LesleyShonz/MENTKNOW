@@ -136,31 +136,12 @@ router.post('/group-members', async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
-/**
- * @route   GET /group-members/:groupNumber/:userEmail
- * @desc    Retrieve up to 5 mentees from the same group as the querying user, excluding the querying user.
- * @access  Public (Note: You might want to make this private depending on your app's design)
- *
- * @param {Number} groupNumber - The group number of the querying user.
- * @param {String} userEmail - The email address of the querying user.
- *
- * @returns {Array} An array of objects containing names and surnames of the matching mentees.
- *
- * Example success response:
- * [
- *    { name: "John", surname: "Doe" },
- *    { name: "Jane", surname: "Smith" },
- *    ...
- * ]
- *
- * Note: It's advisable not to pass email as a route parameter for security concerns.
- */
 
 router.post('/group-mentor', async (req, res) => {
     try {
         const { groupNumber, userEmail } = req.body; // Destructure the values from the request body
 
-        const groupMentors = await User.find({
+        const groupMentor = await User.find({
             email: { $ne: userEmail },
             groupNumber: groupNumber,
             userType: 'mentor',
@@ -169,7 +150,7 @@ router.post('/group-mentor', async (req, res) => {
             .limit(1)
             .exec();
 
-        res.json(groupMentors);
+        res.json(groupMentor);
 
     } catch (error) {
         console.error(error.message);

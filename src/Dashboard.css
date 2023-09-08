@@ -44,10 +44,10 @@
     font-weight: 400;
     line-height: normal;
     position: relative;
-    top:-15px
-
+    top: -15px
 }
-.activity-name{
+
+.activity-name {
     color: var(--TOOLBAR-COLOUR, #303344);
 
     /* H3 */
@@ -68,7 +68,8 @@
     display: inline-flex;
     gap: 12px;
 }
-.middle-container{
+
+.middle-container {
     width: 699px;
     height: 818px;
     flex-shrink: 0;
@@ -84,17 +85,19 @@
     margin-top: 56px;
     display: inline-flex;
 }
-.middle-logo{
+
+.middle-logo {
     width: 106.449px;
     height: 106.449px;
     flex-shrink: 0;
     margin-top: 14px;
     margin-left: 50px;
 }
-.hello-container{
+
+.hello-container {
     width: 239.816px;
     height: 69.743px;
-    flex-shrink: 0; 
+    flex-shrink: 0;
     color: var(--TOOLBAR-COLOUR, #303344);
 
     /* H1 */
@@ -107,7 +110,7 @@
     margin-top: 26px;
 }
 
-.hello-container-subline{
+.hello-container-subline {
     position: relative;
     margin-left: 72.55px;
     top: -53.36px;
@@ -118,8 +121,10 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
+    /* 150% */
 }
+
 .mentees-container {
     width: 437px;
     height: 40px;
@@ -158,7 +163,7 @@
     /* 150% */
 }
 
-.activities-header{
+.activities-header {
     color: var(--TOOLBAR-COLOUR, #303344);
     font-family: Baloo Bhai;
     font-size: 22px;
@@ -168,26 +173,28 @@
     margin-left: 40px;
     margin-top: 35px;
 }
-.awareness-container{
+
+.awareness-container {
     display: inline-flex;
     width: 620px;
     height: 63.512px;
     flex-shrink: 0;
-    fill: #FFF; 
+    fill: #FFF;
     margin-top: 39px;
     margin-left: 40px;
 }
-.all-others-container{
+
+.all-others-container {
     display: inline-flex;
     width: 620px;
     height: 63.512px;
     flex-shrink: 0;
-    fill: #FFF; 
+    fill: #FFF;
     margin-top: 15.59pxpx;
     margin-left: 40px;
 }
 
-.all-image-icons-style{
+.all-image-icons-style {
     width: 30px;
     height: 30px;
     flex-shrink: 0;
@@ -195,7 +202,8 @@
     margin-left: 10px;
 
 }
-.calender-image-icons{
+
+.calender-image-icons {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
@@ -203,21 +211,24 @@
     margin-top: 19px;
 
 }
-.calender-image-icons1{
+
+.calender-image-icons1 {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
     margin-left: 93px;
     margin-top: 19px;
 }
-.calender-image-icons2{
+
+.calender-image-icons2 {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
     margin-left: 49px;
     margin-top: 19px;
 }
-.calender-image-icons3{
+
+.calender-image-icons3 {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
@@ -226,22 +237,23 @@
 }
 
 
-.calender-image-icons4{
+.calender-image-icons4 {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
     margin-left: 40px;
     margin-top: 19px;
 }
-.calender-image-icons5{
+
+.calender-image-icons5 {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
     margin-left: 55px;
-    margin-top: 19px;    
+    margin-top: 19px;
 }
 
-.date-style{
+.date-style {
     color: var(--TOOLBAR-COLOUR, #303344);
 
     /* CAPTION */
@@ -253,7 +265,7 @@
     margin-top: 22.51px;
 }
 
-.button-to-activity-style{
+.button-to-activity-style {
     width: 116px;
     height: 26px;
     flex-shrink: 0;
@@ -269,7 +281,7 @@
     margin-left: 109px;
 }
 
-.right-top-container{
+.right-top-container {
     width: 436.745px;
     height: 152px;
     flex-shrink: 0;
@@ -279,7 +291,7 @@
     margin-left: 44px;
 }
 
-.right-top-title{
+.right-top-title {
     color: var(--TOOLBAR-COLOUR, #303344);
     font-family: Baloo Bhai;
     font-size: 22px;
@@ -288,4 +300,79 @@
     line-height: normal;
     margin-left: 17px;
     margin-top: 10px;
+}
+
+.top-right-icons {
+    margin-left: 17px;
+    position: relative;
+    top: -6px
+}
+
+.date-text {
+
+    position: relative;
+    /* Adjust this value based on how much you want to push it up */
+    top: -12px
+}
+
+.mentor-container-header {
+
+    color: var(--TOOLBAR-COLOUR, #303344);
+    font-family: Baloo Bhai;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 19px;
+    margin-left: 44px;
+}
+
+.mentor-container {
+    width: 437px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--Grey, #F5F5F7);
+
+}
+
+.mentor-not-available {
+    color: var(--TOOLBAR-COLOUR, #303344);
+
+    /* B1 */
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    /* 150% */
+}
+
+.initials-outer-container-mentor {
+    width: 37.802px;
+    height: 33.947px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    /* 150% */
+}
+
+.initials-container {
+    color: #BF17C8;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    margin-left: 3px;
+    margin-top: 3px;
+}
+.mentor-name-component{
+    color: var(--TOOLBAR-COLOUR, #303344);
+
+    /* B1 */
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
 }

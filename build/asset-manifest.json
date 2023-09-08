@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.bb73a05e.css",
-    "main.js": "/static/js/main.56222d16.js",
+    "main.css": "/static/css/main.fe76d56d.css",
+    "main.js": "/static/js/main.5b7a0364.js",
     "static/media/mentknowlogo.svg": "/static/media/mentknowlogo.6c14dc6c502ed54ae7da9b3fd7d3b9e0.svg",
     "static/media/baloo-bhai-latin-400.woff": "/static/media/baloo-bhai-latin-400.2d43c12438162f9b67ff.woff",
     "static/media/Frame.svg": "/static/media/Frame.f6895295e5278646ec9de824a5adede7.svg",
@@ -40,11 +40,11 @@
     "static/media/Calendar_add_light.svg": "/static/media/Calendar_add_light.3c726c68c1c7042537169550192516a9.svg",
     "static/media/Sign_out_squre_light.svg": "/static/media/Sign_out_squre_light.a0b9231cb8b4e002bc866a9fa207d888.svg",
     "index.html": "/index.html",
-    "main.bb73a05e.css.map": "/static/css/main.bb73a05e.css.map",
-    "main.56222d16.js.map": "/static/js/main.56222d16.js.map"
+    "main.fe76d56d.css.map": "/static/css/main.fe76d56d.css.map",
+    "main.5b7a0364.js.map": "/static/js/main.5b7a0364.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb73a05e.css",
-    "static/js/main.56222d16.js"
+    "static/css/main.fe76d56d.css",
+    "static/js/main.5b7a0364.js"
   ]
 }

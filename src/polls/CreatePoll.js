@@ -38,7 +38,7 @@ const CreatePoll = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5008/api/polls', { question, options }, config);
+      const response = await axios.post('http://localhost:5004/api/polls', { question, options }, config);
       console.log(response.data);
       if (response.data.question === question) {
         setMessage('Poll created successfully!');

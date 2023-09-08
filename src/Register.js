@@ -34,7 +34,7 @@ function Register() {
 
             const body = JSON.stringify(formData);
 
-            await axios.post('http://localhost:5007/api/users', body, config);
+            await axios.post('http://localhost:5004/api/users', body, config);
             console.log(res)
             // Clear form
             setFormData({

@@ -22,7 +22,7 @@ function Ratings({ activityName, numContributions }) {
   const handleSubmitRating = async () => {
     try {
       // Send a POST request to the server with the rating data
-      const response = await axios.post("http://localhost:5007/api/ratings", {
+      const response = await axios.post("http://localhost:5004/api/ratings", {
         activityName: activityName,
         totalRating: rating,
         numContributions: numContributions,
