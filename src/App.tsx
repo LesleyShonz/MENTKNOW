@@ -1,15 +1,15 @@
 import "./styles.css";
 import "@tldraw/tldraw/tldraw.css";
 import { Tldraw } from "@tldraw/tldraw";
-import { useYjsStore } from "./useYjsStore";
-import { UserPresence } from "./UserPresence";
-import NavigationBar from "./NavigationBar";
+import { useYjsStore } from "./Whiteboard/useYjsStore";
+import { UserPresence } from "./Whiteboard/UserPresence";
+import NavigationBar from "./Activity/NavigationBar";
 import React, { useState } from "react";
-import Login from "./Login";
-import UserContext from "./UserContext";
-import Register from "./Register";
+import Login from "./Login/Login";
+import UserContext from "./Whiteboard/UserContext";
+import Register from "./Login/Register";
 import MainPoll from "./polls/MainPoll";
-import Dashboard from "./Dashboard";
+import Dashboard from "./Dashboard/Dashboard";
 import axios from "axios";
 import {
   Routes,
