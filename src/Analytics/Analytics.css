@@ -1,0 +1,37 @@
+.Analytics-middle-container{
+    width: 612px;
+    height: 134px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: #E5D7FF;
+    margin-left: 44px;
+    margin-top: 66px;
+}
+
+.hello-container1{
+    color: var(--TOOLBAR-COLOUR, #303344);
+
+    /* H1 */
+    font-family: Baloo Bhai;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 120px;
+    position: relative;
+    top: 10px;
+}
+
+.hello-container-subline1{
+    color: var(--TOOLBAR-COLOUR, #303344);
+
+    /* B1 */
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    margin-left: 120px;
+    position: relative;
+    top:-30px
+}

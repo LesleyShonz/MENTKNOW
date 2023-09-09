@@ -44,7 +44,7 @@
     font-weight: 400;
     line-height: normal;
     position: relative;
-    top: -15px
+    top: -10px
 }
 
 .activity-name {
@@ -67,6 +67,9 @@
     margin-top: 596px;
     display: inline-flex;
     gap: 12px;
+}
+.logout-style:hover{
+    background-color: bisque;
 }
 
 .middle-container {
@@ -438,4 +441,34 @@
     font-weight: 400;
     line-height: 24px; /* 160% */
 
+}
+
+.analytics-style{
+
+    display: inline-flex;
+    margin-top: 16px;
+    margin-left: 57px;
+
+}
+
+.analytics-heading-text{
+    color: var(--TOOLBAR-COLOUR, #303344);
+
+    /* BUTTON */
+    font-family: Roboto;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-left: 6px;
+}
+
+.image-analytics-mentor{
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.analytics-style:hover{
+    background-color: antiquewhite;
 }

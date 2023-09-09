@@ -10,7 +10,9 @@ import UserContext from "./Whiteboard/UserContext";
 import Register from "./Login/Register";
 import MainPoll from "./polls/MainPoll";
 import Dashboard from "./Dashboard/Dashboard";
+import MentorDashboard from "./Dashboard/MentorDashboard";
 import axios from "axios";
+import Analytics from "./Analytics/Analytics";
 import {
   Routes,
   Route,
@@ -53,12 +55,14 @@ export default function App() {
 
           <Route
             path="/signin"
-            element={<Login setAuthenticated={setAuthenticated} />}
+            element={<Login/>}
           />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/register" element={<Register />} />
           <Route path="/createPoll" element={<MainPoll />} />
           <Route path="/" element={<Navigate to="/signin" />} />
+          <Route path= '/mentorDashboard' element={<MentorDashboard/>}/>
+          <Route path= '/Analytics' element={<Analytics/>}/>
         </Routes>
       </Router>
     </UserContext.Provider>

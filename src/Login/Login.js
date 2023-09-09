@@ -59,7 +59,14 @@ const Login = ({ setAuthenticated }) => {
 
         localStorage.setItem('userData', JSON.stringify(res.data));
         setUser(res.data);
-        navigate('/dashboard');
+        if(res.data.userType === 'mentee'){
+
+          navigate('/dashboard')
+        }
+        else{
+          navigate('/MentorDashboard');
+        }
+        
         //details and everything is okay
       } 
       else {
