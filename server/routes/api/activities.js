@@ -4,7 +4,8 @@ const router = express.Router();
 const Activity = require("../../models/Activity");
 const cors = require("cors");
 const app = express();
-// Create a new activity or update an existing one
+
+// Route for creating or updating an activity
 router.post("/activities", async (req, res) => {
   const { activityName, discussion, activities, resources } = req.body;
   try {
@@ -31,6 +32,19 @@ router.post("/activities", async (req, res) => {
       await newActivity.save();
       return res.json(newActivity);
     }
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Server error" });
+  }
+});
+
+// Route for fetching activities as an array of objects
+router.get("/activities", async (req, res) => {
+  try {
+    const activities = await Activity.find();
+
+    // Send each activity as an individual object in an array
+    return res.json(activities);
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Server error" });
