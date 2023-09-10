@@ -14,8 +14,7 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
   const [content, setContent] = useState([]);
   const [textInput, setTextInput] = useState("");
   const dataAsString = data.toString();
-  const sentences = dataAsString.split(/\.|\?/);
-  console.log(sentences);
+
   const handleAddText = async () => {
     let newText = textInput.trim();
     if (!newText) {
@@ -45,7 +44,7 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
           activityName: activityName, // Pass the required data to the server
           discussion: text == "Question" ? newText : "", // Update discussion field with newText
           activities: text == "Activity" ? newText : "", // Update activities field if needed
-          resources: text == "Resource" ? newText : "", // Update resources field if needed
+          resources: text == "Resource" ? newText + "{}" : "", // Update resources field if needed
         }
       );
 
@@ -78,7 +77,50 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
       handleAddText();
     }
   };
+  const renderContent = () => {
+    if (text === "Resource") {
+      // Split the data into individual links using spaces
+      const links = dataAsString.split("{}");
 
+      // Render each link as a separate hyperlink
+      return (
+        <div>
+          {links.map((link, index) => (
+            <a
+              key={index}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link + "\n"}
+            </a>
+          ))}
+        </div>
+      );
+    } else {
+      // Render each sentence as a new line
+      const sentences = dataAsString.split(/[.?]/);
+      return sentences.map((sentence, index) => (
+        <p key={index} style={{ display: "flex", alignItems: "center" }}>
+          {sentence.trim() !== "" ? (
+            Topic === "Discussion Question" ? (
+              <BulletImage />
+            ) : (
+              "•"
+            )
+          ) : null}
+          <span>
+            {` ${sentence.trim()}`}
+            {sentence.trim() !== ""
+              ? Topic === "Discussion Question"
+                ? "?"
+                : "."
+              : null}
+          </span>
+        </p>
+      ));
+    }
+  };
   return (
     <>
       <div className="sub-container">
@@ -105,19 +147,8 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
             }}
           >
             {/* Render each sentence as a new line */}
-
-            {sentences.map((sentence, index) => (
-              <p key={index} style={{ display: "flex", alignItems: "center" }}>
-                {sentence.trim() !== "" ? ( // Check if the sentence is not empty
-                  Topic === "Discussion Question" ? (
-                    <BulletImage />
-                  ) : (
-                    "•"
-                  )
-                ) : null}
-                <span>{` ${sentence.trim()}`}</span>
-              </p>
-            ))}
+            {/* Render as working hyperlinks if it's a Resource */}
+            {renderContent()}
             {/* Render the dynamically added content */}
             {content}
           </div>
