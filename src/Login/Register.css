@@ -241,3 +241,8 @@
     margin-top: 23px;
     margin-left: 343px;
 }
+
+.error-message{
+    color: red;
+    margin-left: 343px;
+}

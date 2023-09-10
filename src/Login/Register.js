@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Register.css'
-import mentknowlogo from '../icons/mentknowlogo.svg'
-import {useNavigate} from 'react-router-dom'
-function Register() {
+import './Register.css';
+import mentknowlogo from '../icons/mentknowlogo.svg';
+import { useNavigate } from 'react-router-dom';
 
+function Register() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
@@ -24,40 +24,48 @@ function Register() {
 
     const onSubmit = async e => {
         e.preventDefault();
+        
+        if (!email.toLowerCase().endsWith('@myuct.ac.za')) {
 
+            setMessage("Please use a UCT email.");
+            return;
+        }
+        
+       
         try {
             const config = {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             };
-
             const body = JSON.stringify(formData);
+            const res = await axios.post('http://localhost:5004/api/users', body, config);
 
-            await axios.post('http://localhost:5004/api/users', body, config);
-            console.log(res)
-            // Clear form
-            setFormData({
-                name: '',
-                surname: '',
-                email: '',
-                password: '',
-                userType: 'mentee',
-                groupNumber: '',
-                accessPin: ''
-            });
-
-            // Show success message
-            setMessage("Registration successful!");
-            navigate('/signin');
+            // Clear form and navigate if successful
+            if (res.status === 200) { // Assuming 200 is a success status from your backend
+                setFormData({
+                    name: '',
+                    surname: '',
+                    email: '',
+                    password: '',
+                    userType: 'mentee',
+                    groupNumber: '',
+                    accessPin: ''
+                });
+                setMessage("Registration successful!");
+                navigate('/signin');
+            }
 
         } catch (error) {
-            if (error.response && error.response.data) {
-                setMessage(`Error: ${error.response.data.message}`);
-            } else {
-                setMessage(`Error: ${error.message}`);
-            }
+            const errorMessage = error.response && error.response.data.errors 
+                                ? error.response.data.errors[0].msg 
+                                : error.message;
+            setMessage(`Error: ${errorMessage}`);
         }
+    };
+
+    const handleMoveToLogin = () => {
+        navigate('/signin');
     };
 
     return (
@@ -67,7 +75,7 @@ function Register() {
             </div>
             <div className="form-container">
                 <h2 className='register-header'>Create Account</h2>
-                {message && <div>{message}</div>}
+                {message && <div className='error-message'>{message}</div>}
                 <form onSubmit={onSubmit}>
                     <div className='radio-group-signup'>
                         <label>
@@ -166,7 +174,7 @@ function Register() {
                         <button className='register-button' type="submit">Sign Up</button>
                     </div>
 
-                    <a className= 'link-register' href='/signin'>Already have an account? Sign In</a>
+                    <a className= 'link-register' onClick={handleMoveToLogin}>Already have an account? Sign In</a>
                 </form>
             </div>
         </div>

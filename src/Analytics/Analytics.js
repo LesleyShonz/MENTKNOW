@@ -1,8 +1,10 @@
 import '../Dashboard/Dashboard.css';
 import mentknowlogo from '../icons/mentknowlogo.svg';
+import { useNavigate } from 'react-router-dom';
 import signout_logo from '../icons/Sign_out_squre_light.svg';
 import './Analytics.css';
 function Analytics() {
+    const navigate = useNavigate();
     const userData = JSON.parse(localStorage.getItem('userData'));
     const logout = () => {
         localStorage.removeItem('userData');

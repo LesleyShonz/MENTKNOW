@@ -34,17 +34,15 @@ export default function Activitybar({ activityName }) {
         {isDropdownVisible && (
           <div className="dropdown-content">
             <button
-              className={`dropdown-button ${
-                isDiscussionClicked ? "clicked" : ""
-              }`}
+              className={`dropdown-button ${isDiscussionClicked ? "clicked" : ""
+                }`}
               onClick={toggleDiscussion}
             >
               Discussions
             </button>
             <button
-              className={`dropdown-button ${
-                isResourcesClicked ? "clicked" : ""
-              }`}
+              className={`dropdown-button ${isResourcesClicked ? "clicked" : ""
+                }`}
               onClick={toggleResources}
             >
               Resources

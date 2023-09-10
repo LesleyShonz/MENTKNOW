@@ -23,7 +23,7 @@ router.post('/', [
     check('name', 'Name is required').not().isEmpty(),
     check('surname', 'Surname is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
-    check('password', 'Password is required').isLength({ min: 6 }),
+    check('password', 'Password must be atleast 6 character').isLength({ min: 6 }),
     check('userType', 'User type is required'),
     check('groupNumber', 'Group Number is required').not().isEmpty(),
     check('accessPin', 'Access Pin is required for Mentors').custom((value, { req }) => {
@@ -77,10 +77,10 @@ async function registerUser(req, res) {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, surname, email, password, userType, groupNumber, accessPin } = req.body;
-
+    var { name, surname, email, password, userType, groupNumber, accessPin } = req.body;
+    email = email.toLowerCase();
     try {
-        let user = await User.findOne({ email });
+        let user = await User.findOne({ email});
 
         if (user) {
             return res.status(400).json({ errors: [{ msg: 'User already exists' }] });
@@ -97,7 +97,7 @@ async function registerUser(req, res) {
         });
 
         await user.save();
-        res.json('success');
+        return res.json({ message: 'Registration successful' });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');
@@ -110,19 +110,21 @@ async function loginUser(req, res) {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const { email, password } = req.body;
+    var { email, password } = req.body;
+
+    email = email.toLowerCase();
 
     try {
         const user = await User.findOne({ email });
 
         if (!user) {
-            return res.status(401).json({ errors: [{ msg: 'Invalid Credentials' }] });
+            return res.status(401).json({ errors: [{ msg: 'Invalid Email' }] });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (!isMatch) {
-            return res.status(401).json({ errors: [{ msg: 'Invalid Credentials' }] });
+            return res.status(401).json({ errors: [{ msg: 'Invalid Password' }] });
         }
 
         res.json({

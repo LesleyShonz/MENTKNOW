@@ -67,5 +67,4 @@ function Ratings({ activityName, numContributions }) {
     </div>
   );
 }
-
 export default Ratings;
