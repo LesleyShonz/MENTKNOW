@@ -13,6 +13,9 @@ import Dashboard from "./Dashboard/Dashboard";
 import MentorDashboard from "./Dashboard/MentorDashboard";
 import axios from "axios";
 import Analytics from "./Analytics/Analytics";
+import BarChart from './Analytics/BarChart';
+import PieChart from './Analytics/PieChart';
+import HistogramAverageRating from './Analytics/HistogramAverageRating';
 import {
   Routes,
   Route,
@@ -63,6 +66,9 @@ export default function App() {
           <Route path="/" element={<Navigate to="/signin" />} />
           <Route path= '/mentorDashboard' element={<MentorDashboard/>}/>
           <Route path= '/Analytics' element={<Analytics/>}/>
+          <Route path= '/barchart' element={<BarChart/>}/>
+          <Route path= '/piechart' element={<PieChart/>}/>
+          <Route path= '/histogram' element={<HistogramAverageRating/>}/>
         </Routes>
       </Router>
     </UserContext.Provider>

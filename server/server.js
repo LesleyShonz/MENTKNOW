@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const e = require("express");
 
 const app = express();
 const PORT = process.env.PORT || 5004;
@@ -16,68 +15,74 @@ app.use(express.json());
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/polls", require("./routes/api/polls"));
 app.use("/api/activities", require("./routes/api/activities"));
-// MongoDB connection setup
-mongoose.connect(
-  "mongodb+srv://Lesley:MENTKNOW@mentknow.alii0fr.mongodb.net/?retryWrites=true&w=majority",
-  {
+
+// Database Connection Feedback
+mongoose.connect("mongodb+srv://Lesley:MENTKNOW@mentknow.alii0fr.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+    useUnifiedTopology: true
+})
+.then(() => console.log("MongoDB Connected"))
+.catch(err => console.error("MongoDB Connection Error: ", err));
+
+mongoose.connection.on('connected', () => {
+    console.log('Mongoose is connected!');
+});
 
 // Define Mongoose schema and model for ratings
-const ratingSchema = new mongoose.Schema(
-  {
+const ratingSchema = new mongoose.Schema({
     activityName: String,
     totalRating: Number,
     numRatings: Number,
     averageRating: Number,
     numContributions: Number,
-  },
-  { versionKey: false }
-);
+}, { versionKey: false });
 
 const Rating = mongoose.model("Rating", ratingSchema);
 
 // Define route for saving ratings
 app.post("/api/ratings", async (req, res) => {
-  const { activityName, totalRating, numContributions } = req.body;
+    const { activityName, totalRating, numContributions } = req.body;
 
-  try {
-    // Check if the activity already exists in the database
-    const existingRating = await Rating.findOne({ activityName });
+    try {
+        const existingRating = await Rating.findOne({ activityName });
 
-    if (existingRating) {
-      // Increment the total number of ratings for the existing activity
-      existingRating.totalRating += totalRating;
-      existingRating.numRatings += 1;
-      existingRating.numContributions = numContributions;
-      // Calculate the average rating for the existing activity
-      existingRating.averageRating =
-        existingRating.totalRating / existingRating.numRatings;
-      await existingRating.save();
-    } else {
-      // Create a new Rating instance for the new activity
-      const newRating = new Rating({
-        activityName,
-        totalRating,
-        numRatings: 1,
-        averageRating: totalRating,
-        numContributions: numContributions,
-      });
-      await newRating.save();
+        if (existingRating) {
+            existingRating.totalRating += totalRating;
+            existingRating.numRatings += 1;
+            existingRating.numContributions = numContributions;
+            existingRating.averageRating = existingRating.totalRating / existingRating.numRatings;
+            await existingRating.save();
+        } else {
+            const newRating = new Rating({
+                activityName,
+                totalRating,
+                numRatings: 1,
+                averageRating: totalRating,
+                numContributions: numContributions,
+            });
+            await newRating.save();
+        }
+        res.status(201).json({ message: "Rating saved successfully" });
+    } catch (error) {
+        console.error("Error saving rating:", error);
+        res.status(500).json({ error: "An error occurred while saving the rating" });
     }
+});
 
-    res.status(201).json({ message: "Rating saved successfully" });
-  } catch (error) {
-    console.error("Error saving rating:", error);
-    res
-      .status(500)
-      .json({ error: "An error occurred while saving the rating" });
-  }
+// Analytics Route
+app.get("/api/analytics", async (req, res) => {
+    try {
+        const data = await Rating.find();
+        console.log(data);
+        res.setHeader('Content-Type', 'application/json');
+        res.json(data);
+    } catch (err) {
+        console.error("Error fetching analytics:", err);
+        res.status(500).json({ message: "Error fetching analytics", error: err.message });
+    }
 });
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
