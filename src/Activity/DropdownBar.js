@@ -10,6 +10,7 @@ const BulletImage = () => (
     style={{ width: "12px", height: "12px", verticalAlign: "middle" }}
   />
 );
+
 const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
   const [content, setContent] = useState([]);
   const [textInput, setTextInput] = useState("");
@@ -37,6 +38,7 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
       newText += ".";
     }
 
+    // console.log("userData:" + userData.userType);
     try {
       const response = await axios.post(
         "http://localhost:5004/api/activities/activities",
@@ -77,6 +79,8 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
       handleAddText();
     }
   };
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const isMentor = userData.userType;
   const renderContent = () => {
     if (text === "Resource") {
       // Split the data into individual links using spaces
@@ -126,17 +130,21 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
       <div className="sub-container">
         <h3 className="Act-H">{Topic}</h3>
         <div className="editable-container">
-          <input
-            id={text}
-            type="text"
-            placeholder={`Enter "${text}" here`}
-            value={textInput}
-            onChange={(e) => setTextInput(e.target.value)}
-            onKeyPress={handleInputKeyPress}
-          />
-          <button onClick={handleAddText} className="add-button">
-            Add Text
-          </button>
+          {isMentor == "mentor" && (
+            <input
+              id={text}
+              type="text"
+              placeholder={`Enter "${text}" here`}
+              value={textInput}
+              onChange={(e) => setTextInput(e.target.value)}
+              onKeyPress={handleInputKeyPress}
+            />
+          )}
+          {isMentor == "mentor" && (
+            <button onClick={handleAddText} className="add-button">
+              Add Text
+            </button>
+          )}
           <div
             className="editable"
             onKeyDown={(e) => {

@@ -28,7 +28,6 @@ export default function SubBar({ editor, activityName }) {
     <>
       <div className="nav-2">
         <div
-          c
           className={`nav-button ${showReviewBoard ? "active" : ""}`}
           onClick={handleReviewBoardClick}
         >

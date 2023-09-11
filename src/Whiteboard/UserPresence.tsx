@@ -13,17 +13,17 @@ import SubBar from "../Activity/SubBar";
 // Define a component wrapped with tracking functionality
 export const UserPresence = track(() => {
   const editor = useEditor();
-  const [isClicked, setIsClicked] = useState(false);
   const { color, name } = editor.user;
   const activityName = editor.currentPage.name;
+
   // Create a shape id
-  const id = createShapeId("s1");
-  const newShapeId = createShapeId("s2");
+  const problemsShape = createShapeId("s1");
+  const solutionsShape = createShapeId("s2");
   const handleMount = (editor: Editor) => {
     // Create a shape
     editor.createShapes([
       {
-        id,
+        id: problemsShape,
         type: "geo",
         x: 128 + Math.random() * 0,
         y: 128 + Math.random() * 0,
@@ -43,7 +43,7 @@ export const UserPresence = track(() => {
     // Create a new shape with the generated ID
     editor.createShapes([
       {
-        id: newShapeId,
+        id: solutionsShape,
         type: "geo",
         x: 700,
         y: 128,
@@ -62,10 +62,7 @@ export const UserPresence = track(() => {
   };
 
   const handleTemplateClick = () => {
-    setIsClicked(!isClicked);
-    if (isClicked == true) {
-      handleMount(editor);
-    }
+    handleMount(editor);
   };
 
   return (
