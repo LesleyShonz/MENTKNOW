@@ -7,7 +7,6 @@
   padding: 20px;
   text-align: center;
   width: 370px;
-  /* height: 385px; */
   flex-shrink: 0;
   top: 70px;
   left: 50px;
@@ -27,6 +26,12 @@
   top: 550px;
   left: 50px;
   padding-right: 10px;
+  color: var(--TOOLBAR-COLOUR, #303344);
+  font-family: Familjen Grotesk;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px; /* 115.385% */
 }
 
 .sub-container {
@@ -40,12 +45,19 @@
   margin-bottom: 15px;
   max-height: 200px;
   overflow-y: auto;
+  color: var(--TOOLBAR-COLOUR, #303344);
+  font-family: Familjen Grotesk;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px; /* 115.385% */
 }
 
 .editable {
   /* border: 1px solid #ccc; */
   min-height: 50px; /* Set a minimum height to make the divs visible */
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   outline: none;
   resize: both;
   overflow: auto;
@@ -59,4 +71,10 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 24px; /* 171.429% */
+}
+.icon-H {
+  display: inline;
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
 }
