@@ -24,6 +24,7 @@ import brain from '../icons/human-brain 1.svg';
 import stress from '../icons/6819628 2.svg';
 import magistrate from '../icons/magistrate 2.svg';
 import calender from '../icons/Calendar_add_light.svg';
+import { useEditor } from "@tldraw/tldraw";
 
 // Constants
 const BASE_URL = 'http://localhost:5004/api/users';
@@ -97,6 +98,7 @@ const Dashboard = () => {
     const mentorName = ''
     const mentorSurname = '';
     const navigate = useNavigate();
+    const editor = useEditor();
 
     // useEffect to set the next three fridays on component mount
     useEffect(() => {
@@ -205,7 +207,8 @@ const Dashboard = () => {
         navigate('/signin');
     };
     const moveToAwarenessActivity = () => {
-        navigate('/tldraw');
+       
+        navigate('/tldraw ');
     };
     return (
         <div className='whole-dashboard-container'>

@@ -27,7 +27,6 @@ export default function App() {
   const store = useYjsStore({
     roomId: "MENT",
   });
-  const [isAuthenticated, setAuthenticated] = useState(true);
   const token = localStorage.getItem("token");
   if (token) {
     axios.defaults.headers.common["x-auth-token"] = token;
@@ -58,17 +57,17 @@ export default function App() {
 
           <Route
             path="/signin"
-            element={<Login/>}
+            element={<Login />}
           />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/register" element={<Register />} />
           <Route path="/createPoll" element={<MainPoll />} />
           <Route path="/" element={<Navigate to="/signin" />} />
-          <Route path= '/mentorDashboard' element={<MentorDashboard/>}/>
-          <Route path= '/Analytics' element={<Analytics/>}/>
-          <Route path= '/barchart' element={<BarChart/>}/>
-          <Route path= '/piechart' element={<PieChart/>}/>
-          <Route path= '/histogram' element={<HistogramAverageRating/>}/>
+          <Route path='/mentorDashboard' element={<MentorDashboard />} />
+          <Route path='/Analytics' element={<Analytics />} />
+          <Route path='/barchart' element={<BarChart />} />
+          <Route path='/piechart' element={<PieChart />} />
+          <Route path='/histogram' element={<HistogramAverageRating />} />
         </Routes>
       </Router>
     </UserContext.Provider>

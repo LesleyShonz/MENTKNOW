@@ -76,6 +76,7 @@
     width: 699px;
     height: 818px;
     flex-shrink: 0;
+    background: #F8F8FB;
 }
 
 .middle-header {
