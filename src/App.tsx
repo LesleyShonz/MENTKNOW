@@ -13,9 +13,9 @@ import Dashboard from "./Dashboard/Dashboard";
 import MentorDashboard from "./Dashboard/MentorDashboard";
 import axios from "axios";
 import Analytics from "./Analytics/Analytics";
-import BarChart from './Analytics/BarChart';
-import PieChart from './Analytics/PieChart';
-import HistogramAverageRating from './Analytics/HistogramAverageRating';
+import BarChart from "./Analytics/BarChart";
+import PieChart from "./Analytics/PieChart";
+import HistogramAverageRating from "./Analytics/HistogramAverageRating";
 import {
   Routes,
   Route,
@@ -25,7 +25,7 @@ import {
 export default function App() {
   const [user, setUser] = useState(null);
   const store = useYjsStore({
-    roomId: "MENT",
+    roomId: "MENTKNOW0302156394181",
   });
   const token = localStorage.getItem("token");
   if (token) {
@@ -57,17 +57,17 @@ export default function App() {
 
           <Route
             path="/signin"
-            element={<Login />}
+            element={<Login/>}
           />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/register" element={<Register />} />
           <Route path="/createPoll" element={<MainPoll />} />
           <Route path="/" element={<Navigate to="/signin" />} />
-          <Route path='/mentorDashboard' element={<MentorDashboard />} />
-          <Route path='/Analytics' element={<Analytics />} />
-          <Route path='/barchart' element={<BarChart />} />
-          <Route path='/piechart' element={<PieChart />} />
-          <Route path='/histogram' element={<HistogramAverageRating />} />
+          <Route path= '/mentorDashboard' element={<MentorDashboard/>}/>
+          <Route path= '/Analytics' element={<Analytics/>}/>
+          <Route path= '/barchart' element={<BarChart/>}/>
+          <Route path= '/piechart' element={<PieChart/>}/>
+          <Route path= '/histogram' element={<HistogramAverageRating/>}/>
         </Routes>
       </Router>
     </UserContext.Provider>

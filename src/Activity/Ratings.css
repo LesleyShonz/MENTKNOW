@@ -28,11 +28,11 @@
   color: #f8f8fb;
   border-radius: 8px;
   margin-left: 30%;
+
   margin-top: 40px;
   background: linear-gradient(0deg, #6c00a0 0%, #6c00a0 100%), #303344;
 }
 #rating-p {
-  top: 0px;
   width: 334px;
   height: 16px;
   margin-left: 25px;
@@ -46,4 +46,17 @@
 .star-container {
   margin-top: 20px;
   margin-left: 5px;
+}
+#error {
+  padding-left: 55px;
+  padding-top: 10px;
+}
+.error-msg {
+  display: inline;
+  display: fixed;
+  padding-right: 10px;
+  color: #f00;
+  font-family: Familjen Grotesk;
+  font-size: 14px;
+  font-style: normal;
 }

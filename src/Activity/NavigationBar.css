@@ -132,3 +132,13 @@
   background-color: #cfb7ff;
   color: white;
 }
+.Activity-text {
+  width: 295px;
+  height: 30px;
+  padding-left: 10px;
+  align-items: center;
+  gap: 12px;
+  border-radius: 8px;
+  border: 1px solid #6c00a0;
+  background: #fff;
+}

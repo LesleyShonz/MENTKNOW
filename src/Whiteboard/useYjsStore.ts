@@ -18,7 +18,7 @@ import YPartyKitProvider from "y-partykit/provider";
 import * as Y from "yjs";
 
 export function useYjsStore({
-  roomId = "example",
+  roomId = "MENTKNOW",
   hostUrl = "yjs.threepointone.partykit.dev",
 }: Partial<{ hostUrl: string; roomId: string; version: number }>) {
   const [store] = useState(() => createTLStore({ shapes: defaultShapes }));

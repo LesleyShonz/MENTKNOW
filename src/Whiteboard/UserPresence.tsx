@@ -1,26 +1,36 @@
+/**
+ * Whiteboard user Presence Component for MentKnow Application.
+ * This component serves as a way of saving the user details which they
+ * can modify on the whiteboard.
+ *
+ * @author: Lesley Shonhiwa
+ * @colaborators :Chloe Walt and Sizwe Nkosi
+ * @version: 1.1
+ * @license: University of Cape Town, School of IT license
+ */
+
 import { useEditor } from "@tldraw/tldraw";
 import { track } from "signia-react";
-import Ratings from "../Activity/Ratings";
-import { useState, useEffect } from "react";
-
 import "../Activity/NavigationBar.css";
-
-import { text } from "express";
 import { createShapeId, Editor, Tldraw, TLGeoShape } from "@tldraw/tldraw";
 import ActivityBar from "../Activity/ActivityBar";
 import TemplateIcon from "../assets/Template_icon.png";
 import SubBar from "../Activity/SubBar";
+
 // Define a component wrapped with tracking functionality
 export const UserPresence = track(() => {
   const editor = useEditor();
   const { color, name } = editor.user;
+
+  //Get current Page/Activity name
   const activityName = editor.currentPage.name;
 
-  // Create a shape id
+  // Create Template shape id's
   const problemsShape = createShapeId("s1");
   const solutionsShape = createShapeId("s2");
-  const handleMount = (editor: Editor) => {
-    // Create a shape
+
+  const createTemplate = (editor: Editor) => {
+    // Create "problems" template
     editor.createShapes([
       {
         id: problemsShape,
@@ -40,7 +50,7 @@ export const UserPresence = track(() => {
       },
     ]);
 
-    // Create a new shape with the generated ID
+    // Create "solutions" template
     editor.createShapes([
       {
         id: solutionsShape,
@@ -61,17 +71,17 @@ export const UserPresence = track(() => {
     ]);
   };
 
+  //OnClick even for the "Templates" button
   const handleTemplateClick = () => {
-    handleMount(editor);
+    createTemplate(editor); //create the templates
   };
 
   return (
     <>
       <div style={{ pointerEvents: "all", display: "flex" }}>
-        {/* Button to toggle the review board */}
+        {/* Add the Dashboard bar to the main bar */}
         <SubBar editor={editor} activityName={activityName} />
         <ActivityBar activityName={activityName} />
-        {/* Render the Ratings component if showReviewBoard is true */}
 
         <div className="nav-4">
           <div className="nav-button" onClick={handleTemplateClick}>

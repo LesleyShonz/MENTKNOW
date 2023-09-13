@@ -132,6 +132,7 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
         <div className="editable-container">
           {isMentor == "mentor" && (
             <input
+              className="Activity-text"
               id={text}
               type="text"
               placeholder={`Enter "${text}" here`}
@@ -140,11 +141,7 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
               onKeyPress={handleInputKeyPress}
             />
           )}
-          {isMentor == "mentor" && (
-            <button onClick={handleAddText} className="add-button">
-              Add Text
-            </button>
-          )}
+
           <div
             className="editable"
             onKeyDown={(e) => {

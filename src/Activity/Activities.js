@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./Activities.css";
-import Discussion from "../assets/Discussion.svg";
+
 import TopicIcon from "../assets/Topic_icon.png";
 import DropdownBar from "./DropdownBar";
 import axios from "axios";
@@ -52,7 +52,7 @@ const Activities = ({
         <div className="main-container">
           {/* Display discussion data */}
           <h1>
-            <img src={TopicIcon} alt="TopicIcon" />
+            <img className="icon-H" src={TopicIcon} alt="TopicIcon" />
             {activityName}
           </h1>
 
