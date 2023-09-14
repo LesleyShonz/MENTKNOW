@@ -1,0 +1,48 @@
+.outer-container-bargraph {
+
+    width: 547px;
+    height: 372px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: #F8F8FB;
+    margin-top: 21px;
+    margin-left: 41px;
+    position: relative;
+}
+
+.pie-chart-container {
+    width: 560px;
+    height: 312px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: #F8F8FB;
+    margin-left: 639px;
+    margin-top: 47px;
+}
+.mentee-text-style{
+    color: var(--TOOLBAR-COLOUR, #303344);
+    font-family: Baloo Bhai;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.mentor-header-heading-innner {
+    width: 514px;
+    height: 39px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #E5D7FF;
+    margin-left: 19px;
+    margin-top: 13px;
+}
+
+.mentor-header-heading-outer {
+    width: 550px;
+    height: 66px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: #F8F8FB;
+    margin-top: 47px;
+    margin-left: 41px;
+}

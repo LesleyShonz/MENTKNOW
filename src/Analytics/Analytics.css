@@ -1,16 +1,12 @@
 .Analytics-middle-container{
-    width: 612px;
-    height: 134px;
-    flex-shrink: 0;
-    border-radius: 14px;
-    background: #E5D7FF;
-    margin-left: 44px;
-    margin-top: 66px;
+    width: 1440px;
+    height: 900px;
+    background: #EDF0F2;
 }
 
 .hello-container1{
-    color: var(--TOOLBAR-COLOUR, #303344);
 
+    color: var(--TOOLBAR-COLOUR, #303344);
     /* H1 */
     font-family: Baloo Bhai;
     font-size: 36px;
@@ -35,3 +31,4 @@
     position: relative;
     top:-30px
 }
+

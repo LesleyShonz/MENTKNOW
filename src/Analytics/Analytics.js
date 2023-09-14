@@ -3,6 +3,8 @@ import mentknowlogo from '../icons/mentknowlogo.svg';
 import { useNavigate } from 'react-router-dom';
 import signout_logo from '../icons/Sign_out_squre_light.svg';
 import './Analytics.css';
+import BarChart from './BarChart';
+import PieChart from './PieChart';
 function Analytics() {
     const navigate = useNavigate();
     const userData = JSON.parse(localStorage.getItem('userData'));
@@ -10,9 +12,10 @@ function Analytics() {
         localStorage.removeItem('userData');
         navigate('/signin');
     };
-    
+
     return (
         <div className="whole-dashboard-container">
+
             <div className='left-container' onClick={logout}>
                 <img className='logo-dashboard' src={mentknowlogo} alt="MentKnow Logo" />
                 <div className='logout-style'>
@@ -20,11 +23,26 @@ function Analytics() {
                     <h1 className='logout-text-stye'>Log Out</h1>
                 </div>
             </div>
-            <div className='middle-container'>
+
+
+            <div className='right-container'>
+
+
                 <div className='Analytics-middle-container'>
-                    <h1 className='hello-container1'>Mentee Analytics Dashboard</h1>
-                    <p1 className='hello-container-subline1'>Activity stats description.</p1>
+
+                    <div className='mentor-header-heading-outer'>
+                        <div className='mentor-header-heading-inner'>
+                            <h1 className='mentee-text-style'>Mentee Analytics Dashboard</h1>
+                        </div>
+                    </div>
+                    
+                    <PieChart />
+                    <BarChart />
+
                 </div>
+
+
+
             </div>
 
 
