@@ -97,8 +97,7 @@ export function useYjsStore({
                 index: "a1",
               }),
             ]);
-            //(Added)
-            store.put(Array.from(yRecords.values()));
+            
           });
 
           // Sync the store records to the yjs doc
