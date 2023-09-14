@@ -1,3 +1,15 @@
+/**
+ * Whiteboard YJS Storage Component for MentKnow Application.
+ * This component serves as a way of saving the user details to the YJS stroe
+ * so that they can be accessed across multiple users. This component also
+ * plays a role in allowing for multiple users to collaborate concurrently
+ *
+ * @author: Lesley Shonhiwa
+ * @colaborators :Chloe Walt and Sizwe Nkosi
+ * @version: 1.1
+ * @license: University of Cape Town, School of IT license
+ */
+
 import {
   DocumentRecordType,
   InstancePresenceRecordType,
@@ -85,6 +97,8 @@ export function useYjsStore({
                 index: "a1",
               }),
             ]);
+            //(Added)
+            store.put(Array.from(yRecords.values()));
           });
 
           // Sync the store records to the yjs doc

@@ -12,23 +12,41 @@
 import { useEditor } from "@tldraw/tldraw";
 import { track } from "signia-react";
 import "../Activity/NavigationBar.css";
-import { createShapeId, Editor, Tldraw, TLGeoShape } from "@tldraw/tldraw";
+import { createShapeId, Editor } from "@tldraw/tldraw";
 import ActivityBar from "../Activity/ActivityBar";
 import TemplateIcon from "../assets/Template_icon.png";
 import SubBar from "../Activity/SubBar";
+import { useEffect } from "react";
 
 // Define a component wrapped with tracking functionality
-export const UserPresence = track(() => {
+export const UserPresence = track(({ pageName }) => {
   const editor = useEditor();
   const { color, name } = editor.user;
 
+  //Render a page according to the sepcified activity name
+  function renderPage() {
+    //check if page name exists
+    const findPageName = editor.pages.find((p) => p.name === pageName);
+    ///set current page if it exists
+    if (findPageName) {
+      editor.setCurrentPageId(findPageName.id);
+    }
+    //create the page if it doesn't exist
+    else {
+      editor.createPage(pageName);
+    }
+  }
+  // Call renderPage once when the component is mounted
+  useEffect(() => {
+    renderPage();
+  }, []); // Empty dependency array ensures it runs once on mount
+
   //Get current Page/Activity name
   const activityName = editor.currentPage.name;
-
   // Create Template shape id's
   const problemsShape = createShapeId("s1");
   const solutionsShape = createShapeId("s2");
-
+  //Create Template
   const createTemplate = (editor: Editor) => {
     // Create "problems" template
     editor.createShapes([
@@ -49,7 +67,6 @@ export const UserPresence = track(() => {
         },
       },
     ]);
-
     // Create "solutions" template
     editor.createShapes([
       {
@@ -82,7 +99,6 @@ export const UserPresence = track(() => {
         {/* Add the Dashboard bar to the main bar */}
         <SubBar editor={editor} activityName={activityName} />
         <ActivityBar activityName={activityName} />
-
         <div className="nav-4">
           <div className="nav-button" onClick={handleTemplateClick}>
             <img src={TemplateIcon} alt="TemplateIcon" className="icon" />
