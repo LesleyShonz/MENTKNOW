@@ -16,13 +16,14 @@ import axios from "axios";
 import Analytics from "./Analytics/Analytics";
 import BarChart from "./Analytics/BarChart";
 import PieChart from "./Analytics/PieChart";
-import HistogramAverageRating from "./Analytics/HistogramAverageRating";
+import ScatterPlotter from "./Analytics/ScatterPlotter";
 import {
   Routes,
   Route,
   BrowserRouter as Router,
   Navigate,
 } from "react-router-dom";
+import { ScatterPlot } from "@mui/icons-material";
 export default function App() {
   const [user, setUser] = useState(null);
 
@@ -57,7 +58,7 @@ export default function App() {
           <Route path="/Analytics" element={<Analytics />} />
           <Route path="/barchart" element={<BarChart />} />
           <Route path="/piechart" element={<PieChart />} />
-          <Route path="/histogram" element={<HistogramAverageRating />} />
+          <Route path="/histogram" element={<ScatterPlotter />} />
         </Routes>
       </Router>
     </UserContext.Provider>

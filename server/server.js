@@ -21,8 +21,8 @@ mongoose.connect("mongodb+srv://Lesley:MENTKNOW@mentknow.alii0fr.mongodb.net/?re
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-.then(() => console.log("MongoDB Connected"))
-.catch(err => console.error("MongoDB Connection Error: ", err));
+    .then(() => console.log("MongoDB Connected"))
+    .catch(err => console.error("MongoDB Connection Error: ", err));
 
 mongoose.connection.on('connected', () => {
     console.log('Mongoose is connected!');
@@ -81,6 +81,28 @@ app.get("/api/analytics", async (req, res) => {
         res.status(500).json({ message: "Error fetching analytics", error: err.message });
     }
 });
+
+app.get("/api/totalContributions", async (req, res) => {
+    try {
+        const result = await Rating.aggregate([
+            {
+                $group: {
+                    _id: null,  // Grouping by null will aggregate all the documents
+                    totalContributions: { $sum: "$numContributions" }
+                }
+            }
+        ]);
+
+        const totalContributions = result && result[0] ? result[0].totalContributions : 0;
+
+        res.json({ totalContributions });
+
+    } catch (err) {
+        console.error("Error fetching total contributions:", err);
+        res.status(500).json({ message: "Error fetching total contributions", error: err.message });
+    }
+});
+
 
 // Start the server
 app.listen(PORT, () => {

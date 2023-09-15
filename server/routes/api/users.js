@@ -67,6 +67,16 @@ router.post('/group-members', getGroupMembers);
  */
 router.post('/group-mentor', getGroupMentor);
 
+
+/**
+ * Get the total count of all mentees in the database.
+ * 
+ * @route GET /api/users/total-mentees-count
+ * @access Public
+ */
+router.get('/total-mentees-count', getTotalMenteesCount);
+
+
 module.exports = router;
 
 // Controller Functions
@@ -168,6 +178,18 @@ async function getGroupMentor(req, res) {
         }).select('name surname').limit(1).exec();
 
         res.json(groupMentor);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Server Error');
+    }
+}
+
+async function getTotalMenteesCount(req, res) {
+    try {
+        const menteeCount = await User.countDocuments({ userType: 'mentee' });
+
+        res.json({ menteeCount });
+        console.log(menteeCount);
     } catch (error) {
         console.error(error.message);
         res.status(500).send('Server Error');
