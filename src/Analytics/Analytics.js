@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import mentknowlogo from '../icons/mentknowlogo.svg';
 import { useNavigate } from 'react-router-dom';
 import signout_logo from '../icons/Sign_out_squre_light.svg';
+import dashboard from '../icons/Arrow_left_light.svg';
 import './Analytics.css';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
@@ -20,7 +21,10 @@ function Analytics() {
         navigate('/signin');
     };
 
+    const mentorDashboardHandle = () => {
 
+        navigate('/mentorDashboard');
+    }
 
     useEffect(() => {
         fetch('http://localhost:5004/api/analytics')
@@ -66,11 +70,11 @@ function Analytics() {
 
     }
     return (
-        <div className="whole-dashboard-container">
+        <div className="whole-dashboard-container2">
 
-            <div className='left-container' onClick={logout}>
+            <div className='left-container'>
                 <img className='logo-dashboard' src={mentknowlogo} alt="MentKnow Logo" />
-                <div className='logout-style'>
+                <div className='logout-style' onClick={logout}>
                     <img className='signout-image-container' src={signout_logo} alt='Sign out' />
                     <h1 className='logout-text-stye'>Log Out</h1>
                 </div>
@@ -79,7 +83,12 @@ function Analytics() {
 
             <div className='right-container1'>
 
+                <div className='move-back-container' onClick={mentorDashboardHandle}>
 
+                    <img className='dashboard-image-container' src={dashboard} alt='Sign out' />
+                    <p className='go-to-dashboard-text'>Dashboard</p>
+
+                </div>
                 <div className='Analytics-middle-container'>
 
                     <div className='mentor-header-heading-outer1'>

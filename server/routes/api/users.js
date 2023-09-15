@@ -128,13 +128,13 @@ async function loginUser(req, res) {
         const user = await User.findOne({ email });
 
         if (!user) {
-            return res.status(401).json({ errors: [{ msg: 'Invalid Email' }] });
+            return res.status(401).json({ errors: [{ msg: 'Incorrect username. Please try again' }] });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (!isMatch) {
-            return res.status(401).json({ errors: [{ msg: 'Invalid Password' }] });
+            return res.status(401).json({ errors: [{ msg: 'Incorrect password. Please try again' }] });
         }
 
         res.json({

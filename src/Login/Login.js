@@ -3,6 +3,7 @@ import UserContext from '../Whiteboard/UserContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
+import erro from '../icons/exclamation 6.svg';
 import mentknowlogo from '../icons/mentknowlogo.svg';
 
 const Login = () => {
@@ -14,8 +15,8 @@ const Login = () => {
     password: ''
   });
 
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false); // New loading state
+  const [errors, setErrors] = useState({}); // New errors state
+  const [loading, setLoading] = useState(false);
 
   const { email, password } = formData;
 
@@ -28,14 +29,18 @@ const Login = () => {
   };
 
   const handleMoveToRegister = () => {
-
     navigate('/register');
   }
 
   const onSubmit = async e => {
     e.preventDefault();
-  
-    setError('');
+    
+    // Simple Frontend validation
+    if (!email) setErrors(prevErrors => ({ ...prevErrors, email: 'Incorrect username. Please try again' }));
+    if (!password) setErrors(prevErrors => ({ ...prevErrors, password: 'Incorrect password. Please try again' }));
+    if (!email || !password) return;
+
+    setErrors('');
     setLoading(true);
   
     const config = {
@@ -48,33 +53,20 @@ const Login = () => {
       const body = JSON.stringify({ email, password });
       const res = await axios.post('http://localhost:5004/api/users/login', body, config);
   
-      setLoading(false); // End loading
+      setLoading(false);
   
       if (res.data) {
         localStorage.setItem('userData', JSON.stringify(res.data));
         setUser(res.data);
         navigateUser(res.data.userType);
       } else {
-        setError('Login Failed. Please check your credentials.');
+        setErrors({ general: 'Login Failed. Please check your credentials.' });
       }
     } catch (err) {
       setLoading(false);
-  
-      // Checking for client errors
-      if (err.response && err.response.status >= 400 && err.response.status < 500) {
-        if (err.response.data && err.response.data.errors && err.response.data.errors.length > 0) {
-          setError(err.response.data.errors[0].msg);
-        } else {
-          setError('Login Failed. Please check your credentials.');
-        }
-      } 
-      // Checking for server errors or other types of errors
-      else {
-        setError('Server error. Please try again later.');
-      }
+      setErrors({ general: err.message });
     }
   };
-  
 
   return (
     <div className="container1">
@@ -83,18 +75,21 @@ const Login = () => {
       </div>
       <div className='login-container'>
         <h2 className='SignInText1'>Sign In</h2>
-        <p className='UserNameText1'>Username</p>
         <form onSubmit={onSubmit}>
+          <p className='UserNameText1'>Username</p>
+          {errors.email && <div className='error-message'><img src={erro} alt='error' className='error-style'/> {errors.email}</div>}
           <input
             className='userNameForm1'
             type="email"
             placeholder="Email Address"
             name="email"
-            value={email.toLowerCase()}
+            value={email}
             onChange={onChange}
-            required
           />
+         
+          
           <label className='password-label1'>Password</label>
+          {errors.password && <div className='error-message'><img src={erro} alt='error' className='error-style'/> {errors.password}</div>}
           <input
             className='password-form1'
             type="password"
@@ -102,10 +97,11 @@ const Login = () => {
             name="password"
             value={password}
             onChange={onChange}
-            required
           />
+          
+          
           {loading && <div style={{marginTop: '13px' , marginLeft:'315px'}}>Loading...</div>}
-          {error && <div style={{ color: 'red', marginTop: '13px' , marginLeft:'315px'}}>{error}</div>}
+          {errors.general && <div style={{ color: 'red', marginTop: '13px' , marginLeft:'315px'}}>{errors.general}</div>}
           <button className='login-button1' type="submit">Sign In</button>
           <a className='link-register1' onClick={handleMoveToRegister}> Don’t have an account? Sign Up here </a>
         </form>

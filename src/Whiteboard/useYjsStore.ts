@@ -86,7 +86,7 @@ export function useYjsStore({
         if (yRecords.size === 0) {
           // Create the initial store records
           transact(() => {
-            store.clear();
+            // store.clear();
             store.put([
               DocumentRecordType.create({
                 id: "document:document" as TLDocument["id"],
@@ -97,7 +97,6 @@ export function useYjsStore({
                 index: "a1",
               }),
             ]);
-            
           });
 
           // Sync the store records to the yjs doc

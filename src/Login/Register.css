@@ -230,6 +230,23 @@
 }
 
 .error-message {
-  color: red;
-  margin-left: 343px;
+  color: #F00;
+  font-family: Familjen Grotesk;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 240% */
+  margin-left: 298px;
+  
+}
+
+.some-style{
+
+  display: inline-flex;
+}
+
+.error-style{
+  position: relative;
+  top:1.5px
+
 }

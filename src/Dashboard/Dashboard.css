@@ -67,6 +67,7 @@
     margin-top: 596px;
     display: inline-flex;
     gap: 12px;
+    cursor: pointer;
 }
 .logout-style:hover{
     background-color: bisque;

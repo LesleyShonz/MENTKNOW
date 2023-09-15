@@ -1,7 +1,15 @@
+.whole-dashboard-container2 {
+    width: 1440px;
+    height: 900px;
+    display: inline-flex;
+    background: #FFF;
+}
+
 .Analytics-middle-container {
     width: 1440px;
     height: 900px;
     background: #EDF0F2;
+
 }
 
 .hello-container1 {
@@ -90,7 +98,7 @@
     background: #E5D7FF;
     margin-left: 19px;
     margin-top: 22px;
-    
+
 }
 
 .top-right-style {
@@ -123,7 +131,7 @@
     margin-top: 15.53px;
 }
 
-.top-left-tile-text-header{
+.top-left-tile-text-header {
     color: var(--TOOLBAR-COLOUR, #303344);
     font-family: Baloo Bhai;
     font-size: 22px;
@@ -133,20 +141,22 @@
     display: flex;
     justify-content: center;
 }
-.top-left-tile-text-paragraph{
+
+.top-left-tile-text-paragraph {
     color: var(--TOOLBAR-COLOUR, #303344);
     font-family: Familjen Grotesk;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
+    /* 150% */
     display: flex;
     justify-content: center;
     position: relative;
-    top:-25px
+    top: -25px
 }
 
-.total-mentees-count-style{
+.total-mentees-count-style {
     color: var(--TOOLBAR-COLOUR, #303344);
     font-family: Baloo Bhai;
     font-size: 50px;
@@ -154,34 +164,62 @@
     font-weight: 400;
     line-height: normal;
     margin-left: 23.4px;
-    position: relative;;
+    position: relative;
+    ;
     top: -29px;
 }
-.mentee-count-container-seperator{
+
+.mentee-count-container-seperator {
     display: inline-flex;
 }
 
-.mentee-para{
+.mentee-para {
     margin-left: 13.44px;
     color: var(--TOOLBAR-COLOUR, #303344);
     font-family: Familjen Grotesk;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
+    /* 150% */
     position: relative;
-    top:5px
-
+    top: 5px
 }
-.mentee-para1{
+
+.mentee-para1 {
     color: var(--TOOLBAR-COLOUR, #303344);
     font-family: Familjen Grotesk;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
+    /* 150% */
     margin-left: 13.44px;
     position: relative;
-    top:-15px
+    top: -15px
 }
 
+.move-back-container {
+    width: 101px;
+    height: 26px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #F8F8FB;
+    margin-left: 5px;
+    display: inline-flex;
+    position: relative;
+    top: 5px;
+    cursor: pointer;
+}
+
+.go-to-dashboard-text {
+    color: var(--TOOLBAR-COLOUR, #303344);
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-left: 2px;
+    position: relative;
+    top: -6px
+}
