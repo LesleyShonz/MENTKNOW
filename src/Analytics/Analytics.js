@@ -158,7 +158,6 @@ function Analytics() {
                     <div className='upper-part-row-style'>
                         <BarChart />
                         <ScatterPlot />
-
                     </div>
                 </div>
 
