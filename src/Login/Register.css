@@ -8,21 +8,23 @@
   width: 905px;
   height: 818px;
   flex-shrink: 0;
+  background: #F8F8FB;
 }
 
 .image-container {
   width: 535px;
   height: 900px;
   flex-shrink: 0;
-  position: relative; /* This is important for positioning the image inside it */
+  position: relative;
+  /* This is important for positioning the image inside it */
 }
 
 .image-container img {
   width: 384px;
   height: 167px;
   position: absolute;
-  left: 87px;
-  top: 329px;
+  left: 81px;
+  top: 284px;
 }
 
 .register-header {
@@ -33,7 +35,7 @@
   font-weight: 700;
   line-height: normal;
   margin-left: 365px;
-  margin-top: 165px;
+  margin-top: 64px;
 }
 
 .radio-group-signup {
@@ -46,11 +48,6 @@
   /* 200% */
 }
 
-.radio-group-signup input[type="radio"] {
-  margin-right: 5px;
-  color: #6c00a0;
-}
-
 .name-label {
   color: #b1b1b1;
   font-family: Familjen Grotesk;
@@ -60,10 +57,13 @@
   line-height: 24px;
   /* 200% */
   margin-left: 298px;
-  margin-top: 8px;
+  margin-top: 42px;
 }
 
 .name-form {
+  background-image: url('../icons/Profile.svg');
+  background-repeat: no-repeat;
+  background-position: 15px;
   display: flex;
   width: 311px;
   height: 44px;
@@ -71,12 +71,12 @@
   align-items: center;
   gap: 12px;
   margin-left: 298px;
-  margin-top: 8px;
   border-radius: 8px;
   border: 1px solid #b1b1b1;
 }
 
 .surname-label {
+
   color: #b1b1b1;
   font-family: Familjen Grotesk;
   font-size: 12px;
@@ -85,10 +85,15 @@
   line-height: 24px;
   /* 200% */
   margin-left: 298px;
-  margin-top: 8px;
+  margin-top: 12px;
+
 }
 
 .surname-form {
+  background-image: url('../icons/Profile.svg');
+  background-repeat: no-repeat;
+  background-position: 15px;
+
   display: flex;
   width: 311px;
   height: 44px;
@@ -97,7 +102,6 @@
   gap: 12px;
   margin-left: 298px;
   margin-right: 298px;
-  margin-top: 8px;
   border-radius: 8px;
   border: 1px solid #b1b1b1;
 }
@@ -111,9 +115,13 @@
   line-height: 24px;
   /* 200% */
   margin-left: 298px;
+  margin-top: 12px;
 }
 
 .password-form {
+  background-image: url('../icons/lock.svg');
+  background-repeat: no-repeat;
+  background-position: 15px;
   display: flex;
   width: 311px;
   height: 44px;
@@ -121,7 +129,6 @@
   align-items: center;
   gap: 12px;
   margin-left: 298px;
-  margin-top: 8px;
   border-radius: 8px;
   border: 1px solid #b1b1b1;
 }
@@ -135,9 +142,13 @@
   line-height: 24px;
   /* 200% */
   margin-left: 298px;
+  margin-top: 12px;
 }
 
 .email-form {
+  background-image: url('../icons/Profile.svg');
+  background-repeat: no-repeat;
+  background-position: 15px;
   display: flex;
   width: 311px;
   height: 44px;
@@ -145,7 +156,6 @@
   align-items: center;
   gap: 12px;
   margin-left: 298px;
-  margin-top: 8px;
   border-radius: 8px;
   border: 1px solid #b1b1b1;
 }
@@ -159,9 +169,13 @@
   line-height: 24px;
   /* 200% */
   margin-left: 298px;
+  margin-top: 12px;
 }
 
 .group-form {
+  background-image: url('../icons/Mortarboard_light.svg');
+  background-repeat: no-repeat;
+  background-position: 15px;
   display: flex;
   width: 311px;
   height: 44px;
@@ -169,7 +183,6 @@
   align-items: center;
   gap: 12px;
   margin-left: 298px;
-  margin-top: 8px;
   border-radius: 8px;
   border: 1px solid #b1b1b1;
 }
@@ -183,9 +196,14 @@
   line-height: 24px;
   /* 200% */
   margin-left: 298px;
+  margin-top: 12px;
+  position: relative;
 }
 
 .access-form {
+  background-image: url('../icons/Key_alt_duotone.svg');
+  background-repeat: no-repeat;
+  background-position: 15px;
   display: flex;
   width: 311px;
   height: 44px;
@@ -193,7 +211,6 @@
   align-items: center;
   gap: 12px;
   margin-left: 298px;
-  margin-top: 8px;
   border-radius: 8px;
   border: 1px solid #b1b1b1;
 }
@@ -217,6 +234,7 @@
   margin-top: 27px;
   /* 150% */
 }
+
 .link-register {
   color: #434343;
   font-family: Familjen Grotesk;
@@ -227,6 +245,7 @@
   text-decoration-line: underline;
   margin-top: 23px;
   margin-left: 343px;
+  cursor: pointer;
 }
 
 .error-message {
@@ -235,18 +254,58 @@
   font-size: 10px;
   font-style: normal;
   font-weight: 500;
-  line-height: 24px; /* 240% */
-  margin-left: 298px;
+  line-height: 24px;
+  /* 240% */
+  margin-left: 25px;
+  margin-top: 12px;
   
+  /* top:5px */
+}
+.error-message-name{
+  color: #F00;
+  font-family: Familjen Grotesk;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  /* 240% */
+  margin-left: 25px;
+  margin-top: 42px;
+  /* top:5px */
+}
+.error-message-server{
+  color: #F00;
+  font-family: Familjen Grotesk;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 44px;
+  /* 240% */
+  margin-left: 360px;
+  
+  /* top:5px */
 }
 
-.some-style{
+.some-style {
 
   display: inline-flex;
 }
 
-.error-style{
+.error-style {
   position: relative;
-  top:1.5px
+  top: 1.5px
+}
 
+.input-container {
+  position: relative;
+}
+
+.name-form,
+.surname-form,
+.email-form,
+.password-form,
+.group-form,
+.access-form {
+  padding-left: 40px;
+  /* Adjust this based on the size of your icon + desired padding */
 }

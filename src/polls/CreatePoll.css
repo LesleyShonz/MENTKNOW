@@ -82,3 +82,14 @@
     font-weight: 500;
     line-height: normal;
 }
+
+
+.create-form-error{
+    color: #F00;
+    font-family: Familjen Grotesk;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; /* 240% */
+    margin-left: 76px;
+}

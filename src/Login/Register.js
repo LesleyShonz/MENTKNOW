@@ -4,6 +4,7 @@ import './Register.css';
 import mentknowlogo from '../icons/mentknowlogo.svg';
 import erro from '../icons/exclamation 6.svg';
 import { useNavigate } from 'react-router-dom';
+import profile from '../icons/Profile.svg';
 
 function Register() {
     const navigate = useNavigate();
@@ -61,9 +62,13 @@ function Register() {
             newErrors.groupNumber = "Please select a group number from the drop-down";
         }
 
-        if (userType === 'mentor' && !accessPin.trim()) {
+        if (userType === 'mentor' && accessPin.trim() != '1234') {
             valid = false;
             newErrors.accessPin = "Incorrect access pin";
+        }
+        if (![1, 2, 3, 4, 5].includes(parseInt(groupNumber))) {
+            valid = false;
+            newErrors.groupNumber = "Please select a group number from the drop-down";
         }
 
         setErrors(newErrors);
@@ -91,7 +96,7 @@ function Register() {
                     email: '',
                     password: '',
                     userType: 'mentee',
-                    groupNumber: '',
+                    groupNumber: 1,
                     accessPin: ''
                 });
                 navigate('/signin');
@@ -117,7 +122,7 @@ function Register() {
             </div>
             <div className="form-container">
                 <h2 className='register-header'>Create Account</h2>
-                {errors.general && <div className='error-message'>{errors.general}</div>}
+                {errors.general && <div className='error-message-server'>{errors.general}</div>}
 
                 <form onSubmit={onSubmit}>
                     <div className='radio-group-signup'>
@@ -146,13 +151,14 @@ function Register() {
                     </div>
 
                     <div>
-                        <label className='name-label'>Name</label>
-                        <br/>
-                        
-                          
-                            {errors.name && <div className='error-message'> <img src={erro} alt='error' className='error-style'/> {errors.name}</div>}
-                      
+
+                        <div className="some-style">
+                            <label className='name-label'>Name</label>
+
+                            {errors.name && <div className='error-message-name'> <img src={erro} alt='error' className='error-style' /> {errors.name}</div>}
+                        </div>
                         <input
+
                             className='name-form'
                             type="text"
                             name="name"
@@ -163,8 +169,10 @@ function Register() {
                     </div>
 
                     <div>
-                        <label className='surname-label'>Surname</label>
-                        {errors.surname && <div className='error-message'><img src={erro} alt='error' className='error-style'/> {errors.surname}</div>}
+                        <div className="some-style">
+                            <label className='surname-label'>Surname</label>
+                            {errors.surname && <div className='error-message'><img src={erro} alt='error' className='error-style' /> {errors.surname}</div>}
+                        </div>
                         <input
                             className='surname-form'
                             type="text"
@@ -176,8 +184,10 @@ function Register() {
                     </div>
 
                     <div>
-                        <label className='email-label'>Email</label>
-                        {errors.email && <div className='error-message'><img src={erro} alt='error' className='error-style'/> {errors.email}</div>}
+                        <div className="some-style">
+                            <label className='email-label'>UCT email address</label>
+                            {errors.email && <div className='error-message'><img src={erro} alt='error' className='error-style' /> {errors.email}</div>}
+                        </div>
                         <input
                             className='email-form'
                             type="email"
@@ -189,8 +199,10 @@ function Register() {
                     </div>
 
                     <div>
-                        <label className='password-label'>Password</label>
-                        {errors.password && <div className='error-message'><img src={erro} alt='error' className='error-style'/> {errors.password}</div>}
+                        <div className="some-style">
+                            <label className='password-label'>Password</label>
+                            {errors.password && <div className='error-message'><img src={erro} alt='error' className='error-style' /> {errors.password}</div>}
+                        </div>
                         <input
                             className='password-form'
                             type="password"
@@ -202,22 +214,31 @@ function Register() {
                     </div>
 
                     <div>
-                        <label className='group-label'>Group Number</label>
-                        {errors.groupNumber && <div className='error-message'><img src={erro} alt='error' className='error-style'/> {errors.groupNumber}</div>}
-                        <input
+                        <div className="some-style">
+                            <label className='group-label'>Group Number</label>
+                            {errors.groupNumber && <div className='error-message'><img src={erro} alt='error' className='error-style' /> {errors.groupNumber}</div>}
+                        </div>
+                        <select
                             className='group-form'
-                            type="number"
                             name="groupNumber"
                             value={groupNumber}
                             onChange={onChange}
-                        />
-
+                        >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
                     </div>
+
 
                     {userType === 'mentor' && (
                         <div>
-                            <label className='access-label'>Access Pin: </label>
-                            {errors.accessPin && <div className='error-message'><img src={erro} alt='error' className='error-style'/> {errors.accessPin}</div>}
+                            <div className="some-style">
+                                <label className='access-label'>Access Pin </label>
+                                {errors.accessPin && <div className='error-message'><img src={erro} alt='error' className='error-style' /> {errors.accessPin}</div>}
+                            </div>
                             <input
                                 className='access-form'
                                 type="text"

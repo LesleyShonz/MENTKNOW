@@ -161,13 +161,19 @@ const Dashboard = () => {
    * Utility function to generate a random color.
    */
   function getRandomColor() {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
   }
+
+  // This effect handles the assignment of colors to members.
+  useEffect(() => {
+    const newColors = { ...colors };
+    members.forEach((member) => {
+      if (!newColors[`${member.name}${member.surname}`]) {
+        newColors[`${member.name}${member.surname}`] = getRandomColor();
+      }
+    });
+    setColors(newColors);
+  }, [members]);
   /**
    * Utility function to get the initials from a given name and surname.
    */
@@ -335,10 +341,12 @@ const Dashboard = () => {
             <div className="mentor-container">
               <div
                 className="initial-outer-container"
-                style={{ backgroundColor: getRandomColor() }}
+                style={{ backgroundColor: '#F39F18' }}
               >
                 <span className="initials-container">
-                  {getInitials(mentor[0].name, mentor[0].surname)}
+                  <span className="initials-container-style">
+                       {getInitials(mentor[0].name, mentor[0].surname)}
+                  </span>
                 </span>
               </div>
               <h1 className="mentor-name-component">
@@ -347,8 +355,8 @@ const Dashboard = () => {
             </div>
           ) : (
             <span className="mentor-container">
-              <div className="mentor-not-available">
-                Mentor currently not assigned
+              <div className="loading-ball">
+                
               </div>
             </span>
           )}
@@ -362,10 +370,12 @@ const Dashboard = () => {
             <div key={index} className="mentees-container">
               <div
                 className="mentees-initials-container"
-                style={{ backgroundColor: getRandomColor() }}
+                style={{ backgroundColor: colors[`${member.name}${member.surname}`] || "#FFF" }}
               >
                 <div className="initials-container">
-                  {getInitials(member.name, member.surname)}
+                  <div className="initials-container-style">
+                    {getInitials(member.name, member.surname)}
+                  </div>
                 </div>
               </div>
               <div className="mentees-names-style">
@@ -383,7 +393,7 @@ const Dashboard = () => {
                 "{quote.content}"<footer>— {quote.author}</footer>
               </blockquote>
             ) : (
-              <div>Loading quote...</div>
+              <div className="loading-ball"></div>
             )}
           </div>
         </div>
