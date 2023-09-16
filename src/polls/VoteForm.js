@@ -63,8 +63,10 @@ const VotePoll = () => {
                             <div
                                 key={index}
                                 className={`result-container ${option.votes === maxVotes ? 'most-voted' : ''}`}
-                            >
+                            >   
+                                <div className='result-container-sort-style'>
                                 {option.name}: {option.votes} votes
+                                </div>
                             </div>
                         ))}
                     </div>

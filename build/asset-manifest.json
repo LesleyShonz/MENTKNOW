@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.4a853438.css",
-    "main.js": "/static/js/main.cbac98ef.js",
+    "main.css": "/static/css/main.209251c7.css",
+    "main.js": "/static/js/main.f33d98c3.js",
     "static/media/mentknowlogo.svg": "/static/media/mentknowlogo.6c14dc6c502ed54ae7da9b3fd7d3b9e0.svg",
     "static/media/baloo-bhai-latin-400.woff": "/static/media/baloo-bhai-latin-400.2d43c12438162f9b67ff.woff",
     "static/media/Frame.svg": "/static/media/Frame.f6895295e5278646ec9de824a5adede7.svg",
@@ -49,11 +49,11 @@
     "static/media/Key_alt_duotone.svg": "/static/media/Key_alt_duotone.b13c338f298533afdbda.svg",
     "index.html": "/index.html",
     "static/media/Arrow_left_light.svg": "/static/media/Arrow_left_light.f42244ced70c72f0930666f1b5d81e99.svg",
-    "main.4a853438.css.map": "/static/css/main.4a853438.css.map",
-    "main.cbac98ef.js.map": "/static/js/main.cbac98ef.js.map"
+    "main.209251c7.css.map": "/static/css/main.209251c7.css.map",
+    "main.f33d98c3.js.map": "/static/js/main.f33d98c3.js.map"
   },
   "entrypoints": [
-    "static/css/main.4a853438.css",
-    "static/js/main.cbac98ef.js"
+    "static/css/main.209251c7.css",
+    "static/js/main.f33d98c3.js"
   ]
 }

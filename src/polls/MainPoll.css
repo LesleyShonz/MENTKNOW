@@ -48,7 +48,10 @@
     margin-top: 22px;
     margin-left: 47px;
 }
-
+.create-new-poll-button:hover{
+    
+    background: #CFB7FF;
+}
 .vote-on-existing-poll {
     width: 155.625px;
     height: 35px;
@@ -63,4 +66,9 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+.vote-on-existing-poll:hover{
+   
+    background: #CFB7FF;
 }
