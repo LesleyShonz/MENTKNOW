@@ -1,4 +1,12 @@
-// server/routes/api.js
+/**
+ * API Component for MentKnow Application.
+ * This component serves as a way of handline API requests.
+ *
+ * @author: Lesley Shonhiwa
+ * @colaborators :Chloe Walt and Sizwe Nkosi
+ * @version: 1.1
+ * @license: University of Cape Town, School of IT license
+ */
 const express = require("express");
 const router = express.Router();
 const Activity = require("../../models/Activity");

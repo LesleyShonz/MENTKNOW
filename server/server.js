@@ -1,3 +1,12 @@
+/**
+ * Server Component for MentKnow Application.
+ * This component serves as a way of communicating with the MONGODB server
+ *
+ * @author: Lesley Shonhiwa
+ * @colaborators :Chloe Walt and Sizwe Nkosi
+ * @version: 1.1
+ * @license: University of Cape Town, School of IT license
+ */
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -17,94 +26,108 @@ app.use("/api/polls", require("./routes/api/polls"));
 app.use("/api/activities", require("./routes/api/activities"));
 
 // Database Connection Feedback
-mongoose.connect("mongodb+srv://Lesley:MENTKNOW@mentknow.alii0fr.mongodb.net/?retryWrites=true&w=majority", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-    .then(() => console.log("MongoDB Connected"))
-    .catch(err => console.error("MongoDB Connection Error: ", err));
+mongoose
+  .connect(
+    "mongodb+srv://Lesley:MENTKNOW@mentknow.alii0fr.mongodb.net/?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.error("MongoDB Connection Error: ", err));
 
-mongoose.connection.on('connected', () => {
-    console.log('Mongoose is connected!');
+mongoose.connection.on("connected", () => {
+  console.log("Mongoose is connected!");
 });
 
 // Define Mongoose schema and model for ratings
-const ratingSchema = new mongoose.Schema({
+const ratingSchema = new mongoose.Schema(
+  {
     activityName: String,
     totalRating: Number,
     numRatings: Number,
     averageRating: Number,
     numContributions: Number,
-}, { versionKey: false });
+  },
+  { versionKey: false }
+);
 
 const Rating = mongoose.model("Rating", ratingSchema);
 
 // Define route for saving ratings
 app.post("/api/ratings", async (req, res) => {
-    const { activityName, totalRating, numContributions } = req.body;
+  const { activityName, totalRating, numContributions } = req.body;
 
-    try {
-        const existingRating = await Rating.findOne({ activityName });
+  try {
+    const existingRating = await Rating.findOne({ activityName });
 
-        if (existingRating) {
-            existingRating.totalRating += totalRating;
-            existingRating.numRatings += 1;
-            existingRating.numContributions = numContributions;
-            existingRating.averageRating = existingRating.totalRating / existingRating.numRatings;
-            await existingRating.save();
-        } else {
-            const newRating = new Rating({
-                activityName,
-                totalRating,
-                numRatings: 1,
-                averageRating: totalRating,
-                numContributions: numContributions,
-            });
-            await newRating.save();
-        }
-        res.status(201).json({ message: "Rating saved successfully" });
-    } catch (error) {
-        console.error("Error saving rating:", error);
-        res.status(500).json({ error: "An error occurred while saving the rating" });
+    if (existingRating) {
+      existingRating.totalRating += totalRating;
+      existingRating.numRatings += 1;
+      existingRating.numContributions = numContributions;
+      existingRating.averageRating =
+        existingRating.totalRating / existingRating.numRatings;
+      await existingRating.save();
+    } else {
+      const newRating = new Rating({
+        activityName,
+        totalRating,
+        numRatings: 1,
+        averageRating: totalRating,
+        numContributions: numContributions,
+      });
+      await newRating.save();
     }
+    res.status(201).json({ message: "Rating saved successfully" });
+  } catch (error) {
+    console.error("Error saving rating:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while saving the rating" });
+  }
 });
 
 // Analytics Route
 app.get("/api/analytics", async (req, res) => {
-    try {
-        const data = await Rating.find();
-        console.log(data);
-        res.setHeader('Content-Type', 'application/json');
-        res.json(data);
-    } catch (err) {
-        console.error("Error fetching analytics:", err);
-        res.status(500).json({ message: "Error fetching analytics", error: err.message });
-    }
+  try {
+    const data = await Rating.find();
+    console.log(data);
+    res.setHeader("Content-Type", "application/json");
+    res.json(data);
+  } catch (err) {
+    console.error("Error fetching analytics:", err);
+    res
+      .status(500)
+      .json({ message: "Error fetching analytics", error: err.message });
+  }
 });
 
 app.get("/api/totalContributions", async (req, res) => {
-    try {
-        const result = await Rating.aggregate([
-            {
-                $group: {
-                    _id: null,  // Grouping by null will aggregate all the documents
-                    totalContributions: { $sum: "$numContributions" }
-                }
-            }
-        ]);
+  try {
+    const result = await Rating.aggregate([
+      {
+        $group: {
+          _id: null, // Grouping by null will aggregate all the documents
+          totalContributions: { $sum: "$numContributions" },
+        },
+      },
+    ]);
 
-        const totalContributions = result && result[0] ? result[0].totalContributions : 0;
+    const totalContributions =
+      result && result[0] ? result[0].totalContributions : 0;
 
-        res.json({ totalContributions });
-
-    } catch (err) {
-        console.error("Error fetching total contributions:", err);
-        res.status(500).json({ message: "Error fetching total contributions", error: err.message });
-    }
+    res.json({ totalContributions });
+  } catch (err) {
+    console.error("Error fetching total contributions:", err);
+    res.status(500).json({
+      message: "Error fetching total contributions",
+      error: err.message,
+    });
+  }
 });
-
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

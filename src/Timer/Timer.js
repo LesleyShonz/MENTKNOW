@@ -1,3 +1,13 @@
+/**
+ * Whiteboard Timer Component for MentKnow Application.
+ * This component serves as a way of allowing users to make use of a timer
+ * to time their time on the whiteboard.
+ *
+ * @author: Lesley Shonhiwa
+ * @colaborators :Chloe Walt and Sizwe Nkosi
+ * @version: 1.1
+ * @license: University of Cape Town, School of IT license
+ */
 import React, { useState, useEffect } from "react";
 import "./Timer.css";
 

@@ -16,7 +16,6 @@ import { createShapeId, Editor } from "@tldraw/tldraw";
 import ActivityBar from "../Activity/ActivityBar";
 import TemplateIcon from "../assets/Template_icon.png";
 import SubBar from "../Activity/SubBar";
-import { useEffect } from "react";
 
 // Define a component wrapped with tracking functionality
 export const UserPresence = track(({ pageName }) => {
@@ -35,8 +34,8 @@ export const UserPresence = track(({ pageName }) => {
       {
         id: problemsShape,
         type: "geo",
-        x: 128 + Math.random() * 0,
-        y: 128 + Math.random() * 0,
+        x: 128,
+        y: 128,
         props: {
           geo: "rectangle",
           w: 500,
