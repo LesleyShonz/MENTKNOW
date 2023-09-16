@@ -23,26 +23,8 @@ export const UserPresence = track(({ pageName }) => {
   const editor = useEditor();
   const { color, name } = editor.user;
 
-  //Render a page according to the sepcified activity name
-  function renderPage() {
-    //check if page name exists
-    const findPageName = editor.pages.find((p) => p.name === pageName);
-    ///set current page if it exists
-    if (findPageName) {
-      editor.setCurrentPageId(findPageName.id);
-    }
-    //create the page if it doesn't exist
-    else {
-      editor.createPage(pageName);
-    }
-  }
-  // Call renderPage once when the component is mounted
-  useEffect(() => {
-    renderPage();
-  }, []); // Empty dependency array ensures it runs once on mount
-
   //Get current Page/Activity name
-  const activityName = editor.currentPage.name;
+  const activityName = pageName;
   // Create Template shape id's
   const problemsShape = createShapeId("s1");
   const solutionsShape = createShapeId("s2");

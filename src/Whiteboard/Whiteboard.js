@@ -19,7 +19,7 @@ export default function Whiteboard() {
   const pageName = location.state.pageName;
   //Create a store to store data
   const store = useYjsStore({
-    roomId: "MENTKNOW0302156394181",
+    roomId: pageName + "1234",
   });
   //Display the Whiteboard
   return (
