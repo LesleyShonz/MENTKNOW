@@ -3,6 +3,8 @@ import * as d3 from 'd3';
 import './BarChart.css'
 
 function BarChart() {
+    const [isLoading, setLoading] = useState(true);
+
     const [data, setData] = useState([]);
     const svgRef = useRef();
     const tooltipRef = useRef();
@@ -10,8 +12,12 @@ function BarChart() {
     useEffect(() => {
         fetch('http://localhost:5004/api/analytics')
             .then(response => response.json())
-            .then(data => setData(data));
+            .then(data => {
+                setData(data);
+                setLoading(false);
+            });
     }, []);
+    
 
     useEffect(() => {
         if (!data || data.length === 0) return;
@@ -119,10 +125,16 @@ function BarChart() {
 
     return (
         <div className='outer-container-bargraph'>
-            <div ref={tooltipRef} className="tooltip" style={{ position: "absolute", visibility: "hidden", background: "#eee", padding: "5px", borderRadius: "5px" }}></div>
-            <svg ref={svgRef} width={600} height={400}></svg>
+            {isLoading ? (
+                <div className="loading-spinner"></div>
+            ) : (
+                <>
+                    <div ref={tooltipRef} className="tooltip" style={{ position: "absolute", visibility: "hidden", background: "#eee", padding: "5px", borderRadius: "5px" }}></div>
+                    <svg ref={svgRef} width={600} height={400}></svg>
+                </>
+            )}
         </div>
-    );
+    );    
 }
 
 export default BarChart;

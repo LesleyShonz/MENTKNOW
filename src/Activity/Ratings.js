@@ -20,7 +20,10 @@ function Ratings({ activityName, numContributions }) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const navigateUser = (userType) => {
+    navigate(userType === 'mentee' ? '/dashboard' : '/MentorDashboard');
+  };
   // Function to handle changes in the selected rating
   const handleRatingChange = (newRating) => {
     setRating(newRating);
@@ -43,7 +46,13 @@ function Ratings({ activityName, numContributions }) {
       });
 
       setSubmitted(true); // Mark submission as successful
-      navigate("/dashboard");
+      
+      if(userData.userType === 'mentee'){
+        navigate('/dashboard')
+      }
+      else{
+        navigate('/mentorDashboard');
+      }
     } catch (error) {
       setError("Error submitting rating. Please try again later.");
       console.error("Error submitting rating:", error);

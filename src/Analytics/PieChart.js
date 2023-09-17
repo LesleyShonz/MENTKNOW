@@ -7,13 +7,19 @@ function PieChart() {
     const [data, setData] = useState([]);
     // Reference to our SVG element in the DOM
     const svgRef = useRef();
+    const [isLoading, setIsLoading] = useState(true);
+
 
     // Fetching data from an API
     useEffect(() => {
         fetch('http://localhost:5004/api/analytics')
             .then(response => response.json())
-            .then(data => setData(data));
+            .then(data => {
+                setData(data);
+                setIsLoading(false); // Update loading status once data is fetched.
+            });
     }, []);
+    
 
     // Main effect to draw and update the pie chart
     useEffect(() => {
@@ -153,6 +159,9 @@ function PieChart() {
 
     // Return the SVG wrapped inside a container
     return (
+        isLoading ?
+        <div className="spinning-spinner"></div> :
+        
         <div className="pie-chart-container">
             <svg ref={svgRef} width={560} height={312}></svg>
         </div>
