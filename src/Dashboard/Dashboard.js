@@ -344,9 +344,9 @@ const Dashboard = () => {
                 style={{ backgroundColor: '#F39F18' }}
               >
                 <span className="initials-container">
-                  <span className="initials-container-style">
+                  <div className="initials-container-style">
                        {getInitials(mentor[0].name, mentor[0].surname)}
-                  </span>
+                  </div>
                 </span>
               </div>
               <h1 className="mentor-name-component">

@@ -355,7 +355,9 @@ const MentorDashboard = () => {
                 style={{ backgroundColor: colors[`${member.name}${member.surname}`] || "#FFF" }}
               >
                 <div className="initials-container">
+                  <div className="initials-container-style">
                   {getInitials(member.name, member.surname)}
+                </div>
                 </div>
               </div>
               <div className="mentees-names-style">

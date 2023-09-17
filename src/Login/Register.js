@@ -121,8 +121,10 @@ function Register() {
                 <img src={mentknowlogo} alt="MentKnow Logo" />
             </div>
             <div className="form-container">
-                <h2 className='register-header'>Create Account</h2>
-                {errors.general && <div className='error-message-server'>{errors.general}</div>}
+                <div className="heading-error-container">
+                    {errors.general && <div className='error-message-server'>{errors.general}</div>}
+                    <h2 className='register-header'>Create Account</h2>
+                </div>
 
                 <form onSubmit={onSubmit}>
                     <div className='radio-group-signup'>

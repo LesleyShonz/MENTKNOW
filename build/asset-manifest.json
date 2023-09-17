@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.209251c7.css",
-    "main.js": "/static/js/main.f33d98c3.js",
+    "main.css": "/static/css/main.2ac10c6c.css",
+    "main.js": "/static/js/main.01a27817.js",
     "static/media/mentknowlogo.svg": "/static/media/mentknowlogo.6c14dc6c502ed54ae7da9b3fd7d3b9e0.svg",
     "static/media/baloo-bhai-latin-400.woff": "/static/media/baloo-bhai-latin-400.2d43c12438162f9b67ff.woff",
     "static/media/Frame.svg": "/static/media/Frame.f6895295e5278646ec9de824a5adede7.svg",
@@ -46,14 +46,14 @@
     "static/media/Calendar_add_light.svg": "/static/media/Calendar_add_light.3c726c68c1c7042537169550192516a9.svg",
     "static/media/Sign_out_squre_light.svg": "/static/media/Sign_out_squre_light.a0b9231cb8b4e002bc866a9fa207d888.svg",
     "static/media/Mortarboard_light.svg": "/static/media/Mortarboard_light.cf7303beb3d3de871861.svg",
-    "static/media/Key_alt_duotone.svg": "/static/media/Key_alt_duotone.b13c338f298533afdbda.svg",
     "index.html": "/index.html",
+    "static/media/Key_alt_duotone.svg": "/static/media/Key_alt_duotone.b13c338f298533afdbda.svg",
     "static/media/Arrow_left_light.svg": "/static/media/Arrow_left_light.f42244ced70c72f0930666f1b5d81e99.svg",
-    "main.209251c7.css.map": "/static/css/main.209251c7.css.map",
-    "main.f33d98c3.js.map": "/static/js/main.f33d98c3.js.map"
+    "main.2ac10c6c.css.map": "/static/css/main.2ac10c6c.css.map",
+    "main.01a27817.js.map": "/static/js/main.01a27817.js.map"
   },
   "entrypoints": [
-    "static/css/main.209251c7.css",
-    "static/js/main.f33d98c3.js"
+    "static/css/main.2ac10c6c.css",
+    "static/js/main.01a27817.js"
   ]
 }

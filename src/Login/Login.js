@@ -98,7 +98,6 @@ const Login = () => {
           <input
             className='userNameForm1'
             type="email"
-            placeholder="Email Address"
             name="email"
             value={email}
             onChange={onChange}
@@ -111,14 +110,13 @@ const Login = () => {
           <input
             className='password-form1'
             type="password"
-            placeholder="Password"
             name="password"
             value={password}
             onChange={onChange}
           />
 
 
-          {loading && <div style={{ marginTop: '13px', marginLeft: '315px' }}>Loading...</div>}
+          {loading && <div style={{ marginTop: '13px', marginLeft: '340px' }} className='loading-ball'></div>}
 
           <button className='login-button1' type="submit">Sign In</button>
           <a className='link-register1' onClick={handleMoveToRegister}> Don’t have an account? Sign Up here </a>

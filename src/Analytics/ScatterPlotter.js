@@ -12,19 +12,25 @@ function ScatterPlot() {
     const [data, setData] = useState([]);
     // Reference to the SVG element for D3 manipulation
     const svgRef = useRef();
+    const [isLoading, setIsLoading] = useState(true);
 
     /**
      * useEffect hook to fetch data from the API when the component mounts.
      */
     useEffect(() => {
+        setIsLoading(true);
         fetch('http://localhost:5004/api/analytics')
             .then(response => response.json())
-            .then(fetchedData => setData(fetchedData.map(d => ({
-                avgRating: d.averageRating,          // average rating of the activity
-                contributions: d.numContributions,  // number of contributions to the activity
-                activityName: d.activityName        // name of the activity
-            }))));
+            .then(fetchedData => {
+                setData(fetchedData.map(d => ({
+                    avgRating: d.averageRating,
+                    contributions: d.numContributions,
+                    activityName: d.activityName
+                })));
+                setIsLoading(false);
+            });
     }, []);
+    
 
     /**
      * useEffect hook to draw the scatter plot whenever the data changes.
@@ -128,13 +134,15 @@ function ScatterPlot() {
 
     return (
         <div className="bottom-left-span">
-
-            <div className="panel-mover">
-                <p className='scatter-plot-heading-style'>Topic Rating vs Number of Contributions</p>
-                <svg ref={svgRef} width={800} height={400}></svg>
-            </div>
+            {isLoading ? (
+                <div className="loading-spinner"></div>
+            ) : (
+                <div className="panel-mover">
+                    <p className='scatter-plot-heading-style'>Topic Rating vs Number of Contributions</p>
+                    <svg ref={svgRef} width={800} height={400}></svg>
+                </div>
+            )}
         </div>
-    )
+    );  
 }
-
 export default ScatterPlot;

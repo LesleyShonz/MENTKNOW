@@ -14,7 +14,7 @@ root.render(
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
-
+    
     <App />
   </React.StrictMode>
 );

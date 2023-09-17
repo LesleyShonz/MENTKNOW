@@ -34,8 +34,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin-left: 365px;
-  margin-top: 64px;
+
 }
 
 .radio-group-signup {
@@ -159,7 +158,12 @@
   border-radius: 8px;
   border: 1px solid #b1b1b1;
 }
+.heading-error-container{
+  margin-left: 360px;
 
+  margin-top: 64px;
+  
+}
 .group-label {
   color: #b1b1b1;
   font-family: Familjen Grotesk;
@@ -280,8 +284,11 @@
   font-style: normal;
   font-weight: 500;
   line-height: 44px;
+  position: relative;
+  top:25px;
+  margin-left: 15px;
   /* 240% */
-  margin-left: 360px;
+
   
   /* top:5px */
 }
