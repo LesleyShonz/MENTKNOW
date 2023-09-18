@@ -120,7 +120,9 @@ function Register() {
             <div className="image-container">
                 <img src={mentknowlogo} alt="MentKnow Logo" />
             </div>
+
             <div className="form-container">
+                
                 <div className="heading-error-container">
                     {errors.general && <div className='error-message-server'>{errors.general}</div>}
                     <h2 className='register-header'>Create Account</h2>
