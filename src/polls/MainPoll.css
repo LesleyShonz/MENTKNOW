@@ -1,74 +1,73 @@
 .createButton-container {
-    position:absolute;
-    width: 249px;
-    height: 200px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    background: #EDF0F2;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin-top: 408px;
-    right: 6px
+  position: absolute;
+  width: 249px;
+  height: 225px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #edf0f2;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 408px;
+  right: 6px;
 }
-.exit-poll1{
-    margin-left: 10px;
-    margin-top: 12px;
-    width: 15px;
-    height: 15px;
-    flex-shrink: 0;
+.exit-poll1 {
+  margin-left: 10px;
+  margin-top: 12px;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
 }
-.exit-poll1:hover{
-    background-color: red;
+.exit-poll1:hover {
+  background-color: red;
 }
 .header-create-poll {
-    color: #000;
-    font-family: Familjen Grotesk;
-    font-size: 16px;
-    font-style: italic;
-    font-weight: 700;
-    line-height: normal;
-    margin-top: 5px;
-    margin-left: 88px;
-    width: 73px;
-    height: 22px;
-    flex-shrink: 0;
+  color: #000;
+  font-family: Familjen Grotesk;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 5px;
+  margin-left: 88px;
+  flex-shrink: 0;
 }
 
 .create-new-poll-button {
-    width: 155.625px;
-    height: 35px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    background: #F8F8FB;
-    color: #000;
-    font-family: Familjen Grotesk;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    margin-top: 22px;
-    margin-left: 47px;
+  width: 155.625px;
+  height: 35px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #f8f8fb;
+  color: #000;
+  font-family: Familjen Grotesk;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 22px;
+  margin-left: 47px;
+  border: 2px solid #cfb7ff;
 }
-.create-new-poll-button:hover{
-    
-    background: #CFB7FF;
+.create-new-poll-button:hover {
+  background: #cfb7ff;
 }
 .vote-on-existing-poll {
-    width: 155.625px;
-    height: 35px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    background: linear-gradient(0deg, #F8F8FB 0%, #F8F8FB 100%), linear-gradient(0deg, #F8F8FB 0%, #F8F8FB 100%), #F8F8FB;
-    margin-left: 47px;
-    margin-top: 14px;
-    color: #000;
-    font-family: Familjen Grotesk;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+  width: 155.625px;
+  height: 35px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: linear-gradient(0deg, #f8f8fb 0%, #f8f8fb 100%),
+    linear-gradient(0deg, #f8f8fb 0%, #f8f8fb 100%), #f8f8fb;
+  margin-left: 47px;
+  margin-top: 14px;
+  color: #000;
+  font-family: Familjen Grotesk;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: 2px solid #cfb7ff;
 }
 
-.vote-on-existing-poll:hover{
-   
-    background: #CFB7FF;
+.vote-on-existing-poll:hover {
+  background: #cfb7ff;
 }
