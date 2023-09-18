@@ -20,6 +20,7 @@ export default function SubBar({ editor, activityName }) {
   const [showReviewBoard, setShowReviewBoard] = useState(false);
   // Show/hide review board
   const handleReviewBoardClick = () => {
+    console.log("handleReviewBoardClick " + showReviewBoard);
     setShowReviewBoard(!showReviewBoard);
 
     let countNotes = 0; // Temporary variable to count notes

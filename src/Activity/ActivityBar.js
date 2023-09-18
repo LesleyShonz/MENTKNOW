@@ -27,22 +27,32 @@ export default function Activitybar({ activityName }) {
         onMouseEnter={toggleDropdown}
         onMouseLeave={toggleDropdown}
       >
-        <div className="nav-button">
+        <div
+          className={`nav-button ${
+            isDiscussionClicked
+              ? "clicked"
+              : isResourcesClicked
+              ? "clicked"
+              : ""
+          }`}
+        >
           <img src={ActivityIcon} alt="book" className="icon" />
           Activity
         </div>
         {isDropdownVisible && (
           <div className="dropdown-content">
             <button
-              className={`dropdown-button ${isDiscussionClicked ? "clicked" : ""
-                }`}
+              className={`dropdown-button ${
+                isDiscussionClicked ? "clicked" : ""
+              }`}
               onClick={toggleDiscussion}
             >
               Discussions
             </button>
             <button
-              className={`dropdown-button ${isResourcesClicked ? "clicked" : ""
-                }`}
+              className={`dropdown-button ${
+                isResourcesClicked ? "clicked" : ""
+              }`}
               onClick={toggleResources}
             >
               Resources

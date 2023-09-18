@@ -70,9 +70,20 @@ function Timer() {
   const reset = () => {
     const inputMinutes = prompt("Enter number of minutes:");
 
-    if (inputMinutes < 60) {
-      pause();
-      setRemainingSeconds(inputMinutes * 60);
+    // Check if the input is not null (user clicked OK) and it can be converted to a number
+    if (inputMinutes !== null) {
+      const minutes = parseInt(inputMinutes, 10);
+
+      // Check if minutes is a valid number and less than 60
+      if (!isNaN(minutes) && minutes < 60) {
+        pause();
+        setRemainingSeconds(minutes * 60);
+      } else {
+        // Handle invalid input
+        alert(
+          "Invalid input. Please enter a valid number of minutes less than 60."
+        );
+      }
     }
   };
 
@@ -89,7 +100,7 @@ function Timer() {
       <span className="timer__part timer__part--minutes">
         {formattedTime()}
       </span>
-      <span className="timer__part">:</span>
+      <span className="timer__part"></span>
       <span className="timer__part timer__part--seconds"></span>
 
       {/* Display control buttons */}

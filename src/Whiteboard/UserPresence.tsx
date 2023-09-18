@@ -16,17 +16,21 @@ import { createShapeId, Editor } from "@tldraw/tldraw";
 import ActivityBar from "../Activity/ActivityBar";
 import TemplateIcon from "../assets/Template_icon.png";
 import SubBar from "../Activity/SubBar";
+import { useState } from "react";
 
 // Define a component wrapped with tracking functionality
 export const UserPresence = track(({ pageName }) => {
   const editor = useEditor();
   const { color, name } = editor.user;
-
+  const [hideTemplate, setHideTemplate] = useState(false);
   //Get current Page/Activity name
   const activityName = pageName;
   // Create Template shape id's
   const problemsShape = createShapeId("s1");
   const solutionsShape = createShapeId("s2");
+  // const changeDefaultText = () => {
+  //   editor.shapesArray.map((item, index) =>(item.props["text"]=))
+  // };
   //Create Template
   const createTemplate = (editor: Editor) => {
     // Create "problems" template
@@ -35,11 +39,11 @@ export const UserPresence = track(({ pageName }) => {
         id: problemsShape,
         type: "geo",
         x: 128,
-        y: 128,
+        y: 80,
         props: {
           geo: "rectangle",
           w: 500,
-          h: 700,
+          h: 680,
           dash: "draw",
           color: "light-red",
           size: "m",
@@ -54,11 +58,11 @@ export const UserPresence = track(({ pageName }) => {
         id: solutionsShape,
         type: "geo",
         x: 700,
-        y: 128,
+        y: 80,
         props: {
           geo: "rectangle", // or any other shape type you want
           w: 500,
-          h: 700,
+          h: 680,
           dash: "draw",
           color: "light-green", // Set the color for the new shape
           size: "m",
@@ -71,7 +75,14 @@ export const UserPresence = track(({ pageName }) => {
 
   //OnClick even for the "Templates" button
   const handleTemplateClick = () => {
-    createTemplate(editor); //create the templates
+    setHideTemplate(!hideTemplate);
+    console.log("Templates clicked: " + hideTemplate);
+    if (hideTemplate == false) {
+      createTemplate(editor); //create the templates
+    } else {
+      //remove the template
+      editor.deleteShapes([problemsShape, solutionsShape]);
+    }
   };
 
   return (
@@ -81,7 +92,10 @@ export const UserPresence = track(({ pageName }) => {
         <SubBar editor={editor} activityName={activityName} />
         <ActivityBar activityName={activityName} />
         <div className="nav-4">
-          <div className="nav-button" onClick={handleTemplateClick}>
+          <div
+            className={`nav-button ${hideTemplate ? "active" : ""}`}
+            onClick={handleTemplateClick}
+          >
             <img src={TemplateIcon} alt="TemplateIcon" className="icon" />
             Template
           </div>

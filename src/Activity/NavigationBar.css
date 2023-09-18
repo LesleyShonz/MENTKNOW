@@ -91,6 +91,10 @@
 .activity-button.active {
   background-color: #cfb7ff;
 }
+.nav-button.clicked {
+  background-color: #cfb7ff;
+  font-weight: bold;
+}
 
 .dropdown-content {
   /* margin-top: 3px; */
@@ -115,15 +119,17 @@
 .dropdown-button {
   margin: 7px 7px;
   padding: 10px 10px;
-  width: 120px; /* Set a fixed width */
-  height: 40px; /* Set a fixed height */
+  width: 120px;
+  height: 40px;
   background: #f8f8fb;
   border: none;
   border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
   display: flex;
-  align-items: center;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center;
   transition: background-color 0.3s;
 }
 

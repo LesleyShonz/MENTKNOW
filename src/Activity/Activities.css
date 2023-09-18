@@ -4,12 +4,12 @@
   border-radius: 10px;
   background: #edf0f2;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  padding: 20px;
+  padding: 10px;
+  padding-top: 2px;
   text-align: center;
-  width: 370px;
   flex-shrink: 0;
-  top: 70px;
-  left: 50px;
+  top: 63px;
+  left: 10px;
   padding-right: 10px;
 }
 .resources-container {
@@ -18,14 +18,13 @@
   border-radius: 10px;
   background: #edf0f2;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  padding: 20px;
+  padding: 10px;
   text-align: center;
-  width: 370px;
-  /* height: 385px; */
   flex-shrink: 0;
-  top: 550px;
-  left: 50px;
+  top: 517px;
+  left: 10px;
   padding-right: 10px;
+  padding-bottom: 5px;
   color: var(--TOOLBAR-COLOUR, #303344);
   font-family: Familjen Grotesk;
   font-size: 13px;
@@ -36,12 +35,12 @@
 
 .sub-container {
   width: 330px;
-  height: 173px;
+  height: 160px;
   flex-shrink: 0;
   border-radius: 10px;
   background: #cfb7ff;
   padding-right: 10px;
-  padding-top: 1px;
+  padding-top: 0px;
   margin-bottom: 15px;
   max-height: 200px;
   overflow-y: auto;
