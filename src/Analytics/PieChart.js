@@ -117,7 +117,7 @@ function PieChart() {
 
         // LEGEND SETTINGS
         // Position of the legend's top-left corner
-        const legendStartX = 300; // Adjust to move legend horizontally
+        const legendStartX = 280; // Adjust to move legend horizontally
         const legendStartY = 120;  // Adjust to move legend vertically
         // Adding the Legend Heading
         svg.append("text")
@@ -147,7 +147,7 @@ function PieChart() {
         legend.append("text")
             .attr("x", 15)
             .attr("y", 9)
-            .style("font-size", "14px")
+            .style("font-size", "10px")
             .style("fill", "#000")
             .style("font-style", "normal")
             .style("font-weight", "500")

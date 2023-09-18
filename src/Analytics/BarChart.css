@@ -11,12 +11,12 @@
 }
 
 .pie-chart-container {
-    width: 560px;
+    width: 530px;
     height: 312px;
     flex-shrink: 0;
     border-radius: 14px;
     background: #F8F8FB;
-    margin-left: 50px;
+    margin-left: 48px;
     position: relative;
     top: -66px
 }
@@ -24,7 +24,7 @@
 .mentee-text-style {
     color: var(--TOOLBAR-COLOUR, #303344);
     font-family: Baloo Bhai;
-    font-size: 25px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -35,12 +35,12 @@
 }
 
 .bottom-left-span {
-    width: 560px;
+    width: 530px;
     height: 372px;
     flex-shrink: 0;
     border-radius: 14px;
     background: #F8F8FB;
-    margin-left: 50px;
+    margin-left: 48px;
     position: relative;
     top: -21px;
 
