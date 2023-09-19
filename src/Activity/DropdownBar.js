@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import "./Activities.css";
 import Discussion from "../assets/Discussion.svg";
-import TopicIcon from "../assets/Topic_icon.png";
+
 import axios from "axios";
 const BulletImage = () => (
   <img
@@ -52,13 +52,16 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
 
       // Handle the response as needed, e.g., update content based on the response
       const newItem = (
-        <p key={Date.now()} style={{ display: "flex", alignItems: "center" }}>
-          {Topic === "Discussion Question" && text !== "Resource" ? (
+        <p className="ActivitiesText" key={Date.now()}>
+          {Topic === "Discussion Questions" && text !== "Resource" ? (
             <BulletImage />
           ) : (
             "•"
           )}
-          <span>{` ${newText}`}</span>
+          <span
+            style={{ marginLeft: "5px" }}
+            className="ActivitiesText"
+          >{` ${newText}`}</span>
         </p>
       );
 
@@ -91,6 +94,7 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
         <div>
           {links.map((link, index) => (
             <a
+              style={{ marginLeft: "4px" }}
               key={index}
               href={link}
               target="_blank"
@@ -105,15 +109,19 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
       // Render each sentence as a new line
       const sentences = dataAsString.split(/[.?]/);
       return sentences.map((sentence, index) => (
-        <p key={index} style={{ display: "flex", alignItems: "center" }}>
+        <p
+          className="activitesText"
+          key={index}
+          style={{ display: "flex", alignItems: "center" }}
+        >
           {sentence.trim() !== "" ? (
-            Topic === "Discussion Question" ? (
+            Topic === "Discussion Questions" ? (
               <BulletImage />
             ) : (
               "•"
             )
           ) : null}
-          <span>
+          <span style={{ marginLeft: "4px" }}>
             {` ${sentence.trim()}`}
             {sentence.trim() !== ""
               ? Topic === "Discussion Question"

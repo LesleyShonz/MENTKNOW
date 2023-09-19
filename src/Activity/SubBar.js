@@ -10,7 +10,7 @@
  */
 import "./NavigationBar.css";
 import { useState } from "react";
-import DashboardIcon from "../assets/Dashboard_icon.png";
+import DashboardIcon from "../assets/Dashboard_icon.svg";
 import Ratings from "./Ratings";
 
 export default function SubBar({ editor, activityName }) {

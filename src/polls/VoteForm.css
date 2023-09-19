@@ -1,199 +1,190 @@
 /* Hidden style for the native radio button so we can use a custom design */
 .hidden-radio {
-    display: none;
+  display: none;
 }
 
 .all-poll-container {
-    margin-top: 400px;
-    right: 6px;
-    position: absolute;
-
+  margin-top: 400px;
+  right: 6px;
+  position: absolute;
 }
 
 /* Style for the container that wraps the custom radio button and its label */
 .radio-container {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
 }
 
 /* Style for the custom rectangle radio button */
 .option-label {
-    display: block;
-    width: 190px;
-    height: 35px;
-    align-items: center;
-    flex-shrink: 0;
-    display: block;
-    border-radius: 10px;
-    color: #000;
-    font-family: Familjen Grotesk;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    margin-top: 30px;
-    margin-left: 41px;
-
+  display: block;
+  width: 190px;
+  height: 35px;
+  align-items: center;
+  flex-shrink: 0;
+  display: block;
+  border-radius: 10px;
+  color: #000;
+  font-family: Familjen Grotesk;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 30px;
+  margin-left: 41px;
 }
 
-
 .option-input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    color: #000;
-    font-family: Familjen Grotesk;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    overflow-y: auto;
-
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  color: #000;
+  font-family: Familjen Grotesk;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  overflow-y: auto;
 }
 
 .custom-radio {
-    display: flex;
-    /* Make it a flex container */
-    align-items: center;
-    /* Vertically center the content */
-    justify-content: center;
-    /* Horizontally center the content */
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: 1px solid #6C00A0;
-    background: #FFF;
-    margin-left: 10px;
-    cursor: pointer;
+  display: flex;
+  /* Make it a flex container */
+  align-items: center;
+  /* Vertically center the content */
+  justify-content: center;
+  /* Horizontally center the content */
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #6c00a0;
+  background: #fff;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
-
-.option-input:checked~.custom-radio {
-    border-radius: 8px;
-    border: 1px solid #6C00A0;
-    background: #FFF;
+.option-input:checked ~ .custom-radio {
+  border-radius: 8px;
+  border: 1px solid #6c00a0;
+  background: #cfb7ff;
+  font-weight: bold;
 }
 
 .option-label:hover {
-    background-color: #f5f5f5;
+  background-color: #f5f5f5;
+}
+.custom-radio:hover {
+  background-color: #cfb7ff;
 }
 
 .voteFormContainer {
-    border-radius: 10px;
-    background: #EDF0F2;
-    width: 272px;
-    height: 248px;
-    flex-shrink: 0;
-    overflow-y: auto;
-
+  border-radius: 10px;
+  background: #edf0f2;
+  width: 272px;
+  height: 248px;
+  flex-shrink: 0;
+  overflow-y: auto;
 }
 
 .result-container {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #f4f4f4;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 10px;
-    width: 152px;
-    height: 35px;
-    flex-shrink: 0;
-    margin-top: 12px;
-    margin-left: 7px;
-    color: #000;
-    font-family: Familjen Grotesk;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 152px;
+  height: 35px;
+  flex-shrink: 0;
+  margin-top: 12px;
+  margin-left: 7px;
+  color: #000;
+  font-family: Familjen Grotesk;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 /* Styling for the most voted option */
 .most-voted {
-    background-color: #a8e6cf;
-    border-color: #7bcfa9;
+  background-color: #b3e772;
+  border-color: #7bcfa9;
 }
 
 .results-container1 {
- 
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    width: 272px;
-    height: 248px;
-    flex-shrink: 0;
-    right: 7px;
-    bottom: 203px;
-    overflow-y: auto;
-    text-align: center;
-    
-    border: 1px solid #6C00A0;
-    background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 272px;
+  height: 248px;
+  flex-shrink: 0;
+  right: 7px;
+  bottom: 203px;
+  overflow-y: auto;
+  text-align: center;
+  border-radius: 10px;
+  background: #edf0f2;
+
+  border: 1px solid #6c00a0;
+  background: #fff;
 }
 
-
-
 .results-heading {
-    color: #000;
-    font-family: Familjen Grotesk;
-    font-size: 14px;
-    font-style: italic;
-    font-weight: 700;
-    line-height: normal;
-    margin-top: 22px;
-    
+  color: #000;
+  font-family: Familjen Grotesk;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 22px;
 }
 
 .option-question-header {
-    color: #000;
-    font-family: Familjen Grotesk;
-    font-size: 16px;
-    font-style: italic;
-    font-weight: 700;
-    line-height: normal;
-    margin-top: 5px;
-    margin-left: 44px;
+  color: #000;
+  font-family: Familjen Grotesk;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 5px;
+  margin-left: 44px;
 }
 
 .option-container {
-    width: 190px;
-    height: 35px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    border: 1px solid #6C00A0;
-    background: #FFF;
+  width: 190px;
+  height: 35px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #6c00a0;
+  background: #fff;
 }
 
 .voting-container {
-    width: 272px;
-    height: 248px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    border: 1px solid #6C00A0;
-    background: #FFF;
-    overflow-y: auto;
-
+  width: 272px;
+  height: 248px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #6c00a0;
+  background: #fff;
+  overflow-y: auto;
 }
 
-
 .vote-button-form {
-
-    width: 190px;
-    height: 35px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    border: 1px solid #6C00A0;
-    background: #FFF;
-    margin-top: 19px;
-    margin-left: 44px;
+  width: 190px;
+  height: 35px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #6c00a0;
+  background: #fff;
+  margin-top: 19px;
+  margin-left: 44px;
 }
 
 .vote-button-form:hover {
-
-    border-radius: 10px;
-    background: #CFB7FF;
+  border-radius: 10px;
+  background: #cfb7ff;
 }
 
 .highlighted-option {
-    background-color: #f0f0f0;  /* Choose a suitable color */
-    border: 1px solid #ccc;     /* Optional: Add a border for more emphasis */
+  background-color: #f0f0f0; /* Choose a suitable color */
+  border: 1px solid #ccc; /* Optional: Add a border for more emphasis */
 }

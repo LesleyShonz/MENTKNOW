@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Activity from "./Activities";
-import ActivityIcon from "../assets/Activity_icon.png";
-import "./NavigationBar.css"; // Import your CSS file
+import ActivityIcon from "../assets/Activity_icon.svg";
+import "./NavigationBar.css";
 
 export default function Activitybar({ activityName }) {
   const [isDropdownVisible, setDropdownVisible] = useState(false);

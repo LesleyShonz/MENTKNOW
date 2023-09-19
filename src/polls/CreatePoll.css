@@ -1,104 +1,101 @@
 .create-container-poll {
-    position:absolute;
-    width: 272px;
-    height: 248px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    border: 1px solid #6C00A0;
-    background: #FFF;
-    overflow-y: auto;
-    right: 6px;
-    margin-top: 365px;
-
+  position: absolute;
+  width: 272px;
+  height: 248px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #6c00a0;
+  background: #fff;
+  overflow-y: auto;
+  right: 6px;
+  margin-top: 365px;
+}
+::placeholder {
+  color: #000;
+  opacity: 1;
 }
 
-.exit-poll{
-    margin-left: 10px;
-    margin-top: 12px;
-    width: 15px;
-    height: 15px;
-    flex-shrink: 0;
-}
-.exit-poll:hover{
-    background-color: red;
-}
 .question-container {
-
-    color: #000;
-    font-family: Familjen Grotesk;
-    font-size: 16px;
-    font-style: italic;
-    font-weight: 700;
-    line-height: normal;
-    margin-left: 23px;
-    margin-top: 8px;
-    border-radius: 8px;
-    border: 1px solid #6C00A0;
-    background: #FFF;
-    display: flex;
-    width: 225px;
-    height: 26px;
-    padding: 10px 24px 10px 18px;
-    align-items: center;
-    gap: 12px;
-    flex-shrink: 0;
+  color: #000;
+  font-family: Familjen Grotesk;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 23px;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid #6c00a0;
+  background: #fff;
+  display: flex;
+  width: 225px;
+  height: 26px;
+  padding: 10px 24px 10px 18px;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .options-container {
-
-    display: flex;
-    width: 225px;
-    height: 35px;
-    padding: 10px 24px 10px 18px;
-    align-items: center;
-    gap: 12px;
-    flex-shrink: 0;
-    margin-top: 13px;
-    margin-left: 23px;
-    border-radius: 8px;
-    border: 1px solid #6C00A0;
-    background: #FFF;
+  display: flex;
+  width: 225px;
+  height: 35px;
+  padding: 10px 24px 10px 18px;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-top: 13px;
+  margin-left: 23px;
+  border-radius: 8px;
+  border: 1px solid #6c00a0;
+  background: #fff;
+  color: #000;
+  font-family: Familjen Grotesk;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .add-option-key {
-    color: #000;
-    font-family: Familjen Grotesk;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    margin-left: 23px;
-    margin-top: 8px;
+  color: #000;
+  font-family: Familjen Grotesk;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 23px;
+  margin-top: 8px;
 }
 
 .create-poll-button {
-    width: 225px;
-    height: 32px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    border: 1px solid #6C00A0;
-    background: #FFF;
-    margin-left: 23px;
-    color: #000;
-    font-family: Familjen Grotesk;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+  width: 225px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #6c00a0;
+  background: #fff;
+  margin-left: 23px;
+  color: #000;
+  font-family: Familjen Grotesk;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
-.create-poll-button:hover{
-    
-    background: #CFB7FF;
+.create-poll-button:hover {
+  background: #cfb7ff;
 }
-
-
-.create-form-error{
-    color: #F00;
-    font-family: Familjen Grotesk;
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px; /* 240% */
-    margin-left: 76px;
+.poll-success {
+  color: black;
+}
+.create-form-error {
+  color: #f00;
+  font-family: Familjen Grotesk;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 240% */
+  margin-left: 76px;
 }

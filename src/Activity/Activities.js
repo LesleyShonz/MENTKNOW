@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import "./Activities.css";
 
-import TopicIcon from "../assets/Topic_icon.png";
+import TopicIcon from "../assets/Topic_icon.svg";
 import DropdownBar from "./DropdownBar";
 import axios from "axios";
 import { useEffect } from "react";
@@ -51,14 +51,14 @@ const Activities = ({
       {isDiscussionClicked && (
         <div className="main-container">
           {/* Display discussion data */}
-          <h1>
+          <h1 className="TopicName">
             <img className="icon-H" src={TopicIcon} alt="TopicIcon" />
             {activityName}
           </h1>
 
           <DropdownBar
             activityName={activityName}
-            Topic="Discussion Question"
+            Topic="Discussion Questions"
             QuestionsTags={true}
             text="Question"
             data={discussionData}

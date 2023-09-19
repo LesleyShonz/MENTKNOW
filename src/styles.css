@@ -8,7 +8,13 @@ body {
   overflow-x: hidden;
   
   font-family: 'Familjen Grotesk', sans-serif;
-  
+
+  margin-top: auto;
+  margin-left: auto;
+  display: flex;
+  margin-right: 10px;
+  align-items: center; 
+  height: 100vh; /* full viewport height */
 }
 
 html,

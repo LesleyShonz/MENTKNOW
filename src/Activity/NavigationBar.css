@@ -9,6 +9,8 @@
   flex-shrink: 0;
   left: 705px;
   top: 5.1px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .nav-2 {
@@ -20,7 +22,7 @@
   background: #edf0f2;
   height: 45px;
   flex-shrink: 0;
-  left: 400px;
+  left: 419px;
   top: 5px;
 }
 .nav-3 {
@@ -44,7 +46,7 @@
   background: #edf0f2;
   height: 45px;
   flex-shrink: 0;
-  left: 970px;
+  left: 990px;
   top: 5px;
 }
 
@@ -58,7 +60,10 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   transition: background-color 0.3s;
+  height: 35px;
+  width: 125.001px;
 }
 
 .nav-button:hover {
@@ -71,8 +76,8 @@
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   margin-right: 10px;
 }
 .activity-dropdown {
@@ -106,7 +111,7 @@
   background: #edf0f2;
   z-index: 1;
   width: 133px;
-  height: 100px;
+  height: 95px;
   flex-shrink: 0;
   left: 3px;
   transition: background-color 0.3s;
@@ -120,7 +125,7 @@
   margin: 7px 7px;
   padding: 10px 10px;
   width: 120px;
-  height: 40px;
+  height: 35px;
   background: #f8f8fb;
   border: none;
   border-radius: 10px;

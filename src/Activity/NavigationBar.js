@@ -2,12 +2,8 @@
 import Timer from "../Timer/Timer";
 import React, { useState } from "react";
 import "./NavigationBar.css";
-import ActivityIcon from "../assets/Activity_icon.png";
-import PollingIcon from "../assets/polling_icon.png";
-import TimerIcon from "../assets/Timer_icon.png";
-import TemplateIcon from "../assets/Template_icon.png";
-import ReactIcon from "../assets/React_icon.png";
-import Ratings from "./Ratings";
+import PollingIcon from "../assets/polling_icon.svg";
+import TimerIcon from "../assets/Timer_icon.svg";
 import MainPoll from "../polls/MainPoll";
 
 const NavigationBar = ({ activityName }) => {
