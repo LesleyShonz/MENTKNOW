@@ -259,7 +259,9 @@ const Dashboard = () => {
           </button>
         </div>
         <div className="all-others-container">
-          <img className="all-image-icons-style" src={goal} alt="" />
+          <div className="all-image-icons-stye-outer">
+            <img className="all-image-icons-style" src={goal} alt="" />
+          </div>
           <h1 className="activity-name">Goal Setting</h1>
           <img className="calender-image-icons1" src={calender} alt="" />
           <h2 className="date-style">22/09/2023</h2>
@@ -345,7 +347,7 @@ const Dashboard = () => {
               >
                 <span className="initials-container">
                   <div className="initials-container-style">
-                       {getInitials(mentor[0].name, mentor[0].surname)}
+                    {getInitials(mentor[0].name, mentor[0].surname)}
                   </div>
                 </span>
               </div>
@@ -355,8 +357,8 @@ const Dashboard = () => {
             </div>
           ) : (
             <span className="mentor-container">
-              <div className="loading-ball">
-                
+              <div >
+                Mentor currently not assigned
               </div>
             </span>
           )}

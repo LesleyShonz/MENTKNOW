@@ -15,7 +15,7 @@ function Register() {
         email: '',
         password: '',
         userType: 'mentee',
-        groupNumber: '',
+        groupNumber: '1',
         accessPin: ''
     });
 
