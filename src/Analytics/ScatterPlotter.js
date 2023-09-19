@@ -108,7 +108,7 @@ function ScatterPlot() {
 
         // Label for the x-axis
         svg.append("text")
-            .attr("transform", `translate(${width / 2},${height - margin.bottom + 40})`)
+            .attr("transform", `translate(${(width / 2 )+40},${height - margin.bottom + 40})`)
             .style("text-anchor", "middle")
             .text("Number of Contributions (Sticky Notes)")
             .attr("fill", "#000")

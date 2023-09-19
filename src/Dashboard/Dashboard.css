@@ -161,6 +161,7 @@
     height: 63.512px;
     flex-shrink: 0;
     background-color: #FFF;
+    border-radius: 8px;
     margin-top: 9px;
     margin-left: 40px;
 }
@@ -170,7 +171,7 @@
     width: 620px;
     height: 63.512px;
     position: relative;
-    ;
+    border-radius: 8px;
     flex-shrink: 0;
     background-color: #FFF;
     margin-top: 15.59px;
@@ -181,20 +182,13 @@
     width: 50px;
     height: 50px;
     flex-shrink: 0;
-    margin-top: 10.49px;
+    margin-top: 7px;
     margin-left: 10px;
     background-color: #EDF0F2;
     padding: 10px;
     border-radius: 8px;
 }
 
-.all-image-icons-style-outer {
-    width: 50px;
-    height: 50px;
-    flex-shrink: 0;
-    color: #0d74ba;
-    align-items: center;
-}
 
 .calender-image-icons {
     width: 24px;
@@ -276,10 +270,12 @@
     margin-left: 109px;
     cursor: pointer;
 }
+
 .right-container {
     width: 535px;
     height: 818px;
     flex-shrink: 0;
+    
 }
 
 .right-top-container {
@@ -301,7 +297,7 @@
     line-height: normal;
     margin-left: 17px;
     position: relative;
-    top:8px;
+    top: 8px;
 }
 
 .top-right-icons {
@@ -359,16 +355,18 @@
     height: 33.947px;
     flex-shrink: 0;
     border-radius: 8px;
-    margin-top: 4.21px;
-    margin-left: 4.33px;
+    margin-left: 4px;
+    position: relative;
+    top: 3px;
+        
 }
 
 .initials-container {
     width: 37.802px;
     height: 33.947px;
     text-align: center;
-
 }
+
 
 .initials-container-style {
     color: #0a0b0a;
@@ -381,7 +379,7 @@
     /* 150% */
     margin-left: 2px;
     position: relative;
-    top: 8px;
+    top: 5px;
 }
 
 .mentor-name-component {
@@ -429,7 +427,7 @@
     height: 33.947px;
     flex-shrink: 0;
     border-radius: 8px;
-    margin-top: 4.21px;
+    margin-top: 2.5px;
     margin-left: 4.33px;
     text-align: center;
 
@@ -469,7 +467,8 @@
     font-weight: 400;
     line-height: normal;
     margin-left: 16.44px;
-    margin-top: 5.74px;
+    position: relative;
+    top:12px;
 }
 
 .quote-style {
@@ -486,8 +485,13 @@
 .analytics-style {
 
     display: inline-flex;
-    margin-top: 16px;
-    margin-left: 57px;
+    margin-top: 12px;
+    margin-left: 44px;
+    border-radius: 8px;
+    background: var(--Grey, #F5F5F7);
+    width: 147px;
+    height: 32px;
+    flex-shrink: 0;
 
 }
 
@@ -507,6 +511,8 @@
     width: 24px;
     height: 24px;
     flex-shrink: 0;
+    margin-left: 13px;
+    margin-top: 4px;
 }
 
 .analytics-style:hover {

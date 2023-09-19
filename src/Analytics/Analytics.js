@@ -134,10 +134,9 @@ function Analytics() {
                                         <h1 className='total-mentees-count-style'>
                                             {averageContrubution}
                                         </h1>
-
                                         <div>
-                                            <p className='mentee-para'>Contribution per</p>
-                                            <p className='mentee-para1'>Mentee on Avg.</p>
+                                            <p className='mentee-para'>Avg Contribution</p>
+                                            <p className='mentee-para1'>/mentee</p>
                                         </div>
                                     </div>
                                 </div>

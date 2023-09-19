@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.878c1046.css",
-    "main.js": "/static/js/main.7b07a2a8.js",
+    "main.css": "/static/css/main.fd87cc0e.css",
+    "main.js": "/static/js/main.685a91e4.js",
     "static/media/mentknowlogo.svg": "/static/media/mentknowlogo.6c14dc6c502ed54ae7da9b3fd7d3b9e0.svg",
     "static/media/baloo-bhai-latin-400.woff": "/static/media/baloo-bhai-latin-400.2d43c12438162f9b67ff.woff",
     "static/media/Frame.svg": "/static/media/Frame.f6895295e5278646ec9de824a5adede7.svg",
@@ -54,11 +54,11 @@
     "index.html": "/index.html",
     "static/media/Key_alt_duotone.svg": "/static/media/Key_alt_duotone.b13c338f298533afdbda.svg",
     "static/media/Arrow_left_light.svg": "/static/media/Arrow_left_light.f42244ced70c72f0930666f1b5d81e99.svg",
-    "main.878c1046.css.map": "/static/css/main.878c1046.css.map",
-    "main.7b07a2a8.js.map": "/static/js/main.7b07a2a8.js.map"
+    "main.fd87cc0e.css.map": "/static/css/main.fd87cc0e.css.map",
+    "main.685a91e4.js.map": "/static/js/main.685a91e4.js.map"
   },
   "entrypoints": [
-    "static/css/main.878c1046.css",
-    "static/js/main.7b07a2a8.js"
+    "static/css/main.fd87cc0e.css",
+    "static/js/main.685a91e4.js"
   ]
 }
