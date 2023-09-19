@@ -1,10 +1,15 @@
 import React, { useState, useRef } from "react";
 import "./Activities.css";
 
-import TopicIcon from "../assets/Topic_icon.svg";
 import DropdownBar from "./DropdownBar";
 import axios from "axios";
 import { useEffect } from "react";
+import Awareness from "../assets/Awareness.svg";
+import Goal from "../assets/goals.svg";
+import Time from "../assets/time.svg";
+import Study from "../assets/study.svg";
+import Stress from "../assets/stress.svg";
+import Exam from "../assets/Exam.svg";
 const Activities = ({
   activityName,
   isResourcesClicked,
@@ -13,7 +18,14 @@ const Activities = ({
   const [discussionData, setDiscussionData] = useState([]);
   const [activitiesData, setActivitiesData] = useState([]);
   const [resourcesData, setResourcesData] = useState([]);
-
+  const activityNameToIcon = {
+    Awareness: Awareness,
+    Goal: Goal,
+    Time: Time,
+    Study: Study,
+    Stress: Stress,
+    Exam: Exam,
+  };
   useEffect(() => {
     // Fetch all activities when the component mounts
     axios
@@ -52,7 +64,11 @@ const Activities = ({
         <div className="main-container">
           {/* Display discussion data */}
           <h1 className="TopicName">
-            <img className="icon-H" src={TopicIcon} alt="TopicIcon" />
+            <img
+              className="icon-H"
+              src={activityNameToIcon[activityName.split(" ")[0]]}
+              alt="TopicIcon"
+            />
             {activityName}
           </h1>
 
