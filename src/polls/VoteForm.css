@@ -5,7 +5,7 @@
 
 .all-poll-container {
   margin-top: 400px;
-  right: 6px;
+  right: 36px;
   position: absolute;
 }
 
@@ -104,12 +104,13 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  border: 1px solid #6c00a0;
 }
 
 /* Styling for the most voted option */
 .most-voted {
   background-color: #b3e772;
-  border-color: #7bcfa9;
+  border: 1px solid #6c00a0;
 }
 
 .results-container1 {
@@ -125,7 +126,6 @@
   background: #edf0f2;
 
   border: 1px solid #6c00a0;
-  background: #fff;
 }
 
 .results-heading {
@@ -164,7 +164,7 @@
   flex-shrink: 0;
   border-radius: 8px;
   border: 1px solid #6c00a0;
-  background: #fff;
+  background: #edf0f2;
   overflow-y: auto;
 }
 

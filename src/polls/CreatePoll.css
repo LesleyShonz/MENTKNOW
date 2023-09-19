@@ -5,10 +5,10 @@
   flex-shrink: 0;
   border-radius: 8px;
   border: 1px solid #6c00a0;
-  background: #fff;
+  background: #edf0f2;
   overflow-y: auto;
-  right: 6px;
-  margin-top: 365px;
+  right: 36px;
+  margin-top: 385px;
 }
 ::placeholder {
   color: #000;
