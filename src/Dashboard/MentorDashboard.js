@@ -248,78 +248,78 @@ const MentorDashboard = () => {
         </div>
 
         <h1 className="activities-header">Activities</h1>
-
+        <p1 className='activity-topics-style'>Activity Topics</p1>
         <div className="awareness-container">
           <img className="all-image-icons-style" src={lamp} alt="" />
           <h1 className="activity-name">Awareness</h1>
           <img className="calender-image-icons" src={calender} alt="" />
           <h2 className="date-style">15/09/2023</h2>
-          <button
+          <h1
             className="button-to-activity-style"
             onClick={() => handleViewActivityClick("Awareness")}
           >
             View Activity
-          </button>
+          </h1>
         </div>
         <div className="all-others-container">
           <img className="all-image-icons-style" src={goal} alt="" />
           <h1 className="activity-name">Goal Setting</h1>
           <img className="calender-image-icons1" src={calender} alt="" />
           <h2 className="date-style">22/09/2023</h2>
-          <button
+          <h1
             className="button-to-activity-style"
             onClick={() => handleViewActivityClick("Goal Setting")}
           >
             View Activity
-          </button>
+          </h1>
         </div>
         <div className="all-others-container">
           <img className="all-image-icons-style" src={time} alt="" />
           <h1 className="activity-name">Time Management</h1>
           <img className="calender-image-icons2" src={calender} alt="" />
           <h2 className="date-style">29/09/2023</h2>
-          <button
+          <h1
             className="button-to-activity-style"
             onClick={() => handleViewActivityClick("Time Management")}
           >
             View Activity
-          </button>
+          </h1>
         </div>
         <div className="all-others-container">
           <img className="all-image-icons-style" src={brain} alt="" />
           <h1 className="activity-name">Study Skills</h1>
           <img className="calender-image-icons3" src={calender} alt="" />
           <h2 className="date-style">06/10/2023</h2>
-          <button
+          <h1
             className="button-to-activity-style"
             onClick={() => handleViewActivityClick("Study Skills")}
           >
             View Activity
-          </button>
+          </h1>
         </div>
         <div className="all-others-container">
           <img className="all-image-icons-style" src={stress} alt="" />
           <h1 className="activity-name">Stress Management</h1>
           <img className="calender-image-icons4" src={calender} alt="" />
           <h2 className="date-style">13/10/2023</h2>
-          <button
+          <h1
             className="button-to-activity-style"
             onClick={() => handleViewActivityClick("Stress Management")}
           >
             View Activity
-          </button>
+          </h1>
         </div>
         <div className="all-others-container">
           <img className="all-image-icons-style" src={magistrate} alt="" />
           <h1 className="activity-name">Exam Preparation</h1>
           <img className="calender-image-icons5" src={calender} alt="" />
           <h2 className="date-style">20/10/2023</h2>
-          <button
+          <h1
             className="button-to-activity-style"
             onClick={() => handleViewActivityClick("Exam Preparation")}
           >
             View Activity
-          </button>
+          </h1>
         </div>
       </div>
 

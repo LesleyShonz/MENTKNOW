@@ -13,9 +13,14 @@ function BarChart() {
         fetch('http://localhost:5004/api/analytics')
             .then(response => response.json())
             .then(data => {
-                setData(data);
+                const roundedData = data.map(item => ({
+                    ...item,
+                    averageRating: parseFloat(item.averageRating.toFixed(2))
+                }));
+                setData(roundedData);
                 setLoading(false);
             });
+            
     }, []);
     
 

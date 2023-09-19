@@ -23,13 +23,14 @@ function ScatterPlot() {
             .then(response => response.json())
             .then(fetchedData => {
                 setData(fetchedData.map(d => ({
-                    avgRating: d.averageRating,
-                    contributions: d.numContributions,
+                    avgRating: parseFloat(d.averageRating.toFixed(2)),
+                    contributions: d.numContributions, // assuming numContributions is an integer, not rounding it
                     activityName: d.activityName
                 })));
                 setIsLoading(false);
             });
     }, []);
+    
     
 
     /**

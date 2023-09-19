@@ -15,9 +15,14 @@ function PieChart() {
         fetch('http://localhost:5004/api/analytics')
             .then(response => response.json())
             .then(data => {
-                setData(data);
-                setIsLoading(false); // Update loading status once data is fetched.
+                const roundedData = data.map(item => ({
+                    ...item,
+                    averageRating: parseFloat(item.averageRating.toFixed(2))
+                }));
+                setData(roundedData);
+                setIsLoading(false);
             });
+            
     }, []);
     
 
@@ -106,7 +111,8 @@ function PieChart() {
             .attr("transform", d => `translate(${arc.centroid(d)})`)
             .attr("dy", "0.35em")
             .attr("text-anchor", "middle")
-            .text(d => `${((d.data.numContributions / totalContributions) * 100).toFixed(2)}%`);
+            .text(d => d.data.numContributions !== 0 ? `${((d.data.numContributions / totalContributions) * 100).toFixed(2)}%` : '');
+
 
         labels.on("mouseover", function () {
             d3.select(this).style("font-size", "18px");
@@ -135,7 +141,8 @@ function PieChart() {
         const legend = svg.append("g")
             .attr("transform", `translate(${legendStartX}, ${legendStartY})`)
             .selectAll("g")
-            .data(arcs)
+            .data(arcs.filter(d => d.data.numContributions !== 0))
+
             .join("g")
             .attr("transform", (d, i) => `translate(${(i % 2) * 120}, ${Math.floor(i / 2) * 20})`);
 
