@@ -15,16 +15,6 @@
   opacity: 1;
 }
 
-.exit-poll {
-  margin-left: 10px;
-  margin-top: 12px;
-  width: 15px;
-  height: 15px;
-  flex-shrink: 0;
-}
-.exit-poll:hover {
-  background-color: red;
-}
 .question-container {
   color: #000;
   font-family: Familjen Grotesk;

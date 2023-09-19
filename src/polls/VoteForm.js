@@ -9,10 +9,6 @@ const VotePoll = () => {
   const [hasVoted, setHasVoted] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
-  const handleImageClick = () => {
-    setIsVisible(false); // set to false to hide, or toggle with !isVisible if you want to show/hide on alternate clicks
-  };
-
   useEffect(() => {
     async function fetchPoll() {
       try {
@@ -60,12 +56,6 @@ const VotePoll = () => {
       <div className="VoteForm">
         {hasVoted ? (
           <div className="results-container1">
-            <img
-              className="exit-poll1"
-              src={reject3}
-              alt="Click to hide container"
-              onClick={handleImageClick}
-            />
             <h3 className="results-heading">Final Results:</h3>
             {poll.options.map((option, index) => (
               <div
@@ -82,12 +72,6 @@ const VotePoll = () => {
           </div>
         ) : (
           <div className="voting-container">
-            <img
-              className="exit-poll1"
-              src={reject3}
-              alt="Click to hide container"
-              onClick={handleImageClick}
-            />
             <h2 className="option-question-header">{poll.question}</h2>
             {poll.options.map((option, index) => (
               <label className="option-label" key={index}>

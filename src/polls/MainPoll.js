@@ -9,10 +9,6 @@ function MainPoll() {
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [showVoteForm, setShowVoteForm] = useState(false);
 
-  const handleImageClick = () => {
-    setIsContainerVisible(false);
-  };
-
   const handleCreateClick = () => {
     setShowCreateForm(true);
     setShowVoteForm(false);
@@ -29,12 +25,6 @@ function MainPoll() {
     <div>
       {isContainerVisible && (
         <div className="createButton-container">
-          <img
-            className="exit-poll1"
-            src={reject3}
-            alt="Click to hide container"
-            onClick={handleImageClick}
-          />
           <h1 className="header-create-poll">I want to...</h1>
           <button
             className="create-new-poll-button"

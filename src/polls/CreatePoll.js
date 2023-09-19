@@ -72,12 +72,6 @@ const CreatePoll = () => {
       style={{ display: isVisible ? "block" : "none" }}
     >
       <form onSubmit={handleSubmit}>
-        <img
-          className="exit-poll"
-          src={reject3}
-          alt="Click to hide container"
-          onClick={handleImageClick}
-        />
         <input
           className="question-container"
           type="text"
