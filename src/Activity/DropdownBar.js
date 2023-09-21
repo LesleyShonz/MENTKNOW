@@ -1,9 +1,30 @@
+/**
+ * DropdownBar Component
+ *
+ * This component renders the dynamic content of an activity, including discussion topics,
+ * resources, and other related items. It provides an interactive field for a mentor to add
+ * new content based on the type specified (e.g., Question, Activity, Resource).
+ * The newly added content is then displayed and stored.
+ *
+ * Props:
+ * - `activityName` (string): The name of the activity for which content is being added.
+ * - `Topic` (string): Specifies the category of the content (e.g., "Discussion Questions").
+ * - `QuestionsTags` (boolean): Indicates if the content should end with a question mark.
+ * - `text` (string): Specifies the type of content (e.g., "Question", "Resource").
+ * - `data` (array): Existing data to be displayed for the given activity and topic.
+ *
+ * State:
+ * - `content` (array): Holds dynamically added content to be displayed.
+ * - `textInput` (string): Temporarily holds the value of the input field.
+ *
+ * @component
+ */
 import React, { useState, useRef } from "react";
 import "./Activities.css";
 import Discussion from "../assets/Discussion.svg";
-
 import axios from "axios";
 const BulletImage = () => (
+  // BulletImage is a simple function that returns an image for bullet points.
   <img
     src={Discussion}
     alt="Bullet Point"
@@ -16,10 +37,17 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
   const [textInput, setTextInput] = useState("");
   const dataAsString = data.toString();
 
+  /**
+   * handleAddText
+   *
+   * Processes and adds the entered text to the content state. It ensures that questions
+   * end with '?' and other texts end with '.'. It also sends the added content to the server.
+   *
+   * @async
+   */
   const handleAddText = async () => {
     let newText = textInput.trim();
     if (!newText) {
-      // Do nothing if newText is empty
       return;
     }
     if (
@@ -37,20 +65,17 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
     ) {
       newText += ".";
     }
-
-    // console.log("userData:" + userData.userType);
     try {
       const response = await axios.post(
         "http://localhost:5004/api/activities/activities",
         {
-          activityName: activityName, // Pass the required data to the server
-          discussion: text == "Question" ? newText : "", // Update discussion field with newText
-          activities: text == "Activity" ? newText : "", // Update activities field if needed
-          resources: text == "Resource" ? newText + "{}" : "", // Update resources field if needed
+          activityName: activityName,
+          discussion: text == "Question" ? newText : "",
+          activities: text == "Activity" ? newText : "",
+          resources: text == "Resource" ? newText + "{}" : "",
         }
       );
 
-      // Handle the response as needed, e.g., update content based on the response
       const newItem = (
         <p className="ActivitiesText" key={Date.now()}>
           {Topic === "Discussion Questions" && text !== "Resource" ? (
@@ -76,20 +101,36 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
     }
   };
 
+  /**
+   * handleInputKeyPress
+   *
+   * Detects when the 'Enter' key is pressed within the input field and triggers the
+   * handleAddText function to process and add the entered text.
+   *
+   * @param {Object} e - The keyboard event.
+   */
   const handleInputKeyPress = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
       handleAddText();
     }
   };
+
   const userData = JSON.parse(localStorage.getItem("userData"));
   const isMentor = userData.userType;
+
+  /**
+   * renderContent
+   *
+   * Determines how the content (data) should be displayed based on the specified topic.
+   * Renders each sentence as a new line. If the topic is 'Resources', it renders them as
+   * hyperlinks.
+   *
+   * @returns {ReactNode} - The rendered content.
+   */
   const renderContent = () => {
     if (text === "Resource") {
-      // Split the data into individual links using spaces
       const links = dataAsString.split("{}");
-
-      // Render each link as a separate hyperlink
       return (
         <div>
           {links.map((link, index) => (
@@ -106,7 +147,6 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
         </div>
       );
     } else {
-      // Render each sentence as a new line
       const sentences = dataAsString.split(/[.?]/);
       return sentences.map((sentence, index) => (
         <p
@@ -124,7 +164,7 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
           <span style={{ marginLeft: "4px" }}>
             {` ${sentence.trim()}`}
             {sentence.trim() !== ""
-              ? Topic === "Discussion Question"
+              ? Topic === "Discussion Questions"
                 ? "?"
                 : "."
               : null}
@@ -136,7 +176,8 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
   return (
     <>
       <div className="sub-container">
-        <h3 className="Act-H">{Topic}</h3>
+        {Topic !== "Resources" && <h3 className="Act-H">{Topic}</h3>}
+        {Topic === "Resources" && <br></br>}
         <div className="editable-container">
           {isMentor == "mentor" && (
             <input
@@ -153,16 +194,12 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
           <div
             className="editable"
             onKeyDown={(e) => {
-              // Prevent the default Enter key behavior in the content-editable div
               if (e.key === "Enter") {
                 e.preventDefault();
               }
             }}
           >
-            {/* Render each sentence as a new line */}
-            {/* Render as working hyperlinks if it's a Resource */}
             {renderContent()}
-            {/* Render the dynamically added content */}
             {content}
           </div>
         </div>

@@ -1,8 +1,6 @@
+// Import required libraries, styles, and components
 import "./styles.css";
 import "@tldraw/tldraw/tldraw.css";
-import { Tldraw } from "@tldraw/tldraw";
-import { useYjsStore } from "./Whiteboard/useYjsStore";
-import { UserPresence } from "./Whiteboard/UserPresence";
 import NavigationBar from "./Activity/NavigationBar";
 import React, { useState } from "react";
 import Login from "./Login/Login";
@@ -23,18 +21,13 @@ import {
   BrowserRouter as Router,
   Navigate,
 } from "react-router-dom";
-import { ScatterPlot } from "@mui/icons-material";
 export default function App() {
   const [user, setUser] = useState(null);
-
   const token = localStorage.getItem("token");
   if (token) {
     axios.defaults.headers.common["x-auth-token"] = token;
   }
-  const TldrawRouteComponent = ({ store }) => (
-    <Tldraw store={store} autoFocus shareZone={<UserPresence />} />
-  );
-  console.log("token");
+
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <Router>
@@ -48,7 +41,7 @@ export default function App() {
               </>
             }
           />
-
+          {/* Other routes for application navigation */}
           <Route path="/signin" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/register" element={<Register />} />

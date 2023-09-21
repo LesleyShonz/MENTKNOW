@@ -1,23 +1,10 @@
-/**
- * Server Component for MentKnow Application.
- * This component serves as a way of communicating with the MONGODB server
- *
- * @author: Lesley Shonhiwa
- * @colaborators :Chloe Walt and Sizwe Nkosi
- * @version: 1.1
- * @license: University of Cape Town, School of IT license
- */
+///import the required modules
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-
 const app = express();
 const PORT = process.env.PORT || 5004;
-
-// Middleware to enable cross-origin resource sharing
 app.use(cors());
-
-// Middleware to parse JSON data in request bodies
 app.use(express.json());
 
 // Routes
@@ -55,13 +42,13 @@ const ratingSchema = new mongoose.Schema(
 
 const Rating = mongoose.model("Rating", ratingSchema);
 
-// Define route for saving ratings
+// @route   POST api/ratings
+// @desc    Post the rating to the database
+// @access  Public
 app.post("/api/ratings", async (req, res) => {
   const { activityName, totalRating, numContributions } = req.body;
-
   try {
     const existingRating = await Rating.findOne({ activityName });
-
     if (existingRating) {
       existingRating.totalRating += totalRating;
       existingRating.numRatings += 1;
@@ -88,7 +75,9 @@ app.post("/api/ratings", async (req, res) => {
   }
 });
 
-// Analytics Route
+// @route   GET api/analytics
+// @desc    Get the analytics
+// @access  Public
 app.get("/api/analytics", async (req, res) => {
   try {
     const data = await Rating.find();
@@ -102,21 +91,21 @@ app.get("/api/analytics", async (req, res) => {
       .json({ message: "Error fetching analytics", error: err.message });
   }
 });
-
+// @route   GET api/totalContributions
+// @desc    Get the number of contributions
+// @access  Public
 app.get("/api/totalContributions", async (req, res) => {
   try {
     const result = await Rating.aggregate([
       {
         $group: {
-          _id: null, // Grouping by null will aggregate all the documents
+          _id: null,
           totalContributions: { $sum: "$numContributions" },
         },
       },
     ]);
-
     const totalContributions =
       result && result[0] ? result[0].totalContributions : 0;
-
     res.json({ totalContributions });
   } catch (err) {
     console.error("Error fetching total contributions:", err);
@@ -126,7 +115,6 @@ app.get("/api/totalContributions", async (req, res) => {
     });
   }
 });
-
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

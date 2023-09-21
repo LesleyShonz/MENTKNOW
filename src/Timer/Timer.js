@@ -1,23 +1,30 @@
 /**
- * Whiteboard Timer Component for MentKnow Application.
- * This component serves as a way of allowing users to make use of a timer
- * to time their time on the whiteboard.
+ * Timer Component
  *
- * @author: Lesley Shonhiwa
- * @colaborators :Chloe Walt and Sizwe Nkosi
- * @version: 1.1
- * @license: University of Cape Town, School of IT license
+ * Provides an interface for a countdown timer. The timer can be started, paused,
+ * and reset to a user-defined value.
+ *
+ * State:
+ * - `remainingSeconds` (number): The number of seconds remaining in the countdown.
+ * - `intervalId` (number): The ID of the timer interval, used to clear the interval.
+ * - `isRunning` (boolean): Indicates if the timer is currently running or paused.
+ *
+ * @component
  */
 import React, { useState, useEffect } from "react";
 import "./Timer.css";
 
 function Timer() {
-  // State variables to manage timer functionality
   const [remainingSeconds, setRemainingSeconds] = useState(0);
   const [intervalId, setIntervalId] = useState(null);
   const [isRunning, setIsRunning] = useState(false);
-
-  // Format remaining time in MM:SS format
+  /**
+   * formattedTime
+   *
+   * Formats the remaining time into a MM:SS string representation.
+   *
+   * @returns {string} Formatted time.
+   */
   const formattedTime = () => {
     const minutes = Math.floor(remainingSeconds / 60);
     const seconds = remainingSeconds % 60;
@@ -26,7 +33,14 @@ function Timer() {
       .padStart(2, "0")}`;
   };
 
-  // Generate appropriate control button based on timer state
+  /**
+   * updateInterfaceControls
+   *
+   * Generates the appropriate control button (start or pause) based on
+   * the timer's state.
+   *
+   * @returns {JSX.Element} The button to be displayed.
+   */
   const updateInterfaceControls = () => {
     return isRunning ? (
       <button
@@ -47,7 +61,12 @@ function Timer() {
     );
   };
 
-  // Start the timer
+  /**
+   * start
+   *
+   * Starts the countdown timer. Sets an interval that decrements the
+   * remainingSeconds every second.
+   */
   const start = () => {
     if (remainingSeconds === 0) return;
 
@@ -59,27 +78,30 @@ function Timer() {
     setIsRunning(true);
   };
 
-  // Pause the timer
+  /**
+   * pause
+   *
+   * Pauses the countdown timer. Clears the timer interval.
+   */
   const pause = () => {
     clearInterval(intervalId);
     setIntervalId(null);
     setIsRunning(false);
   };
 
-  // Reset the timer
+  /**
+   * reset
+   *
+   * Prompts the user for a new time (in minutes) and resets the timer to that value.
+   */
   const reset = () => {
     const inputMinutes = prompt("Enter number of minutes:");
-
-    // Check if the input is not null (user clicked OK) and it can be converted to a number
     if (inputMinutes !== null) {
       const minutes = parseInt(inputMinutes, 10);
-
-      // Check if minutes is a valid number and less than 60
       if (!isNaN(minutes) && minutes < 60) {
         pause();
         setRemainingSeconds(minutes * 60);
       } else {
-        // Handle invalid input
         alert(
           "Invalid input. Please enter a valid number of minutes less than 60."
         );
@@ -87,7 +109,6 @@ function Timer() {
     }
   };
 
-  // useEffect to automatically pause the timer when it reaches 0
   useEffect(() => {
     if (remainingSeconds === 0 && isRunning) {
       pause();
@@ -96,17 +117,12 @@ function Timer() {
 
   return (
     <div className="Timer">
-      {/* Display the formatted time */}
       <span className="timer__part timer__part--minutes">
         {formattedTime()}
       </span>
       <span className="timer__part"></span>
       <span className="timer__part timer__part--seconds"></span>
-
-      {/* Display control buttons */}
       {updateInterfaceControls()}
-
-      {/* Button to reset the timer */}
       <button
         type="button"
         className="timer__btn timer__btn--reset"

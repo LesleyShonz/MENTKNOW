@@ -1,12 +1,19 @@
 /**
- * Whiteboard SubBar Component for MentKnow Application.
- * This component serves as a way of adding the "Dashboard button" to the
- * Navigation bar.
+ * SubBar Component
  *
- * @author: Lesley Shonhiwa
- * @colaborators :Chloe Walt and Sizwe Nkosi
- * @version: 1.1
- * @license: University of Cape Town, School of IT license
+ * Provides an interface for users to toggle the review board and count the number
+ * of contributions (notes) on the editor (Whiteboard). It then displays the `Ratings`
+ * component when the review board is visible.
+ *
+ * Props:
+ * - `editor` (object): The editor instance which contains the shapesArray to determine contributions.
+ * - `activityName` (string): Name of the current activity.
+ *
+ * State:
+ * - `numContributions` (number): Count of contributions (notes) on the Whiteboard.
+ * - `showReviewBoard` (boolean): Determines if the review board (`Ratings` component) is visible.
+ *
+ * @component
  */
 import "./NavigationBar.css";
 import { useState } from "react";
@@ -14,18 +21,19 @@ import DashboardIcon from "../assets/Dashboard_icon.svg";
 import Ratings from "./Ratings";
 
 export default function SubBar({ editor, activityName }) {
-  // State to control the number of contributions on the Whiteboard
   const [numContributions, setNumContributions] = useState(0);
-  // State to control the visibility of the review board component
   const [showReviewBoard, setShowReviewBoard] = useState(false);
-  // Show/hide review board
+  /**
+   * handleReviewBoardClick
+   *
+   * Toggles the visibility of the review board (`Ratings` component) and counts
+   * the number of contributions (notes with text) on the Whiteboard.
+   */
   const handleReviewBoardClick = () => {
     console.log("handleReviewBoardClick " + showReviewBoard);
     setShowReviewBoard(!showReviewBoard);
-
-    let countNotes = 0; // Temporary variable to count notes
+    let countNotes = 0;
     for (let i = 0; i < editor.shapesArray.length; i++) {
-      //Count the number of sticky notes with text as number of contributions
       if (
         editor.shapesArray.at(i).type === "note" &&
         editor.shapesArray.at(i)?.props["text"] !== ""
@@ -33,13 +41,12 @@ export default function SubBar({ editor, activityName }) {
         countNotes += 1;
       }
     }
-    setNumContributions(countNotes); // Update numNotes state
+    setNumContributions(countNotes);
   };
 
   return (
     <>
       <div className="nav-2">
-        {/* Display button and set onClick event */}
         <div
           className={`nav-button ${showReviewBoard ? "active" : ""}`}
           onClick={handleReviewBoardClick}
@@ -48,7 +55,6 @@ export default function SubBar({ editor, activityName }) {
           Dashboard
         </div>
       </div>
-      {/* Render the review board and pass props to the component */}
       {showReviewBoard && (
         <Ratings
           activityName={activityName}

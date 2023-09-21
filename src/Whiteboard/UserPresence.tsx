@@ -1,14 +1,15 @@
 /**
- * Whiteboard user Presence Component for MentKnow Application.
- * This component serves as a way of saving the user details which they
- * can modify on the whiteboard.
+ * UserPresence
  *
- * @author: Lesley Shonhiwa
- * @colaborators :Chloe Walt and Sizwe Nkosi
- * @version: 1.1
- * @license: University of Cape Town, School of IT license
+ * Component that shows and manages the user's presence, allowing the user
+ * to interact with the activity bar, sub-bar, and templates. It also gives the user
+ * the option to change their display name and color.
+ *
+ * Props:
+ * - pageName {string} - The name of the page or activity the user is on.
+ *
+ * @component
  */
-
 import { useEditor } from "@tldraw/tldraw";
 import { track } from "signia-react";
 import "../Activity/NavigationBar.css";
@@ -18,22 +19,24 @@ import TemplateIcon from "../assets/Template_icon.png";
 import SubBar from "../Activity/SubBar";
 import { useState } from "react";
 
-// Define a component wrapped with tracking functionality
 export const UserPresence = track(({ pageName }) => {
   const editor = useEditor();
   const { color, name } = editor.user;
   const [hideTemplate, setHideTemplate] = useState(false);
-  //Get current Page/Activity name
   const activityName = pageName;
-  // Create Template shape id's
   const problemsShape = createShapeId("s1");
   const solutionsShape = createShapeId("s2");
-  // const changeDefaultText = () => {
-  //   editor.shapesArray.map((item, index) =>(item.props["text"]=))
-  // };
-  //Create Template
+  /**
+   * createTemplate
+   *
+   * Creates a visual template on the editor consisting of two areas:
+   * - Problem area
+   * - Solution area
+   *
+   * @param {Editor} editor - The current instance of the editor.
+   */
   const createTemplate = (editor: Editor) => {
-    // Create "problems" template
+    // Create the "problem" shape
     editor.createShapes([
       {
         id: problemsShape,
@@ -52,7 +55,7 @@ export const UserPresence = track(({ pageName }) => {
         },
       },
     ]);
-    // Create "solutions" template
+    // Create the "solution" shape
     editor.createShapes([
       {
         id: solutionsShape,
@@ -60,11 +63,11 @@ export const UserPresence = track(({ pageName }) => {
         x: 700,
         y: 80,
         props: {
-          geo: "rectangle", // or any other shape type you want
+          geo: "rectangle",
           w: 500,
           h: 680,
           dash: "draw",
-          color: "light-green", // Set the color for the new shape
+          color: "light-green",
           size: "m",
           text: "What's the solution?",
           fill: "solid",
@@ -72,15 +75,18 @@ export const UserPresence = track(({ pageName }) => {
       },
     ]);
   };
-
-  //OnClick even for the "Templates" button
+  /**
+   * handleTemplateClick
+   *
+   * Handles the logic of displaying/hiding the template based on the
+   * user's interaction.
+   */
   const handleTemplateClick = () => {
     setHideTemplate(!hideTemplate);
     console.log("Templates clicked: " + hideTemplate);
     if (hideTemplate == false) {
-      createTemplate(editor); //create the templates
+      createTemplate(editor);
     } else {
-      //remove the template
       editor.deleteShapes([problemsShape, solutionsShape]);
     }
   };
@@ -88,7 +94,6 @@ export const UserPresence = track(({ pageName }) => {
   return (
     <>
       <div style={{ pointerEvents: "all", display: "flex" }}>
-        {/* Add the Dashboard bar to the main bar */}
         <SubBar editor={editor} activityName={activityName} />
         <ActivityBar activityName={activityName} />
         <div className="nav-4">
@@ -100,7 +105,7 @@ export const UserPresence = track(({ pageName }) => {
             Template
           </div>
         </div>
-        {/* Input to change user color */}
+
         <input
           type="color"
           value={color}
@@ -110,7 +115,7 @@ export const UserPresence = track(({ pageName }) => {
             });
           }}
         />
-        {/* Input to change user name */}
+
         <input
           value={name}
           onChange={(e) => {

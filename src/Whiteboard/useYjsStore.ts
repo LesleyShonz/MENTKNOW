@@ -3,11 +3,6 @@
  * This component serves as a way of saving the user details to the YJS stroe
  * so that they can be accessed across multiple users. This component also
  * plays a role in allowing for multiple users to collaborate concurrently
- *
- * @author: Lesley Shonhiwa
- * @colaborators :Chloe Walt and Sizwe Nkosi
- * @version: 1.1
- * @license: University of Cape Town, School of IT license
  */
 
 import {
@@ -48,12 +43,9 @@ export function useYjsStore({
   }, [hostUrl, roomId]);
 
   const rDidConnect = useRef(false);
-
   useEffect(() => {
     const unsubs: (() => void)[] = [];
-
     // We'll use this flag to prevent repeating subscriptions if our connection drops and reconnects.
-
     room.on(
       "status",
       ({ status }: { status: "connecting" | "disconnected" | "connected" }) => {
@@ -66,9 +58,7 @@ export function useYjsStore({
           });
           return;
         }
-
         if (status !== "connected") return;
-
         if (rDidConnect.current) {
           setStoreWithStatus({
             store,
@@ -77,16 +67,12 @@ export function useYjsStore({
           });
           return;
         }
-
-        // Ok, we're connecting for the first time. Let's get started!
         rDidConnect.current = true;
-
         // Initialize the store with the yjs doc records—or, if the yjs doc
         // is empty, initialize the yjs doc with the default store records.
         if (yRecords.size === 0) {
           // Create the initial store records
           transact(() => {
-            // store.clear();
             store.put([
               DocumentRecordType.create({
                 id: "document:document" as TLDocument["id"],
@@ -98,7 +84,6 @@ export function useYjsStore({
               }),
             ]);
           });
-
           // Sync the store records to the yjs doc
           doc.transact(() => {
             for (const record of store.allRecords()) {
@@ -112,9 +97,7 @@ export function useYjsStore({
             store.put(Array.from(yRecords.values()));
           });
         }
-
         /* -------------------- Document -------------------- */
-
         // Sync store changes to the yjs doc
         unsubs.push(
           store.listen(
@@ -127,7 +110,6 @@ export function useYjsStore({
                 Object.values(changes.updated).forEach(([_, record]) => {
                   yRecords.set(record.id, record);
                 });
-
                 Object.values(changes.removed).forEach((record) => {
                   yRecords.delete(record.id);
                 });
@@ -136,17 +118,14 @@ export function useYjsStore({
             { source: "user", scope: "document" } // only sync user's document changes
           )
         );
-
         // Sync the yjs doc changes to the store
         const handleChange = (
           events: Y.YEvent<any>[],
           transaction: Y.Transaction
         ) => {
           if (transaction.local) return;
-
           const toRemove: TLRecord["id"][] = [];
           const toPut: TLRecord[] = [];
-
           events.forEach((event) => {
             event.changes.keys.forEach((change, id) => {
               switch (change.action) {
@@ -162,19 +141,15 @@ export function useYjsStore({
               }
             });
           });
-
           // put / remove the records in the store
           store.mergeRemoteChanges(() => {
             if (toRemove.length) store.remove(toRemove);
             if (toPut.length) store.put(toPut);
           });
         };
-
         yRecords.observeDeep(handleChange);
         unsubs.push(() => yRecords.unobserveDeep(handleChange));
-
         /* -------------------- Awareness ------------------- */
-
         // Create the instance presence derivation
         const yClientId = room.awareness.clientID.toString();
         const presenceId = InstancePresenceRecordType.createId(yClientId);
@@ -185,10 +160,8 @@ export function useYjsStore({
           userPreferencesComputed,
           presenceId
         )(store);
-
         // Set our initial presence from the derivation's current value
         room.awareness.setLocalStateField("presence", presenceDerivation.value);
-
         // When the derivation change, sync presence to to yjs awareness
         unsubs.push(
           react("when presence changes", () => {
@@ -198,7 +171,6 @@ export function useYjsStore({
             });
           })
         );
-
         // Sync yjs awareness changes to the store
         const handleUpdate = (update: {
           added: number[];
@@ -209,10 +181,8 @@ export function useYjsStore({
             number,
             { presence: TLInstancePresence }
           >;
-
           const toRemove: TLInstancePresence["id"][] = [];
           const toPut: TLInstancePresence[] = [];
-
           // Connect records to put / remove
           for (const clientId of update.added) {
             const state = states.get(clientId);
@@ -220,31 +190,25 @@ export function useYjsStore({
               toPut.push(state.presence);
             }
           }
-
           for (const clientId of update.updated) {
             const state = states.get(clientId);
             if (state?.presence && state.presence.id !== presenceId) {
               toPut.push(state.presence);
             }
           }
-
           for (const clientId of update.removed) {
             toRemove.push(
               InstancePresenceRecordType.createId(clientId.toString())
             );
           }
-
           // put / remove the records in the store
           store.mergeRemoteChanges(() => {
             if (toRemove.length) store.remove(toRemove);
             if (toPut.length) store.put(toPut);
           });
         };
-
         room.awareness.on("update", handleUpdate);
         unsubs.push(() => room.awareness.off("update", handleUpdate));
-
-        // And we're done!
         setStoreWithStatus({
           store,
           status: "synced-remote",
