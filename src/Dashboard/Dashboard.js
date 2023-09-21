@@ -6,7 +6,7 @@
  * @author: Sizwe Nkosi
  * @colaborators :Chloe Walt and Lesley Shonhiwa
  * @version: 1.1
- * @license: University of Cape Town, School of IT license
+ * 
  */
 
 // imports
@@ -30,7 +30,9 @@ import { useEditor } from "@tldraw/tldraw";
 const BASE_URL = "http://localhost:5004/api/users";
 
 /**
- * Utility function to compute the next three Friday dates.
+ * Computes the next three Fridays from the current date.
+ * 
+ * @returns {Date[]} An array containing dates of the next three Fridays.
  */
 const getNextThreeFridays = () => {
   const today = new Date();
@@ -46,49 +48,15 @@ const getNextThreeFridays = () => {
 };
 
 /**
- * Utility function to generate a random color.
- */
-function getRandomColor() {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
-/**
- * Utility function to get the initials from a given name and surname.
- */
-const getInitials = (name = "", surname = "") => {
-  return name.charAt(0).toUpperCase() + surname.charAt(0).toUpperCase();
-};
-
-/**
- * Individual Activity Component
- * @param {Object} props - Component properties
- */
-function Activity({ icon, name, date }) {
-  return (
-    <div className="awareness-container">
-      <img className="all-image-icons-style" src={icon} alt={name} />
-      <h2 className="activity-name">{name}</h2>
-      <img className="calender-image-icons" src={calender} alt="Calendar" />
-      <h3 className="date-style">{date}</h3>
-      <button className="button-to-activity-style">View Activity</button>
-    </div>
-  );
-}
-/**
- * Dashboard component: Main UI of the app.
+ * Main dashboard component, encapsulating various sub-components and utilities.
+ * This component displays a comprehensive view of user details, upcoming events,
+ * affiliated mentor and mentees, as well as the daily quote/affirmation.
+ * 
+ * @returns {JSX.Element} The rendered MentorDashboard component.
  */
 const Dashboard = () => {
   // ... (pre-existing useState declarations and useEffect hooks)
   const userData = JSON.parse(localStorage.getItem("userData"));
-
-  // Using React's Context API to get the user details
-  // const { user } = useContext(UserContext);
-  // useState hooks for managing component's local state
   const [pageName, setPageName] = useState(null);
   const [isActivityClicked, setIsActivityClicked] = useState(false);
   const [members, setMembers] = useState([]);
@@ -100,14 +68,18 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const editor = useEditor();
 
-  // useEffect to set the next three fridays on component mount
+  /**
+   * Effect hook to compute and set the upcoming three Fridays from the current date.
+   */
   useEffect(() => {
     setFridays(getNextThreeFridays());
   }, []);
 
-  // useEffect to fetch the mentees and mentor for the logged-in user on component mount/update
+  /**
+   * Effect hook to fetch associated group members and mentor for the logged-in user.
+   */
+
   useEffect(() => {
-    // Fetch the group members (mentees) associated with the user
     const fetchMentees = async () => {
       try {
         const response = await axios.post(`${BASE_URL}/group-members`, {
@@ -144,6 +116,9 @@ const Dashboard = () => {
   }, [userData]);
   const [colors, setColors] = useState({});
 
+  /**
+   * Effect hook to generate and assign unique colors to group members for UI differentiation.
+   */
   useEffect(() => {
     const newColors = { ...colors };
     members.forEach((item) => {
@@ -154,9 +129,6 @@ const Dashboard = () => {
     setColors(newColors);
   }, [members]);
 
-  // Generate a random color for UI purposes
-  const randomColor = getRandomColor();
-
   /**
    * Utility function to generate a random color.
    */
@@ -164,7 +136,9 @@ const Dashboard = () => {
     return '#' + Math.floor(Math.random() * 16777215).toString(16);
   }
 
-  // This effect handles the assignment of colors to members.
+  /**
+   * Effect hook to generate and assign unique colors to group members for UI differentiation.
+   */
   useEffect(() => {
     const newColors = { ...colors };
     members.forEach((member) => {
@@ -183,6 +157,10 @@ const Dashboard = () => {
   const [quote, setQuote] = useState(null);
   const [loading, setLoading] = useState(true);
 
+
+  /**
+   * Fetches a random quote for daily affirmation and sets it in the state.
+   */
   useEffect(() => {
     fetch("https://api.quotable.io/random")
       .then((response) => {
@@ -204,10 +182,19 @@ const Dashboard = () => {
       });
   }, []);
 
+  /**
+   * Handles the user logout process, removing their session and redirecting to sign-in.
+   */
   const logout = () => {
     localStorage.removeItem("userData");
     navigate("/signin");
   };
+
+  /**
+   * Handles the action when a user clicks to view an activity.
+   * 
+   * @param {string} pageName - Name of the activity page to navigate to.
+   */
   const handleViewActivityClick = (pageName) => {
     setPageName(pageName); // Set the pageName to the activity name
     setIsActivityClicked(!isActivityClicked);

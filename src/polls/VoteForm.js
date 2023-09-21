@@ -1,7 +1,17 @@
+/**
+ * VotePoll Component
+ *
+ * Provides functionality to vote on an available poll fetched from an API.
+ * Users can vote for a poll option and then view the results.
+ *
+ * Dependencies:
+ * - React useState and useEffect hooks
+ * - axios for API calls
+ * - Local CSS for styling
+ */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./VoteForm.css";
-import reject3 from "../icons/reject3.svg";
 
 const VotePoll = () => {
   const [poll, setPoll] = useState(null);
@@ -9,6 +19,7 @@ const VotePoll = () => {
   const [hasVoted, setHasVoted] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
+  // Fetch the poll data when the component mounts
   useEffect(() => {
     async function fetchPoll() {
       try {
@@ -23,7 +34,11 @@ const VotePoll = () => {
 
     fetchPoll();
   }, []);
-
+  /**
+   * Handles the voting process:
+   * - Sends a vote for the selected option
+   * - Updates the poll data with the latest results
+   */
   const handleVote = async () => {
     try {
       await axios.post(`http://localhost:5004/api/polls/vote/${poll._id}`, {
@@ -39,6 +54,10 @@ const VotePoll = () => {
     }
   };
 
+  /**
+   * Computes the maximum votes amongst all poll options.
+   * @returns {number} The maximum votes.
+   */
   const getMaxVotes = () => {
     if (!poll || !poll.options) return 0; // Return 0 if poll or poll.options doesn't exist
     return Math.max(...poll.options.map((option) => option.votes));
@@ -60,9 +79,8 @@ const VotePoll = () => {
             {poll.options.map((option, index) => (
               <div
                 key={index}
-                className={`result-container ${
-                  option.votes === maxVotes ? "most-voted" : ""
-                }`}
+                className={`result-container ${option.votes === maxVotes ? "most-voted" : ""
+                  }`}
               >
                 <div className="result-container-sort-style">
                   {option.name}: {option.votes} votes

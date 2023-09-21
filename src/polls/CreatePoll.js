@@ -1,7 +1,20 @@
+/**
+ * CreatePoll Component
+ *
+ * This component provides a UI for users to create a new poll.
+ * It includes a dynamic set of input fields for the poll question and options,
+ * as well as validation logic and an API call to submit the poll data.
+ *
+ * Dependencies:
+ * - React useState hook
+ * - axios for making API calls
+ * - Local CSS for styling
+ * - Icons for UI feedback
+ */
+
 import React, { useState } from "react";
 import axios from "axios";
 import "./CreatePoll.css";
-import reject3 from "../icons/reject3.svg";
 import erro from "../icons/exclamation 6.svg";
 
 const CreatePoll = () => {
@@ -10,18 +23,28 @@ const CreatePoll = () => {
   const [options, setOptions] = useState(["", ""]);
   const [message, setMessage] = useState(""); // To provide feedback to the user
 
+
+  /**
+   * Updates the option at the given index with the provided value.
+   * @param {number} index - Index of the option to update.
+   * @param {string} value - New value for the option.
+   */
   const handleOptionChange = (index, value) => {
     const newOptions = [...options];
     newOptions[index] = value;
     setOptions(newOptions);
   };
 
-  const handleImageClick = () => {
-    setIsVisible(false); // set to false to hide, or toggle with !isVisible if you want to show/hide on alternate clicks
-  };
-
+  /**
+  * Appends a new empty option to the options state.
+  */
   const addOption = () => setOptions([...options, ""]);
 
+
+  /**
+   * Validates the form inputs.
+   * @returns {string|null} - A validation message or null if form is valid.
+   */
   const validateForm = () => {
     if (!question.trim()) return "Please enter a question.";
     for (let option of options) {
@@ -30,10 +53,15 @@ const CreatePoll = () => {
     return null;
   };
 
+  /**
+   * Handles form submission.
+   * - Validates the form.
+   * - Makes an API call to create the poll.
+   * - Provides feedback to the user based on the result.
+   * @param {Event} e - Form submit event.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validate the form
     const validationMessage = validateForm();
     if (validationMessage) {
       setMessage(validationMessage);
@@ -41,7 +69,6 @@ const CreatePoll = () => {
     }
 
     const token = localStorage.getItem("token");
-
     const config = {
       headers: {
         "x-auth-token": token,
@@ -104,7 +131,6 @@ const CreatePoll = () => {
             {message === "Poll created successfully!" && (
               <p className="poll-success"> {message}</p>
             )}
-            {/* Displaying feedback message */}
           </div>
         </div>
         <button className="create-poll-button" type="submit">

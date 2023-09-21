@@ -1,3 +1,40 @@
+/**
+ * Analytics Component
+ * 
+ * The Analytics component serves as a comprehensive dashboard providing insights into 
+ * various metrics related to mentees' activities. The dashboard consists of multiple 
+ * visualizations like a Pie chart, Bar chart, and Scatter plot. These charts are generated 
+ * with the help of D3.js.
+ *
+ * Within the dashboard, mentors can view metrics such as:
+ * - The most popular activity based on average ratings.
+ * - The activity with the highest contributions.
+ * - Average contributions per mentee.
+ * - Total number of mentees in the program.
+ *
+ * Additionally, the dashboard provides navigation options allowing mentors to navigate back 
+ * to the main dashboard or log out.
+ *
+ * Props:
+ * None
+ *
+ * State:
+ * - data: Contains the fetched analytics data for the activities.
+ * - totalContributions: Total contributions to be displayed.
+ * - totalMentees: Total number of mentees in the program.
+ * - totalContributionsSum: Sum of contributions across all activities.
+ *
+ * External Data:
+ * The component fetches data from multiple endpoints on 'http://localhost:5004/api/...'.
+ *
+ * Dependencies:
+ * - React Router's `useNavigate` for routing capabilities.
+ * - Several image assets for rendering on the dashboard.
+ * - Child visualization components: BarChart, PieChart, ScatterPlot.
+ * - A CSS stylesheet 'Analytics.css' for styling.
+ *
+ */
+
 import '../Dashboard/Dashboard.css';
 import React, { useRef, useEffect, useState } from 'react';
 import mentknowlogo from '../icons/mentknowlogo.svg';
@@ -16,22 +53,36 @@ function Analytics() {
     const [totalMentees, setTotalMentees] = useState(0);
     const [totalContributionsSum, setTotalContributionsSum] = useState(0);
 
+
+    /**
+     * Logout function: Removes user data from local storage and redirects to sign-in page.
+     */
     const logout = () => {
         localStorage.removeItem('userData');
         navigate('/signin');
     };
 
+    /**
+     * Handles the redirection to the mentor's dashboard.
+     */
     const mentorDashboardHandle = () => {
 
         navigate('/mentorDashboard');
     }
-
+    /**
+     * useEffect hook to fetch the analytics data from the backend.
+     * The fetched data is then set into the component's state.
+     */
     useEffect(() => {
         fetch('http://localhost:5004/api/analytics')
             .then(response => response.json())
             .then(data => setData(data));
     }, []);
 
+    /**
+     * useEffect hook to fetch the total contributions data from the backend.
+     * The fetched data is then set into the component's state.
+     */
     useEffect(() => {
         fetch('http://localhost:5004/api/totalContributions')
             .then(response => response.json())
@@ -39,18 +90,26 @@ function Analytics() {
             .catch(error => console.error('Error fetching total contributions:', error));
     }, []);
 
-    //most contrivution by Number of contributions
+    /**
+     * Finds the activity with the most number of contributions.
+     */
     const maxContributionActivity = data.reduce((maxActivity, currentActivity) => {
         return currentActivity.numContributions > maxActivity.numContributions ? currentActivity : maxActivity;
         set
 
     }, data[0]);
 
-    //highest number of ratings
+    /**
+     * Finds the activity with the highest rating.
+     */
     const maxRatingsActivity = data.reduce((maxActivity, currentActivity) => {
         return currentActivity.averageRating > maxActivity.averageRating ? currentActivity : maxActivity;
     }, data[0]); // initialize with the first activity
 
+    /**
+     * useEffect hook to fetch the total number of mentees from the backend.
+     * The fetched data is then set into the component's state.
+     */
     useEffect(() => {
         fetch('http://localhost:5004/api/users/total-mentees-count')
             .then(response => response.json())
@@ -175,7 +234,6 @@ function Analytics() {
 
         </div>
     );
-
 
 }
 

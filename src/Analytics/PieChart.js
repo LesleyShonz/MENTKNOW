@@ -1,3 +1,36 @@
+/**
+ * PieChart Component.
+ * 
+ * Represents data in a pie chart visualization to give insights into activity performance,
+ * particularly the proportion of contributions per activity topic. The component fetches data 
+ * from an API upon mounting and presents the information in colored sections that are interactive 
+ * and can be hovered over for detailed percentages.
+ * 
+ * Features:
+ * - Data is fetched from an API upon component mount and processed.
+ * - Utilizes D3.js for the pie chart visualization, including hover effects.
+ * - Displays the percentage of contributions each activity topic holds in the total.
+ * - Provides a legend to map colors to activity topics for better readability.
+ * 
+ * Expected API Data Format:
+ * [
+ *   { averageRating: float, numContributions: int, activityName: string },
+ *   ... (more data objects)
+ * ]
+ * 
+ * Props: None
+ * 
+ * Example:
+ * <PieChart />
+ * 
+ * Dependencies: 
+ * - D3.js
+ * 
+ * Note:
+ * - CSS styling and positioning can be adjusted in the './BarChart.css' file even though 
+ *   the name suggests BarChart, it's being used for styling this PieChart component.
+ */
+
 import React, { useState, useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 import './BarChart.css';
@@ -9,8 +42,11 @@ function PieChart() {
     const svgRef = useRef();
     const [isLoading, setIsLoading] = useState(true);
 
-
-    // Fetching data from an API
+    /**
+     * Fetches data from the specified API endpoint, processes it, and updates
+     * the component's state. Specifically, it rounds off the 'averageRating' to 
+     * two decimal places.
+     */
     useEffect(() => {
         fetch('http://localhost:5004/api/analytics')
             .then(response => response.json())
@@ -25,8 +61,12 @@ function PieChart() {
             
     }, []);
     
-
-    // Main effect to draw and update the pie chart
+    /**
+     * Draws or updates the pie chart visualization. It uses D3.js to create the chart.
+     * The pie represents the number of contributions per activity topic. It also adds
+     * hover effects to enlarge sections, displays percentage labels, and includes 
+     * a color legend to improve readability.
+     */
     useEffect(() => {
         // Exit if data is not yet available or empty
         if (!data || data.length === 0) return;

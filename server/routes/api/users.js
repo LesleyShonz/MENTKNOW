@@ -90,7 +90,7 @@ async function registerUser(req, res) {
     var { name, surname, email, password, userType, groupNumber, accessPin } = req.body;
     email = email.toLowerCase();
     try {
-        let user = await User.findOne({ email});
+        let user = await User.findOne({ email });
 
         if (user) {
             return res.status(400).json({ errors: [{ msg: 'User already exists' }] });
@@ -152,7 +152,7 @@ async function loginUser(req, res) {
 
 async function getGroupMembers(req, res) {
     const { groupNumber, userEmail } = req.body;
-    
+
     try {
         const groupMembers = await User.find({
             email: { $ne: userEmail },

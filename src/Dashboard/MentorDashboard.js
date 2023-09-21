@@ -1,12 +1,20 @@
 /**
- * Dashboard Component for MentKnow Application.
- * This component serves as the primary user interface after logging in,
- * displaying user information, upcoming events, and other relevant details.
- *
- * @author: Sizwe Nkosi
- * @colaborators :Chloe Walt and Lesley Shonhiwa
- * @version: 1.1
- * @license: University of Cape Town, School of IT license
+ * MentorDashboard Component
+ * 
+ * Overview:
+ * --------
+ * The MentorDashboard component is a primary user interface for the MentKnow Application post-login.
+ * It presents a collection of features and data such as:
+ * - Activities for mentors with associated dates
+ * - A list of mentees associated with the logged-in mentor
+ * - Upcoming sessions, specifically highlighting the next three Fridays
+ * - A daily affirmation quote fetched from an external API
+ * 
+ * The component provides various user interactions including:
+ * - Viewing details of specific activities
+ * - Navigation to the analytics page
+ * - Logging out of the application
+ * 
  */
 
 // imports
@@ -30,7 +38,9 @@ import lineup from "../icons/Line_up.svg";
 const BASE_URL = "http://localhost:5004/api/users";
 
 /**
- * Utility function to compute the next three Friday dates.
+ * Calculate the next three Friday dates from today's date.
+ *
+ * @returns {Array} An array of the next three Friday dates.
  */
 const getNextThreeFridays = () => {
   const today = new Date();
@@ -46,27 +56,13 @@ const getNextThreeFridays = () => {
 };
 
 /**
- * Utility function to generate a random color.
- */
-function getRandomColor() {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
-/**
- * Utility function to get the initials from a given name and surname.
- */
-const getInitials = (name = "", surname = "") => {
-  return name.charAt(0).toUpperCase() + surname.charAt(0).toUpperCase();
-};
-
-/**
- * Individual Activity Component
- * @param {Object} props - Component properties
+ * Individual activity component.
+ *
+ * @param {Object} props - Component properties.
+ * @param {string} props.icon - Path to the icon for the activity.
+ * @param {string} props.name - Name of the activity.
+ * @param {Date} props.date - Date of the activity.
+ * @returns {JSX.Element} Rendered activity component.
  */
 function Activity({ icon, name, date }) {
   return (
@@ -79,16 +75,15 @@ function Activity({ icon, name, date }) {
     </div>
   );
 }
+
 /**
- * Dashboard component: Main UI of the app.
+ * Primary dashboard component, showcasing mentor activities, 
+ * upcoming sessions, mentees, and daily affirmations.
+ *
+ * @returns {JSX.Element} Rendered dashboard component.
  */
 const MentorDashboard = () => {
-  // ... (pre-existing useState declarations and useEffect hooks)
   const userData = JSON.parse(localStorage.getItem("userData"));
-
-  // Using React's Context API to get the user details
-  // const { user } = useContext(UserContext);
-  // useState hooks for managing component's local state
   const [pageName, setPageName] = useState(null);
   const [isActivityClicked, setIsActivityClicked] = useState(false);
   const [members, setMembers] = useState([]);
@@ -153,11 +148,10 @@ const MentorDashboard = () => {
     setColors(newColors);
   }, [members]);
 
-  // Generate a random color for UI purposes
-  const randomColor = getRandomColor();
-
   /**
-   * Utility function to generate a random color.
+   * Generate a random color.
+   *
+   * @returns {string} A random hex color.
    */
   function getRandomColor() {
     return '#' + Math.floor(Math.random() * 16777215).toString(16);
@@ -173,8 +167,13 @@ const MentorDashboard = () => {
     });
     setColors(newColors);
   }, [members]);
+
   /**
-   * Utility function to get the initials from a given name and surname.
+   * Get the initials from a name and surname.
+   *
+   * @param {string} name - First name of the user.
+   * @param {string} surname - Surname of the user.
+   * @returns {string} Initials based on the name and surname.
    */
   const getInitials = (name = "", surname = "") => {
     return name.charAt(0).toUpperCase() + surname.charAt(0).toUpperCase();
@@ -356,8 +355,8 @@ const MentorDashboard = () => {
               >
                 <div className="initials-container">
                   <div className="initials-container-style">
-                  {getInitials(member.name, member.surname)}
-                </div>
+                    {getInitials(member.name, member.surname)}
+                  </div>
                 </div>
               </div>
               <div className="mentees-names-style">

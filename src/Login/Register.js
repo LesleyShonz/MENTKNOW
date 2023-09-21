@@ -1,3 +1,18 @@
+/**
+ * Register Component
+ *
+ * Provides a registration form for users (either Mentee or Mentor).
+ * - Users can select their user type (Mentee or Mentor).
+ * - Performs both frontend validation and handles backend validation responses.
+ * - On successful registration, redirects users to the sign-in page.
+ *
+ * Dependencies:
+ * - React useState hook
+ * - axios for API calls
+ * - useNavigate from 'react-router-dom' for navigation
+ * - Local CSS for styling
+ * - Icons for UI elements and feedback
+ */
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Register.css';
@@ -9,6 +24,8 @@ import profile from '../icons/Profile.svg';
 function Register() {
     const navigate = useNavigate();
 
+
+ // State variables initialization.
     const [formData, setFormData] = useState({
         name: '',
         surname: '',
@@ -31,8 +48,19 @@ function Register() {
 
     const { name, surname, email, password, userType, groupNumber, accessPin } = formData;
 
+
+    /**
+     * Updates the form data state based on user input.
+     * 
+     * @param {Object} e - The event object, containing information about the input change.
+     */
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
+   /**
+     * Frontend validation for form fields.
+     * Sets error messages where necessary.
+     * @returns {boolean} If form is valid or not.
+     */
     const validate = () => {
         let valid = true;
         let newErrors = {};
@@ -75,6 +103,12 @@ function Register() {
         return valid;
     }
 
+    /**
+     * Handles form submission:
+     * - Performs validation
+     * - Sends form data to the backend for registration
+     * - Handles API responses and errors
+     */
     const onSubmit = async e => {
         e.preventDefault();
 
@@ -110,6 +144,9 @@ function Register() {
         }
     };
 
+    /**
+     * Redirects the user to the login page.
+     */
     const handleMoveToLogin = () => {
         navigate('/signin');
     };
@@ -263,8 +300,6 @@ function Register() {
             </div>
         </div>
     );
-
-
 };
 
 export default Register;

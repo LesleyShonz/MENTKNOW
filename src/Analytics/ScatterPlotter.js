@@ -1,12 +1,37 @@
+/**
+ * ScatterPlot Component.
+ * 
+ * Visualizes data in the form of a scatter plot using D3.js, providing insights into
+ * activity performance by plotting average ratings (on the y-axis) against the number 
+ * of contributions (on the x-axis). The component fetches data from an API upon mounting
+ * and represents different activities as colored dots, differentiated by their activity names.
+ * Users can hover over these dots to get detailed information about each specific activity.
+ * 
+ * Features:
+ * - Fetches and processes data for visualization.
+ * - Uses D3.js for data-driven transformation and rendering.
+ * - Implements interactive hover effects to display detailed data.
+ * - Provides axis labels to enhance readability.
+ * 
+ * Expected API Data Format:
+ * [
+ *   { averageRating: float, numContributions: int, activityName: string },
+ *   ... (more data objects)
+ * ]
+ * 
+ * Props: None
+ * 
+ * Example:
+ * <ScatterPlot />
+ * 
+ * Dependencies: 
+ * - D3.js
+ */
+
 import React, { useState, useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 import './BarChart.css';
 
-/**
- * ScatterPlot is a component that fetches data from an API and displays
- * a scatter plot with average ratings on the y-axis and number of contributions
- * on the x-axis. It uses D3.js for data visualization.
- */
 function ScatterPlot() {
     // State for holding the fetched data
     const [data, setData] = useState([]);
@@ -15,7 +40,8 @@ function ScatterPlot() {
     const [isLoading, setIsLoading] = useState(true);
 
     /**
-     * useEffect hook to fetch data from the API when the component mounts.
+     * Fetch data from the API upon component mount and set it to the state.
+     * Transforms the fetched data into a preferred format for visualization.
      */
     useEffect(() => {
         setIsLoading(true);
@@ -32,9 +58,10 @@ function ScatterPlot() {
     }, []);
     
     
-
     /**
-     * useEffect hook to draw the scatter plot whenever the data changes.
+     * Render the scatter plot using D3 when the data changes.
+     * The plot illustrates average ratings on the y-axis against the number of contributions on the x-axis.
+     * Activities are differentiated by color and can be hovered over to display their details.
      */
     useEffect(() => {
         // Do nothing if data is not loaded yet

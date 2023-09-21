@@ -1,7 +1,32 @@
+/**
+ * BarChart Component
+ * 
+ * This component fetches and visualizes data related to activity topics and their
+ * respective average ratings in the form of a bar chart. The bars represent the 
+ * average ratings for each activity topic.
+ * 
+ * The chart provides an interactive experience, displaying tooltips with additional
+ * information when bars are hovered over. If data is still being fetched or is unavailable, 
+ * a loading spinner is displayed.
+ * 
+ * Props:
+ * None
+ * 
+ * State:
+ * - isLoading: Indicates whether the data is still being loaded.
+ * - data: Contains the fetched analytics data to be visualized.
+ * 
+ * Dependencies:
+ * - D3.js for data visualization.
+ * - A CSS stylesheet named 'BarChart.css' for styling.
+ * 
+ * External Data:
+ * Fetches data from 'http://localhost:5004/api/analytics'.
+ * 
+ */
 import React, { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import './BarChart.css'
-
 function BarChart() {
     const [isLoading, setLoading] = useState(true);
 
@@ -9,6 +34,12 @@ function BarChart() {
     const svgRef = useRef();
     const tooltipRef = useRef();
 
+
+    /**
+     * Fetches data from the specified API endpoint, processes it, and updates
+     * the component's state. Specifically, it rounds off the 'averageRating' to 
+     * two decimal places.
+     */
     useEffect(() => {
         fetch('http://localhost:5004/api/analytics')
             .then(response => response.json())
@@ -23,7 +54,12 @@ function BarChart() {
             
     }, []);
     
-
+    /**
+     * Draws or updates the bar chart visualization. It uses D3.js to create the chart.
+     * Each bar represents the average rating for an activity topic. Interactivity 
+     * (hover effects) and labels are also added to improve the user experience and 
+     * readability of the chart.
+     */
     useEffect(() => {
         if (!data || data.length === 0) return;
 

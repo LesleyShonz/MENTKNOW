@@ -1,3 +1,19 @@
+/**
+ * Login Component
+ *
+ * Provides a login form for users to authenticate.
+ * - Handles form validation (both frontend validation and backend validation responses).
+ * - Uses the UserContext to set the authenticated user.
+ * - Uses react-router-dom's navigate to redirect based on user type.
+ * - Provides feedback to the user on authentication failures.
+ *
+ * Dependencies:
+ * - React useState and useContext hooks
+ * - axios for API calls
+ * - useNavigate from 'react-router-dom' for navigation
+ * - Local CSS for styling
+ * - Icons for UI feedback
+ */
 import React, { useState, useContext } from 'react';
 import UserContext from '../Whiteboard/UserContext';
 import axios from 'axios';
@@ -17,21 +33,36 @@ const Login = () => {
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-
   const { email, password } = formData;
-  var errorMessage;
+
+  /**
+   * Handles input field changes and updates formData state.
+   */
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  /**
+   * Redirects the user to the appropriate dashboard based on their user type.
+   */
   const navigateUser = (userType) => {
     navigate(userType === 'mentee' ? '/dashboard' : '/MentorDashboard');
   };
 
+  /**
+   * Redirects the user to the registration page.
+   */
   const handleMoveToRegister = () => {
     navigate('/register');
   }
 
+  /**
+   * Handles form submission:
+   * - Performs frontend validation
+   * - Sends a POST request to the backend with user login data
+   * - Handles backend validation errors
+   * - On successful login, redirects user to the appropriate dashboard
+   */
   const onSubmit = async e => {
     e.preventDefault();
 
@@ -41,7 +72,6 @@ const Login = () => {
     // Simple Frontend validation
     if (!email) setErrors(prevErrors => ({ ...prevErrors, email: 'Incorrect email address. Please try again.' }));
     if (!password || password.length < 6) setErrors(prevErrors => ({ ...prevErrors, password: 'Password must be at least 6 characters long.' }));
-
     if (!email || !password || password.length < 6) return;
 
     setLoading(true);
@@ -80,8 +110,6 @@ const Login = () => {
       }
     }
   };
-
-
   return (
     <div className="container1">
 
