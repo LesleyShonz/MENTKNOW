@@ -30,9 +30,7 @@ import { useEditor } from "@tldraw/tldraw";
 const BASE_URL = "http://localhost:5004/api/users";
 
 /**
- * Computes the next three Fridays from the current date.
- * 
- * @returns {Date[]} An array containing dates of the next three Fridays.
+ * Utility function to compute the next three Friday dates.
  */
 const getNextThreeFridays = () => {
   const today = new Date();
@@ -46,6 +44,42 @@ const getNextThreeFridays = () => {
   }
   return fridays;
 };
+
+/**
+ * Utility function to generate a random color.
+ */
+function getRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+/**
+ * Utility function to get the initials from a given name and surname.
+ */
+const getInitials = (name = "", surname = "") => {
+  return name.charAt(0).toUpperCase() + surname.charAt(0).toUpperCase();
+};
+
+/**
+ * Individual Activity Component
+ * @param {Object} props - Component properties
+ */
+function Activity({ icon, name, date }) {
+  return (
+    <div className="awareness-container">
+      <img className="all-image-icons-style" src={icon} alt={name} />
+      <h2 className="activity-name">{name}</h2>
+      <img className="calender-image-icons" src={calender} alt="Calendar" />
+      <h3 className="date-style">{date}</h3>
+      <button className="button-to-activity-style">View Activity</button>
+    </div>
+  );
+}
+
 
 /**
  * Main dashboard component, encapsulating various sub-components and utilities.
