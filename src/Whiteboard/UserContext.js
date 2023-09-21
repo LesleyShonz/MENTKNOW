@@ -14,14 +14,6 @@
  * to the `value` prop provided to the `UserContext.Provider`. This allows for
  * easier state management and prop distribution throughout an application.
  *
- * Example:
- *
- * ```javascript
- * <UserContext.Provider value={user}>
- *   <YourComponent />
- * </UserContext.Provider>
- * ```
- *
  * @see https://reactjs.org/docs/context.html for more details on Context API.
  *
  * @component
