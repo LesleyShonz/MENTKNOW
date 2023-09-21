@@ -72,7 +72,7 @@
 .mentee-text-style {
     border-radius: 10px;
     background: #E5D7FF;
-    margin-left: 103px;
+    margin-left: 112px;
     position: relative;
     top: 5px;
 }
@@ -210,7 +210,7 @@
     margin-left: 5px;
     display: inline-flex;
     position: relative;
-    top: 5px;
+    top: 15px;
     cursor: pointer;
 }
 

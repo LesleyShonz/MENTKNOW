@@ -53,7 +53,7 @@ function PieChart() {
             .then(data => {
                 const roundedData = data.map(item => ({
                     ...item,
-                    averageRating: parseFloat(item.averageRating.toFixed(2))
+                    averageRating: parseFloat(item.averageRating.toFixed(1))
                 }));
                 setData(roundedData);
                 setIsLoading(false);
@@ -140,7 +140,7 @@ function PieChart() {
                     .attr("d", arc);
             })
             .append("title")
-            .text(d => `${((d.data.numContributions / totalContributions) * 100).toFixed(2)}%`);
+            .text(d => `${((d.data.numContributions / totalContributions) * 100).toFixed(1)}%`);
 
         // Generate labels for the pie sections
         const labels = svg.append("g")
@@ -151,7 +151,7 @@ function PieChart() {
             .attr("transform", d => `translate(${arc.centroid(d)})`)
             .attr("dy", "0.35em")
             .attr("text-anchor", "middle")
-            .text(d => d.data.numContributions !== 0 ? `${((d.data.numContributions / totalContributions) * 100).toFixed(2)}%` : '');
+            .text(d => d.data.numContributions !== 0 ? `${((d.data.numContributions / totalContributions) * 100).toFixed(1)}%` : '');
 
 
         labels.on("mouseover", function () {
