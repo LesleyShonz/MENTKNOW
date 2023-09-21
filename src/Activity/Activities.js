@@ -73,7 +73,7 @@ const Activities = ({
           }
         } else {
           console.error("Invalid data format from the API");
-          // Handle the case when the data format is unexpected
+  
         }
       })
       .catch((error) => {
