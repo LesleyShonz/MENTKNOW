@@ -91,12 +91,9 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
       );
 
       setContent((prevContent) => [...prevContent, newItem]);
-
-      // Clear the input field
       setTextInput("");
       newText = "";
     } catch (error) {
-      // Handle errors, e.g., log or display an error message
       console.error(error);
     }
   };
