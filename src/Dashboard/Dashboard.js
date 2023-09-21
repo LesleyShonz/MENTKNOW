@@ -1,15 +1,22 @@
 /**
- * Dashboard Component for MentKnow Application.
- * This component serves as the primary user interface after logging in,
- * displaying user information, upcoming events, and other relevant details.
- *
- * @author: Sizwe Nkosi
- * @colaborators :Chloe Walt and Lesley Shonhiwa
- * @version: 1.1
+ * Dashboard Component
+ * 
+ * Overview:
+ * --------
+ * The Dashboard component is a primary user interface for the MentKnow Application post-login.
+ * It presents a collection of features and data such as:
+ * - Activities for mentees with associated dates
+ * - A list of mentees associated with the logged-in mentee as well as their mentor.
+ * - Upcoming sessions, specifically highlighting the next three Fridays
+ * - A daily affirmation quote fetched from an external API
+ * 
+ * The component provides various user interactions including:
+ * - Viewing details of specific activities
+ * - Navigation to the analytics page
+ * - Logging out of the application
  * 
  */
 
-// imports
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
