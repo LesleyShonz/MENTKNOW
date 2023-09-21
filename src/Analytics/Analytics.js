@@ -119,8 +119,6 @@ function Analytics() {
             });
 
     }, []);
-
-    // const current = maxContributionActivity;
     var averageContrubution = 0;
     if (totalMentees > 0 && totalContributionsSum > 0) {
 
