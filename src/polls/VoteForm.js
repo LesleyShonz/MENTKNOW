@@ -75,7 +75,8 @@ const VotePoll = () => {
       <div className="VoteForm">
         {hasVoted ? (
           <div className="results-container1">
-            <h3 className="results-heading">Final Results:</h3>
+            <h3 className="results-heading">Final Outcomes:</h3>
+            <h3 className="results-heading">{poll.question}</h3>
             {poll.options.map((option, index) => (
               <div
                 key={index}
