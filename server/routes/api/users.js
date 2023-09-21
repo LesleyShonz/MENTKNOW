@@ -189,7 +189,7 @@ async function getTotalMenteesCount(req, res) {
         const menteeCount = await User.countDocuments({ userType: 'mentee' });
 
         res.json({ menteeCount });
-        console.log(menteeCount);
+      
     } catch (error) {
         console.error(error.message);
         res.status(500).send('Server Error');

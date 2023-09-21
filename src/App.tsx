@@ -23,7 +23,6 @@ import {
   BrowserRouter as Router,
   Navigate,
 } from "react-router-dom";
-import { ScatterPlot } from "@mui/icons-material";
 export default function App() {
   const [user, setUser] = useState(null);
 

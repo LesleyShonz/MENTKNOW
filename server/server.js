@@ -92,7 +92,6 @@ app.post("/api/ratings", async (req, res) => {
 app.get("/api/analytics", async (req, res) => {
   try {
     const data = await Rating.find();
-    console.log(data);
     res.setHeader("Content-Type", "application/json");
     res.json(data);
   } catch (err) {
