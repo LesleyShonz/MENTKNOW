@@ -47,10 +47,14 @@ git clone https://github.com/LesleyShonz/MENTKNOW.git
 GitLab:
 git clone https://gitlab.cs.uct.ac.za/shnles006/MENTKNOW.git
 
+Open 2 terminals,
+
+Terminal 1:
 cd server
 npm i
 npm start
 
+Terminal 2:
 cd ..
 npm i
 npm start
