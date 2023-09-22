@@ -55,7 +55,7 @@ npm i
 npm start
 
 Terminal 2:
-cd ..
+cd src
 npm i
 npm start
 ```
