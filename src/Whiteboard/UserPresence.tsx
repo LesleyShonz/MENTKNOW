@@ -15,7 +15,7 @@ import { track } from "signia-react";
 import "../Activity/NavigationBar.css";
 import { createShapeId, Editor } from "@tldraw/tldraw";
 import ActivityBar from "../Activity/ActivityBar";
-import TemplateIcon from "../assets/Template_icon.png";
+import TemplateIcon from "../assets/Template_icon.svg";
 import SubBar from "../Activity/SubBar";
 import { useState } from "react";
 

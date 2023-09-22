@@ -1,4 +1,29 @@
-///import the required modules
+/**
+ * MentKnow Main Server
+ *
+ * This server application manages user interactions, ratings, polls, and analytics
+ * for activities. It provides various API endpoints to manage user data, fetch
+ * analytics, post ratings, and retrieve total contributions. The server connects
+ * to a MongoDB database for persistent data storage.
+ *
+ * Key Features:
+ * - CORS enabled for cross-origin requests.
+ * - Express.js for API route handling.
+ * - Mongoose for MongoDB object modeling and interactions.
+ *
+ * Available Routes:
+ * - Users, Polls, and Activities management routes.
+ * - Ratings and analytics retrieval.
+ *
+ * Database:
+ * - Connection to MongoDB using Mongoose.
+ * - A rating schema to store activity ratings and contributions.
+ *
+ * Server Configuration:
+ * - The server listens on a predefined port or 5004 by default.
+ */
+
+//import the required modules
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -28,7 +53,14 @@ mongoose.connection.on("connected", () => {
   console.log("Mongoose is connected!");
 });
 
-// Define Mongoose schema and model for ratings
+/**
+ * Mongoose schema for ratings.
+ * - activityName: Name of the activity.
+ * - totalRating: Total rating for the activity.
+ * - numRatings: Number of ratings given.
+ * - averageRating: Average rating value.
+ * - numContributions: Number of contributions towards the activity.
+ */
 const ratingSchema = new mongoose.Schema(
   {
     activityName: String,
@@ -42,9 +74,14 @@ const ratingSchema = new mongoose.Schema(
 
 const Rating = mongoose.model("Rating", ratingSchema);
 
-// @route   POST api/ratings
-// @desc    Post the rating to the database
-// @access  Public
+/**
+ * @route   POST /api/ratings
+ * @desc    Post the rating to the database.
+ * @access  Public
+ * @param   {string} activityName - Name of the activity.
+ * @param   {number} totalRating - Total rating for the activity.
+ * @param   {number} numContributions - Number of contributions towards the activity.
+ */
 app.post("/api/ratings", async (req, res) => {
   const { activityName, totalRating, numContributions } = req.body;
   try {
@@ -75,9 +112,12 @@ app.post("/api/ratings", async (req, res) => {
   }
 });
 
-// @route   GET api/analytics
-// @desc    Get the analytics
-// @access  Public
+/**
+ * @route   GET /api/analytics
+ * @desc    Fetch analytics based on ratings data.
+ * @access  Public
+ * @param   None
+ */
 app.get("/api/analytics", async (req, res) => {
   try {
     const data = await Rating.find();
@@ -90,9 +130,12 @@ app.get("/api/analytics", async (req, res) => {
       .json({ message: "Error fetching analytics", error: err.message });
   }
 });
-// @route   GET api/totalContributions
-// @desc    Get the number of contributions
-// @access  Public
+/**
+ * @route   GET /api/totalContributions
+ * @desc    Retrieve the total number of contributions across all activities.
+ * @access  Public
+ * @param   None
+ */
 app.get("/api/totalContributions", async (req, res) => {
   try {
     const result = await Rating.aggregate([
