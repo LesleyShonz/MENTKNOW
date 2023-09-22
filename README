@@ -43,6 +43,7 @@ Github:
 git clone https://github.com/LesleyShonz/MENTKNOW.git
 
 GitLab:
+https://gitlab.cs.uct.ac.za/shnles006/MENTKNOW.git
 
 cd server
 npm i
