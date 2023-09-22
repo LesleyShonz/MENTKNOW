@@ -131,15 +131,18 @@ const DropdownBar = ({ activityName, Topic, QuestionsTags, text, data }) => {
       return (
         <div>
           {links.map((link, index) => (
-            <a
-              style={{ marginLeft: "4px" }}
-              key={index}
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {link + "\n"}
-            </a>
+            <span>
+              <a
+                style={{ marginLeft: "-250px" }}
+                key={index}
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link}
+              </a>
+              <br></br>
+            </span>
           ))}
         </div>
       );

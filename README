@@ -1,0 +1,56 @@
+# Science Faculty Mentorship Program Knowledge Board
+
+A digital online knowledge board system for the Science Faculty mentorship program to facilitate collaborative learning and engagement among mentor groups.
+
+## Table of Contents
+
+- [About](#about)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## About
+
+The Science Faculty is running a mentorship program where senior students mentor groups of first-year Science students during weekly mentoring sessions. This digital knowledge board system aims to enhance these sessions by providing a digital platform for mentor groups to collaboratively document what they've learned on various topics, such as time management, study skills, and stress management.
+
+## Features
+
+- Create and manage knowledge boards for weekly mentoring sessions.
+- Real-time collaboration with drawing, text, and file upload capabilities.
+- User authentication for mentors and students.
+- Analytics dashboard for program coordinators to track session engagement and participation.
+
+## Getting Started
+
+### Prerequisites
+
+Before you begin, ensure you have the following prerequisites installed:
+
+- Node.js and npm
+- MongoDB
+- Your preferred web browser
+
+### Installation
+
+Follow these steps to install and run the project locally:
+
+1. Clone the repository:
+
+```bash
+Github:
+git clone https://github.com/LesleyShonz/MENTKNOW.git
+
+GitLab:
+
+cd server
+npm i
+npm start
+
+cd ..
+npm i
+npm start
+```
